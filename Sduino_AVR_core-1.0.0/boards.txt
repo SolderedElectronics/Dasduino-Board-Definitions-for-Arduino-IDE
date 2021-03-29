@@ -1,0 +1,91 @@
+##############################################################
+## Sduino Basic w/ ATmega328P
+## ---------------------------
+
+basic.name=Sduino Basic (Atmega328P)
+basic.upload.tool=avrdude
+basic.upload.protocol=arduino
+basic.bootloader.tool=avrdude
+basic.bootloader.unlock_bits=0x3F
+basic.bootloader.lock_bits=0x0F
+basic.build.f_cpu=16000000L
+basic.build.board=AVR_NANO
+basic.build.core=arduino
+basic.build.variant=eightanaloginputs
+basic.upload.maximum_size=30720
+basic.upload.maximum_data_size=2048
+basic.upload.speed=57600
+basic.bootloader.low_fuses=0xFF
+basic.bootloader.high_fuses=0xDA
+basic.bootloader.extended_fuses=0x05
+basic.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
+basic.build.mcu=atmega328p
+
+# Menu options
+menu.clock=Clock
+menu.BOD=BOD
+menu.LTO=Compiler LTO 
+menu.variant=Variant
+menu.bootloader=Bootloader
+
+
+#############################
+#### ATmega328/A/P/PA/PB ####
+#############################
+
+# General
+LoRa.name=ATmega328P_Lora
+LoRa.upload.tool=avrdude
+LoRa.upload.maximum_data_size=2048
+LoRa.bootloader.tool=avrdude
+LoRa.bootloader.unlock_bits=0x3f
+LoRa.bootloader.lock_bits=0x0f
+LoRa.build.core=MCUdude_corefiles
+LoRa.build.board=AVR_ATmega328
+LoRa.build.bootloader_led=B5
+LoRa.build.extra_flags={build.clkpr}
+
+# Upload port select
+LoRa.menu.bootloader.uart0=Yes (UART0)
+LoRa.menu.bootloader.uart0.upload.maximum_size=32256
+LoRa.menu.bootloader.uart0.upload.protocol=arduino
+LoRa.menu.bootloader.uart0.upload.port=UART0
+LoRa.menu.bootloader.uart0.bootloader.high_fuses=0xd6
+LoRa.menu.bootloader.uart0.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.clock_speed}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.clock_speed}_{build.bootloader_led}.hex
+
+
+# Variants
+LoRa.menu.variant.modelP=328P / 328PA
+LoRa.menu.variant.modelP.bootloader.cksel_bits=0111
+LoRa.menu.variant.modelP.bootloader.cfd_bit=1
+LoRa.menu.variant.modelP.build.variant=standard_mini
+LoRa.menu.variant.modelP.build.mcu=atmega328p
+
+
+
+# Brown out detection
+LoRa.menu.BOD.2v7=BOD 2.7V
+LoRa.menu.BOD.2v7.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}101
+LoRa.menu.BOD.4v3=BOD 4.3V
+LoRa.menu.BOD.4v3.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}100
+LoRa.menu.BOD.1v8=BOD 1.8V
+LoRa.menu.BOD.1v8.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}110
+LoRa.menu.BOD.disabled=BOD  disabled
+LoRa.menu.BOD.disabled.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}111
+
+# Compiler link time optimization
+LoRa.menu.LTO.Os=LTO disabled
+LoRa.menu.LTO.Os.compiler.c.extra_flags=
+LoRa.menu.LTO.Os.compiler.c.elf.extra_flags=
+LoRa.menu.LTO.Os.compiler.cpp.extra_flags=
+LoRa.menu.LTO.Os.ltoarcmd=avr-ar
+
+
+# Clock frequencies
+
+LoRa.menu.clock.8MHz_internal=Internal 8 MHz
+LoRa.menu.clock.8MHz_internal.upload.speed=38400
+LoRa.menu.clock.8MHz_internal.bootloader.low_fuses=0xe2
+LoRa.menu.clock.8MHz_internal.build.clkpr=
+LoRa.menu.clock.8MHz_internal.build.clock_speed={build.f_cpu}
+LoRa.menu.clock.8MHz_internal.build.f_cpu=8000000L

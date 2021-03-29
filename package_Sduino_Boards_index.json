@@ -55,7 +55,29 @@
               "name": "mkspiffs"
             }
           ]          
-        }
+        },
+        {      
+            "help": {
+              "online": "http://www.forum.soldered.com"
+              },
+              "category": "Sduino",		  
+              "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_AVR_core-1.0.0.zip", 
+              "archiveFileName": "Sduino_AVR_core-1.0.0.zip",
+              "checksum": "SHA-256:5d6845198b023040bb78bbf029499efb53fdb7defcf54fa971a555ccd12b8e8a",
+              "size": "5715915",
+              "version": "1.0.0", 
+              "name": "Sduino AVR Boards",
+              "architecture": "avr",
+              "boards": [
+              {
+                "name": "Sduino Basic (Atmega328P)"
+              },
+              {
+                "name": "Sduino LoRa (Atmega328P)"
+              }			
+              ],
+              "toolsDependencies":[]          
+          }
     ],	  
       "tools": [
 		{
