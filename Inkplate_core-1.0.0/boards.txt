@@ -1,0 +1,466 @@
+menu.UploadSpeed=Upload Speed
+menu.CPUFreq=CPU Frequency
+menu.FlashFreq=Flash Frequency
+menu.FlashMode=Flash Mode
+menu.FlashSize=Flash Size
+menu.PartitionScheme=Partition Scheme
+menu.DebugLevel=Core Debug Level
+menu.PSRAM=PSRAM
+
+
+################################################################################
+Inkplate6.name=Inkplate 6 (ESP32)
+
+Inkplate6.upload.tool=esptool_py
+Inkplate6.upload.maximum_size=1310720
+Inkplate6.upload.maximum_data_size=327680
+Inkplate6.upload.wait_for_upload_port=true
+
+Inkplate6.serial.disableDTR=true
+Inkplate6.serial.disableRTS=true
+
+Inkplate6.build.mcu=esp32
+Inkplate6.build.core=Inkplate
+Inkplate6.build.variant=Inkplate
+Inkplate6.build.board=ESP32_DEV
+
+Inkplate6.build.f_cpu=240000000L
+Inkplate6.build.flash_size=4MB
+Inkplate6.build.flash_freq=40m
+Inkplate6.build.flash_mode=dio
+Inkplate6.build.boot=dio
+Inkplate6.build.partitions=default
+Inkplate6.build.defines=
+
+
+Inkplate6.menu.PSRAM.enabled=Enabled
+Inkplate6.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+
+Inkplate6.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+Inkplate6.menu.PartitionScheme.huge_app.build.partitions=huge_app
+Inkplate6.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+Inkplate6.menu.PartitionScheme.default=Default
+Inkplate6.menu.PartitionScheme.default.build.partitions=default
+Inkplate6.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+Inkplate6.menu.PartitionScheme.minimal.build.partitions=minimal
+Inkplate6.menu.PartitionScheme.no_ota=No OTA (Large APP)
+Inkplate6.menu.PartitionScheme.no_ota.build.partitions=no_ota
+Inkplate6.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+
+Inkplate6.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+Inkplate6.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+Inkplate6.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+Inkplate6.menu.PartitionScheme.fatflash=16M Fat
+Inkplate6.menu.PartitionScheme.fatflash.build.partitions=ffat
+
+Inkplate6.menu.CPUFreq.240=240MHz (WiFi/BT)
+Inkplate6.menu.CPUFreq.240.build.f_cpu=240000000L
+Inkplate6.menu.CPUFreq.160=160MHz (WiFi/BT)
+Inkplate6.menu.CPUFreq.160.build.f_cpu=160000000L
+Inkplate6.menu.CPUFreq.80=80MHz (WiFi/BT)
+Inkplate6.menu.CPUFreq.80.build.f_cpu=80000000L
+Inkplate6.menu.CPUFreq.40=40MHz (40MHz XTAL)
+Inkplate6.menu.CPUFreq.40.build.f_cpu=40000000L
+Inkplate6.menu.CPUFreq.26=26MHz (26MHz XTAL)
+Inkplate6.menu.CPUFreq.26.build.f_cpu=26000000L
+Inkplate6.menu.CPUFreq.20=20MHz (40MHz XTAL)
+Inkplate6.menu.CPUFreq.20.build.f_cpu=20000000L
+Inkplate6.menu.CPUFreq.13=13MHz (26MHz XTAL)
+Inkplate6.menu.CPUFreq.13.build.f_cpu=13000000L
+Inkplate6.menu.CPUFreq.10=10MHz (40MHz XTAL)
+Inkplate6.menu.CPUFreq.10.build.f_cpu=10000000L
+
+Inkplate6.menu.UploadSpeed.115200=115200
+Inkplate6.menu.UploadSpeed.115200.upload.speed=115200
+Inkplate6.menu.UploadSpeed.921600=921600
+Inkplate6.menu.UploadSpeed.921600.upload.speed=921600
+Inkplate6.menu.UploadSpeed.256000.windows=256000
+Inkplate6.menu.UploadSpeed.256000.upload.speed=256000
+Inkplate6.menu.UploadSpeed.230400.windows.upload.speed=256000
+Inkplate6.menu.UploadSpeed.230400=230400
+Inkplate6.menu.UploadSpeed.230400.upload.speed=230400
+Inkplate6.menu.UploadSpeed.460800.linux=460800
+Inkplate6.menu.UploadSpeed.460800.macosx=460800
+Inkplate6.menu.UploadSpeed.460800.upload.speed=460800
+Inkplate6.menu.UploadSpeed.512000.windows=512000
+Inkplate6.menu.UploadSpeed.512000.upload.speed=512000
+
+Inkplate6.menu.DebugLevel.none=None
+Inkplate6.menu.DebugLevel.none.build.code_debug=0
+Inkplate6.menu.DebugLevel.error=Error
+Inkplate6.menu.DebugLevel.error.build.code_debug=1
+Inkplate6.menu.DebugLevel.warn=Warn
+Inkplate6.menu.DebugLevel.warn.build.code_debug=2
+Inkplate6.menu.DebugLevel.info=Info
+Inkplate6.menu.DebugLevel.info.build.code_debug=3
+Inkplate6.menu.DebugLevel.debug=Debug
+Inkplate6.menu.DebugLevel.debug.build.code_debug=4
+Inkplate6.menu.DebugLevel.verbose=Verbose
+Inkplate6.menu.DebugLevel.verbose.build.code_debug=5
+
+##############################################################
+Inkplate10.name=Inkplate 10 (ESP32)
+
+Inkplate10.upload.tool=esptool_py
+Inkplate10.upload.maximum_size=1310720
+Inkplate10.upload.maximum_data_size=327680
+Inkplate10.upload.wait_for_upload_port=true
+
+Inkplate10.serial.disableDTR=true
+Inkplate10.serial.disableRTS=true
+
+Inkplate10.build.mcu=esp32
+Inkplate10.build.core=Inkplate
+Inkplate10.build.variant=Inkplate
+Inkplate10.build.board=INKPLATE10
+
+Inkplate10.build.f_cpu=240000000L
+Inkplate10.build.flash_size=4MB
+Inkplate10.build.flash_freq=40m
+Inkplate10.build.flash_mode=dio
+Inkplate10.build.boot=dio
+Inkplate10.build.partitions=default
+Inkplate10.build.defines=
+
+
+Inkplate10.menu.PSRAM.enabled=Enabled
+Inkplate10.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+
+Inkplate10.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+Inkplate10.menu.PartitionScheme.huge_app.build.partitions=huge_app
+Inkplate10.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+Inkplate10.menu.PartitionScheme.default=Default
+Inkplate10.menu.PartitionScheme.default.build.partitions=default
+Inkplate10.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+Inkplate10.menu.PartitionScheme.minimal.build.partitions=minimal
+Inkplate10.menu.PartitionScheme.no_ota=No OTA (Large APP)
+Inkplate10.menu.PartitionScheme.no_ota.build.partitions=no_ota
+Inkplate10.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+
+Inkplate10.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+Inkplate10.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+Inkplate10.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+Inkplate10.menu.PartitionScheme.fatflash=16M Fat
+Inkplate10.menu.PartitionScheme.fatflash.build.partitions=ffat
+
+Inkplate10.menu.CPUFreq.240=240MHz (WiFi/BT)
+Inkplate10.menu.CPUFreq.240.build.f_cpu=240000000L
+Inkplate10.menu.CPUFreq.160=160MHz (WiFi/BT)
+Inkplate10.menu.CPUFreq.160.build.f_cpu=160000000L
+Inkplate10.menu.CPUFreq.80=80MHz (WiFi/BT)
+Inkplate10.menu.CPUFreq.80.build.f_cpu=80000000L
+Inkplate10.menu.CPUFreq.40=40MHz (40MHz XTAL)
+Inkplate10.menu.CPUFreq.40.build.f_cpu=40000000L
+Inkplate10.menu.CPUFreq.26=26MHz (26MHz XTAL)
+Inkplate10.menu.CPUFreq.26.build.f_cpu=26000000L
+Inkplate10.menu.CPUFreq.20=20MHz (40MHz XTAL)
+Inkplate10.menu.CPUFreq.20.build.f_cpu=20000000L
+Inkplate10.menu.CPUFreq.13=13MHz (26MHz XTAL)
+Inkplate10.menu.CPUFreq.13.build.f_cpu=13000000L
+Inkplate10.menu.CPUFreq.10=10MHz (40MHz XTAL)
+Inkplate10.menu.CPUFreq.10.build.f_cpu=10000000L
+
+Inkplate10.menu.UploadSpeed.115200=115200
+Inkplate10.menu.UploadSpeed.115200.upload.speed=115200
+Inkplate10.menu.UploadSpeed.921600=921600
+Inkplate10.menu.UploadSpeed.921600.upload.speed=921600
+Inkplate10.menu.UploadSpeed.256000.windows=256000
+Inkplate10.menu.UploadSpeed.256000.upload.speed=256000
+Inkplate10.menu.UploadSpeed.230400.windows.upload.speed=256000
+Inkplate10.menu.UploadSpeed.230400=230400
+Inkplate10.menu.UploadSpeed.230400.upload.speed=230400
+Inkplate10.menu.UploadSpeed.460800.linux=460800
+Inkplate10.menu.UploadSpeed.460800.macosx=460800
+Inkplate10.menu.UploadSpeed.460800.upload.speed=460800
+Inkplate10.menu.UploadSpeed.512000.windows=512000
+Inkplate10.menu.UploadSpeed.512000.upload.speed=512000
+
+Inkplate10.menu.DebugLevel.none=None
+Inkplate10.menu.DebugLevel.none.build.code_debug=0
+Inkplate10.menu.DebugLevel.error=Error
+Inkplate10.menu.DebugLevel.error.build.code_debug=1
+Inkplate10.menu.DebugLevel.warn=Warn
+Inkplate10.menu.DebugLevel.warn.build.code_debug=2
+Inkplate10.menu.DebugLevel.info=Info
+Inkplate10.menu.DebugLevel.info.build.code_debug=3
+Inkplate10.menu.DebugLevel.debug=Debug
+Inkplate10.menu.DebugLevel.debug.build.code_debug=4
+Inkplate10.menu.DebugLevel.verbose=Verbose
+Inkplate10.menu.DebugLevel.verbose.build.code_debug=5
+
+##############################################################
+Inkplate5.name=Inkplate 5 (ESP32)
+
+Inkplate5.upload.tool=esptool_py
+Inkplate5.upload.maximum_size=1310720
+Inkplate5.upload.maximum_data_size=327680
+Inkplate5.upload.wait_for_upload_port=true
+
+Inkplate5.serial.disableDTR=true
+Inkplate5.serial.disableRTS=true
+
+Inkplate5.build.mcu=esp32
+Inkplate5.build.core=Inkplate
+Inkplate5.build.variant=Inkplate
+Inkplate5.build.board=INKPLATE5
+
+Inkplate5.build.f_cpu=240000000L
+Inkplate5.build.flash_size=4MB
+Inkplate5.build.flash_freq=40m
+Inkplate5.build.flash_mode=dio
+Inkplate5.build.boot=dio
+Inkplate5.build.partitions=default
+Inkplate5.build.defines=
+
+
+Inkplate5.menu.PSRAM.enabled=Enabled
+Inkplate5.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+
+Inkplate5.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+Inkplate5.menu.PartitionScheme.huge_app.build.partitions=huge_app
+Inkplate5.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+Inkplate5.menu.PartitionScheme.default=Default
+Inkplate5.menu.PartitionScheme.default.build.partitions=default
+Inkplate5.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+Inkplate5.menu.PartitionScheme.minimal.build.partitions=minimal
+Inkplate5.menu.PartitionScheme.no_ota=No OTA (Large APP)
+Inkplate5.menu.PartitionScheme.no_ota.build.partitions=no_ota
+Inkplate5.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+
+Inkplate5.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+Inkplate5.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+Inkplate5.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+Inkplate5.menu.PartitionScheme.fatflash=16M Fat
+Inkplate5.menu.PartitionScheme.fatflash.build.partitions=ffat
+
+Inkplate5.menu.CPUFreq.240=240MHz (WiFi/BT)
+Inkplate5.menu.CPUFreq.240.build.f_cpu=240000000L
+Inkplate5.menu.CPUFreq.160=160MHz (WiFi/BT)
+Inkplate5.menu.CPUFreq.160.build.f_cpu=160000000L
+Inkplate5.menu.CPUFreq.80=80MHz (WiFi/BT)
+Inkplate5.menu.CPUFreq.80.build.f_cpu=80000000L
+Inkplate5.menu.CPUFreq.40=40MHz (40MHz XTAL)
+Inkplate5.menu.CPUFreq.40.build.f_cpu=40000000L
+Inkplate5.menu.CPUFreq.26=26MHz (26MHz XTAL)
+Inkplate5.menu.CPUFreq.26.build.f_cpu=26000000L
+Inkplate5.menu.CPUFreq.20=20MHz (40MHz XTAL)
+Inkplate5.menu.CPUFreq.20.build.f_cpu=20000000L
+Inkplate5.menu.CPUFreq.13=13MHz (26MHz XTAL)
+Inkplate5.menu.CPUFreq.13.build.f_cpu=13000000L
+Inkplate5.menu.CPUFreq.10=10MHz (40MHz XTAL)
+Inkplate5.menu.CPUFreq.10.build.f_cpu=10000000L
+
+Inkplate5.menu.UploadSpeed.115200=115200
+Inkplate5.menu.UploadSpeed.115200.upload.speed=115200
+Inkplate5.menu.UploadSpeed.921600=921600
+Inkplate5.menu.UploadSpeed.921600.upload.speed=921600
+Inkplate5.menu.UploadSpeed.256000.windows=256000
+Inkplate5.menu.UploadSpeed.256000.upload.speed=256000
+Inkplate5.menu.UploadSpeed.230400.windows.upload.speed=256000
+Inkplate5.menu.UploadSpeed.230400=230400
+Inkplate5.menu.UploadSpeed.230400.upload.speed=230400
+Inkplate5.menu.UploadSpeed.460800.linux=460800
+Inkplate5.menu.UploadSpeed.460800.macosx=460800
+Inkplate5.menu.UploadSpeed.460800.upload.speed=460800
+Inkplate5.menu.UploadSpeed.512000.windows=512000
+Inkplate5.menu.UploadSpeed.512000.upload.speed=512000
+
+Inkplate5.menu.DebugLevel.none=None
+Inkplate5.menu.DebugLevel.none.build.code_debug=0
+Inkplate5.menu.DebugLevel.error=Error
+Inkplate5.menu.DebugLevel.error.build.code_debug=1
+Inkplate5.menu.DebugLevel.warn=Warn
+Inkplate5.menu.DebugLevel.warn.build.code_debug=2
+Inkplate5.menu.DebugLevel.info=Info
+Inkplate5.menu.DebugLevel.info.build.code_debug=3
+Inkplate5.menu.DebugLevel.debug=Debug
+Inkplate5.menu.DebugLevel.debug.build.code_debug=4
+Inkplate5.menu.DebugLevel.verbose=Verbose
+Inkplate5.menu.DebugLevel.verbose.build.code_debug=5
+
+##############################################################
+Inkplate6plus.name=Inkplate 6 plus (ESP32)
+
+Inkplate6plus.upload.tool=esptool_py
+Inkplate6plus.upload.maximum_size=1310720
+Inkplate6plus.upload.maximum_data_size=327680
+Inkplate6plus.upload.wait_for_upload_port=true
+
+Inkplate6plus.serial.disableDTR=true
+Inkplate6plus.serial.disableRTS=true
+
+Inkplate6plus.build.mcu=esp32
+Inkplate6plus.build.core=Inkplate
+Inkplate6plus.build.variant=Inkplate
+Inkplate6plus.build.board=INKPLATE6PLUS
+
+Inkplate6plus.build.f_cpu=240000000L
+Inkplate6plus.build.flash_size=4MB
+Inkplate6plus.build.flash_freq=40m
+Inkplate6plus.build.flash_mode=dio
+Inkplate6plus.build.boot=dio
+Inkplate6plus.build.partitions=default
+Inkplate6plus.build.defines=
+
+
+Inkplate6plus.menu.PSRAM.enabled=Enabled
+Inkplate6plus.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+
+Inkplate6plus.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+Inkplate6plus.menu.PartitionScheme.huge_app.build.partitions=huge_app
+Inkplate6plus.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+Inkplate6plus.menu.PartitionScheme.default=Default
+Inkplate6plus.menu.PartitionScheme.default.build.partitions=default
+Inkplate6plus.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+Inkplate6plus.menu.PartitionScheme.minimal.build.partitions=minimal
+Inkplate6plus.menu.PartitionScheme.no_ota=No OTA (Large APP)
+Inkplate6plus.menu.PartitionScheme.no_ota.build.partitions=no_ota
+Inkplate6plus.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+
+Inkplate6plus.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+Inkplate6plus.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+Inkplate6plus.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+Inkplate6plus.menu.PartitionScheme.fatflash=16M Fat
+Inkplate6plus.menu.PartitionScheme.fatflash.build.partitions=ffat
+
+Inkplate6plus.menu.CPUFreq.240=240MHz (WiFi/BT)
+Inkplate6plus.menu.CPUFreq.240.build.f_cpu=240000000L
+Inkplate6plus.menu.CPUFreq.160=160MHz (WiFi/BT)
+Inkplate6plus.menu.CPUFreq.160.build.f_cpu=160000000L
+Inkplate6plus.menu.CPUFreq.80=80MHz (WiFi/BT)
+Inkplate6plus.menu.CPUFreq.80.build.f_cpu=80000000L
+Inkplate6plus.menu.CPUFreq.40=40MHz (40MHz XTAL)
+Inkplate6plus.menu.CPUFreq.40.build.f_cpu=40000000L
+Inkplate6plus.menu.CPUFreq.26=26MHz (26MHz XTAL)
+Inkplate6plus.menu.CPUFreq.26.build.f_cpu=26000000L
+Inkplate6plus.menu.CPUFreq.20=20MHz (40MHz XTAL)
+Inkplate6plus.menu.CPUFreq.20.build.f_cpu=20000000L
+Inkplate6plus.menu.CPUFreq.13=13MHz (26MHz XTAL)
+Inkplate6plus.menu.CPUFreq.13.build.f_cpu=13000000L
+Inkplate6plus.menu.CPUFreq.10=10MHz (40MHz XTAL)
+Inkplate6plus.menu.CPUFreq.10.build.f_cpu=10000000L
+
+Inkplate6plus.menu.UploadSpeed.115200=115200
+Inkplate6plus.menu.UploadSpeed.115200.upload.speed=115200
+Inkplate6plus.menu.UploadSpeed.921600=921600
+Inkplate6plus.menu.UploadSpeed.921600.upload.speed=921600
+Inkplate6plus.menu.UploadSpeed.256000.windows=256000
+Inkplate6plus.menu.UploadSpeed.256000.upload.speed=256000
+Inkplate6plus.menu.UploadSpeed.230400.windows.upload.speed=256000
+Inkplate6plus.menu.UploadSpeed.230400=230400
+Inkplate6plus.menu.UploadSpeed.230400.upload.speed=230400
+Inkplate6plus.menu.UploadSpeed.460800.linux=460800
+Inkplate6plus.menu.UploadSpeed.460800.macosx=460800
+Inkplate6plus.menu.UploadSpeed.460800.upload.speed=460800
+Inkplate6plus.menu.UploadSpeed.512000.windows=512000
+Inkplate6plus.menu.UploadSpeed.512000.upload.speed=512000
+
+Inkplate6plus.menu.DebugLevel.none=None
+Inkplate6plus.menu.DebugLevel.none.build.code_debug=0
+Inkplate6plus.menu.DebugLevel.error=Error
+Inkplate6plus.menu.DebugLevel.error.build.code_debug=1
+Inkplate6plus.menu.DebugLevel.warn=Warn
+Inkplate6plus.menu.DebugLevel.warn.build.code_debug=2
+Inkplate6plus.menu.DebugLevel.info=Info
+Inkplate6plus.menu.DebugLevel.info.build.code_debug=3
+Inkplate6plus.menu.DebugLevel.debug=Debug
+Inkplate6plus.menu.DebugLevel.debug.build.code_debug=4
+Inkplate6plus.menu.DebugLevel.verbose=Verbose
+Inkplate6plus.menu.DebugLevel.verbose.build.code_debug=5
+
+##############################################################
+Inkplatecolor.name=Inkplate color (ESP32)
+
+Inkplatecolor.upload.tool=esptool_py
+Inkplatecolor.upload.maximum_size=1310720
+Inkplatecolor.upload.maximum_data_size=327680
+Inkplatecolor.upload.wait_for_upload_port=true
+
+Inkplatecolor.serial.disableDTR=true
+Inkplatecolor.serial.disableRTS=true
+
+Inkplatecolor.build.mcu=esp32
+Inkplatecolor.build.core=Inkplate
+Inkplatecolor.build.variant=Inkplate
+Inkplatecolor.build.board=INKPLATECOLOR 
+
+Inkplatecolor.build.f_cpu=240000000L
+Inkplatecolor.build.flash_size=4MB
+Inkplatecolor.build.flash_freq=40m
+Inkplatecolor.build.flash_mode=dio
+Inkplatecolor.build.boot=dio
+Inkplatecolor.build.partitions=default
+Inkplatecolor.build.defines=
+
+
+Inkplatecolor.menu.PSRAM.enabled=Enabled
+Inkplatecolor.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+
+
+Inkplatecolor.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA)
+Inkplatecolor.menu.PartitionScheme.huge_app.build.partitions=huge_app
+Inkplatecolor.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
+Inkplatecolor.menu.PartitionScheme.default=Default
+Inkplatecolor.menu.PartitionScheme.default.build.partitions=default
+Inkplatecolor.menu.PartitionScheme.minimal=Minimal (2MB FLASH)
+Inkplatecolor.menu.PartitionScheme.minimal.build.partitions=minimal
+Inkplatecolor.menu.PartitionScheme.no_ota=No OTA (Large APP)
+Inkplatecolor.menu.PartitionScheme.no_ota.build.partitions=no_ota
+Inkplatecolor.menu.PartitionScheme.no_ota.upload.maximum_size=2097152
+
+Inkplatecolor.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (Large APPS with OTA)
+Inkplatecolor.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
+Inkplatecolor.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
+Inkplatecolor.menu.PartitionScheme.fatflash=16M Fat
+Inkplatecolor.menu.PartitionScheme.fatflash.build.partitions=ffat
+
+Inkplatecolor.menu.CPUFreq.240=240MHz (WiFi/BT)
+Inkplatecolor.menu.CPUFreq.240.build.f_cpu=240000000L
+Inkplatecolor.menu.CPUFreq.160=160MHz (WiFi/BT)
+Inkplatecolor.menu.CPUFreq.160.build.f_cpu=160000000L
+Inkplatecolor.menu.CPUFreq.80=80MHz (WiFi/BT)
+Inkplatecolor.menu.CPUFreq.80.build.f_cpu=80000000L
+Inkplatecolor.menu.CPUFreq.40=40MHz (40MHz XTAL)
+Inkplatecolor.menu.CPUFreq.40.build.f_cpu=40000000L
+Inkplatecolor.menu.CPUFreq.26=26MHz (26MHz XTAL)
+Inkplatecolor.menu.CPUFreq.26.build.f_cpu=26000000L
+Inkplatecolor.menu.CPUFreq.20=20MHz (40MHz XTAL)
+Inkplatecolor.menu.CPUFreq.20.build.f_cpu=20000000L
+Inkplatecolor.menu.CPUFreq.13=13MHz (26MHz XTAL)
+Inkplatecolor.menu.CPUFreq.13.build.f_cpu=13000000L
+Inkplatecolor.menu.CPUFreq.10=10MHz (40MHz XTAL)
+Inkplatecolor.menu.CPUFreq.10.build.f_cpu=10000000L
+
+Inkplatecolor.menu.UploadSpeed.115200=115200
+Inkplatecolor.menu.UploadSpeed.115200.upload.speed=115200
+Inkplatecolor.menu.UploadSpeed.921600=921600
+Inkplatecolor.menu.UploadSpeed.921600.upload.speed=921600
+Inkplatecolor.menu.UploadSpeed.256000.windows=256000
+Inkplatecolor.menu.UploadSpeed.256000.upload.speed=256000
+Inkplatecolor.menu.UploadSpeed.230400.windows.upload.speed=256000
+Inkplatecolor.menu.UploadSpeed.230400=230400
+Inkplatecolor.menu.UploadSpeed.230400.upload.speed=230400
+Inkplatecolor.menu.UploadSpeed.460800.linux=460800
+Inkplatecolor.menu.UploadSpeed.460800.macosx=460800
+Inkplatecolor.menu.UploadSpeed.460800.upload.speed=460800
+Inkplatecolor.menu.UploadSpeed.512000.windows=512000
+Inkplatecolor.menu.UploadSpeed.512000.upload.speed=512000
+
+Inkplatecolor.menu.DebugLevel.none=None
+Inkplatecolor.menu.DebugLevel.none.build.code_debug=0
+Inkplatecolor.menu.DebugLevel.error=Error
+Inkplatecolor.menu.DebugLevel.error.build.code_debug=1
+Inkplatecolor.menu.DebugLevel.warn=Warn
+Inkplatecolor.menu.DebugLevel.warn.build.code_debug=2
+Inkplatecolor.menu.DebugLevel.info=Info
+Inkplatecolor.menu.DebugLevel.info.build.code_debug=3
+Inkplatecolor.menu.DebugLevel.debug=Debug
+Inkplatecolor.menu.DebugLevel.debug.build.code_debug=4
+Inkplatecolor.menu.DebugLevel.verbose=Verbose
+Inkplatecolor.menu.DebugLevel.verbose.build.code_debug=5
+
+##############################################################
