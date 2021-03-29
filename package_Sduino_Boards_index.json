@@ -77,8 +77,46 @@
               }			
               ],
               "toolsDependencies":[]          
-          }
-    ],	  
+          },
+          {
+              "help": {
+                  "online": "http://www.forum.soldered.com"
+              },		
+              "category": "Sduino_STM32",           
+              "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_STM32_core.zip", 
+              "archiveFileName": "Sduino_STM32_core.zip", 
+              "checksum": "SHA-256:f1bfaf8e81c774810bd70022a04eb2db7e0faec6a50b6e257e5aef17197b93f8",         
+              "size": "6754027",
+              "version": "1.0.0", 
+              "name": "Sduino STM32 Boards",
+              "architecture": "stm32",           
+              "boards": [
+                {
+                    "name": "Sduino STM32F103C8xx"
+                },
+                {
+                    "name": "STM32L010RB_Lora"
+                }
+              ], 
+              "toolsDependencies": [
+              {
+                "packager": "Sduino_Boards",
+                "name": "xpack-arm-none-eabi-gcc",
+                "version": "9.2.1-1.1"
+              },
+              {
+                "packager": "Sduino_Boards",
+                "name": "STM32Tools",
+                "version": "1.4.0"
+              },
+              {
+                "packager": "Sduino_Boards",
+                "name": "CMSIS",
+                "version": "5.5.1"
+              }
+              ]	  
+            } 
+        ],
       "tools": [
 		{
           "name": "esptool_py",
