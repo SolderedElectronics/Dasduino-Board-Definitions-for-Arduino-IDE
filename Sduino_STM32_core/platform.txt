@@ -1,6 +1,6 @@
 
 
-name=Croduino STM32 Boards
+name=Sduino STM32 Boards
 version=1.0.0
 
 # STM compile variables

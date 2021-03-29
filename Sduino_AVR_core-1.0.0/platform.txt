@@ -1,6 +1,6 @@
 
 
-name=Croduino AVR Boards
+name=Sduino AVR Boards
 version=1.0.0
 
 # AVR compile variables
