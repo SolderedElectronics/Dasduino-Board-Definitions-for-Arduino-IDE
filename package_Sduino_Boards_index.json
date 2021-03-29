@@ -3,15 +3,15 @@
     {
 		"name": "Sduino_Boards",
 		"maintainer": "Soldered: Arduino compatibles made in Europe",
-		"websiteURL": "https://www.e-radionica.com/en",
+		"websiteURL": "https://soldered.com/en",
 		"help": 
 		{
-        "online": "http://www.forum.e-radionica.com/en"
+        "online": "http://www.forum.soldered.com/en"
 		},
 		"platforms": [       
         {
 			"help": {
-				"online": "http://www.forum.e-radionica.com"
+				"online": "http://www.forum.soldered.com"
 			},		
 			"category": "Sduino",           
 			"url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-1.0.0.zip", 
