@@ -576,7 +576,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.mkspiffs-7fefeac.zip", 
-              "checksum": "SHA-256:ec661fb02c2635ac722eaaedf0a0c35474c43c72008f0ceefffb19af2f739d15", 
+              "checksum": "SHA-256:1927b8c3c31a6481ee7ef7776d63c623358ca756b8b5c62d28f8614b14bc1f02", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.mkspiffs-7fefeac.zip", 
               "size": "337874"
