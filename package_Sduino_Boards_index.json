@@ -451,49 +451,49 @@
             "name": "xtensa-lx106-elf-gcc", 
             "systems": [
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/aarch64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/aarch64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "checksum": "SHA-256:2192512ff6e33d4126722b2bfea02c1d8293b0a90094f84a9ac494d5fcaa0f45", 
                 "host": "aarch64-linux-gnu", 
                 "archiveFileName": "aarch64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "size": "40974297"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/arm-linux-gnueabihf.xtensa-lx106-elf-20ed2b9c.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/arm-linux-gnueabihf.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "checksum": "SHA-256:861c4ab7f6f04344f7ee656d90288e6904d7efac83ffe4835b66df3eba35b0a0", 
                 "host": "arm-linux-gnueabihf", 
                 "archiveFileName": "arm-linux-gnueabihf.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "size": "37013753"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
                 "checksum": "SHA-256:38b9ccc3b286546b026fb8a29fb2bd8fdab32c4711816a1a3cb0f11250b5c541", 
                 "host": "i686-mingw32", 
                 "archiveFileName": "i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
                 "size": "44935132"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-linux-gnu.xtensa-lx106-elf-1f24aeae.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-linux-gnu.xtensa-lx106-elf-1f24aeae.tar.gz", 
                 "checksum": "SHA-256:96b106fbc814155e92d1805d3227d36096b88d3d54cfcd885804a0e9cf5631d7", 
                 "host": "i686-pc-linux-gnu", 
                 "archiveFileName": "i686-linux-gnu.xtensa-lx106-elf-1f24aeae.tar.gz", 
                 "size": "42500158"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-apple-darwin14.xtensa-lx106-elf-20ed2b9c.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-apple-darwin14.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "checksum": "SHA-256:fd29ae844915fb2dd800d99ad7967be0e890601c18b80555efbc4eca2dd808c2", 
                 "host": "x86_64-apple-darwin", 
                 "archiveFileName": "x86_64-apple-darwin14.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "size": "44378513"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "checksum": "SHA-256:039f87e2d881b6488a0be8c7fda86cacb1d38502a236cc6768a2dbc2a20ca9cd", 
                 "host": "x86_64-pc-linux-gnu", 
                 "archiveFileName": "x86_64-linux-gnu.xtensa-lx106-elf-20ed2b9c.tar.gz", 
                 "size": "43778575"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
                 "checksum": "SHA-256:cc8c19a458129e49ec195d9438a53c6ce2c1287a04ea1ea22b81dcc65db511a8", 
                 "host": "x86_64-mingw32", 
                 "archiveFileName": "x86_64-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
@@ -506,49 +506,49 @@
             "name": "esptool", 
             "systems": [
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/aarch64-linux-gnu.esptool-f80ae31.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/aarch64-linux-gnu.esptool-f80ae31.tar.gz", 
                 "checksum": "SHA-256:888425ff1e33a97ea155b6f128de6b578c34468895ba9b4acd1e4f28608d917a", 
                 "host": "aarch64-linux-gnu", 
                 "archiveFileName": "aarch64-linux-gnu.esptool-f80ae31.tar.gz", 
                 "size": "14681"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/arm-linux-gnueabihf.esptool-f80ae31.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/arm-linux-gnueabihf.esptool-f80ae31.tar.gz", 
                 "checksum": "SHA-256:71c878ac6a21ee69dcd615cd28f2dccd29a87079e0b3069eba625089d89e5058", 
                 "host": "arm-linux-gnueabihf", 
                 "archiveFileName": "arm-linux-gnueabihf.esptool-f80ae31.tar.gz", 
                 "size": "13873"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.esptool-f80ae31.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-w64-mingw32.esptool-f80ae31.zip", 
                 "checksum": "SHA-256:e30f25a19a78635000401b083b479e111d591bac20cfd89b1bfdf36a60e9ee20", 
                 "host": "i686-mingw32", 
                 "archiveFileName": "i686-w64-mingw32.esptool-f80ae31.zip", 
                 "size": "16466"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-linux-gnu.esptool-f80ae31.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-linux-gnu.esptool-f80ae31.tar.gz", 
                 "checksum": "SHA-256:fe632f4602d02b6a9425c5bf95074095cb6d3c57912168a0f6b796fddd8ce991", 
                 "host": "i686-pc-linux-gnu", 
                 "archiveFileName": "i686-linux-gnu.esptool-f80ae31.tar.gz", 
                 "size": "16543"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-apple-darwin14.esptool-f80ae31.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-apple-darwin14.esptool-f80ae31.tar.gz", 
                 "checksum": "SHA-256:0f51e487706a476b0b87299a769282ad65623774770655168a79d1748d2506e7", 
                 "host": "x86_64-apple-darwin", 
                 "archiveFileName": "x86_64-apple-darwin14.esptool-f80ae31.tar.gz", 
                 "size": "15003"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-linux-gnu.esptool-f80ae31.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-linux-gnu.esptool-f80ae31.tar.gz", 
                 "checksum": "SHA-256:bded1dca953377838b6086a9bcd40a1dc5286ba5f69f2372c22a1d1819baad24", 
                 "host": "x86_64-pc-linux-gnu", 
                 "archiveFileName": "x86_64-linux-gnu.esptool-f80ae31.tar.gz", 
                 "size": "16526"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-w64-mingw32.esptool-f80ae31.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-w64-mingw32.esptool-f80ae31.zip", 
                 "checksum": "SHA-256:d6d5976fde82d07e93d5a01f38bbb4f84a7796187ff0541ee62650041791d0e8", 
                 "host": "x86_64-mingw32", 
                 "archiveFileName": "x86_64-w64-mingw32.esptool-f80ae31.zip", 
@@ -561,49 +561,49 @@
             "name": "mkspiffs", 
             "systems": [
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/aarch64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/aarch64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "checksum": "SHA-256:5f1e6a1f0eff4522bed90c539f88efe48ecc9c9ee72b0e3cad35f8b09c334168", 
                 "host": "aarch64-linux-gnu", 
                 "archiveFileName": "aarch64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "size": "51017"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/arm-linux-gnueabihf.mkspiffs-7fefeac.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/arm-linux-gnueabihf.mkspiffs-7fefeac.tar.gz", 
                 "checksum": "SHA-256:edc5ea2080f90f33aed84e5a9b6986bf905431e09155cdca96b648eae9656d94", 
                 "host": "arm-linux-gnueabihf", 
                 "archiveFileName": "arm-linux-gnueabihf.mkspiffs-7fefeac.tar.gz", 
                 "size": "44050"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.mkspiffs-7fefeac.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-w64-mingw32.mkspiffs-7fefeac.zip", 
                 "checksum": "SHA-256:ec661fb02c2635ac722eaaedf0a0c35474c43c72008f0ceefffb19af2f739d15", 
                 "host": "i686-mingw32", 
                 "archiveFileName": "i686-w64-mingw32.mkspiffs-7fefeac.zip", 
                 "size": "337874"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-linux-gnu.mkspiffs-7fefeac.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/i686-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "checksum": "SHA-256:d080b3b50ee00ac56b7204f8d08b95cd53872a2e09da590775ee631bcb279cad", 
                 "host": "i686-pc-linux-gnu", 
                 "archiveFileName": "i686-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "size": "54276"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-apple-darwin14.mkspiffs-7fefeac.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-apple-darwin14.mkspiffs-7fefeac.tar.gz", 
                 "checksum": "SHA-256:927cb67d045c598a9159ae16bc5fb63a20b3e23ad95eeb44702c938e6272f92f", 
                 "host": "x86_64-apple-darwin", 
                 "archiveFileName": "x86_64-apple-darwin14.mkspiffs-7fefeac.tar.gz", 
                 "size": "368554"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "checksum": "SHA-256:4547bfe668090944d50af8dbf09abb5b51eb4a892b4784818f06a2274a630878", 
                 "host": "x86_64-pc-linux-gnu", 
                 "archiveFileName": "x86_64-linux-gnu.mkspiffs-7fefeac.tar.gz", 
                 "size": "52429"
               }, 
               {
-                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/x86_64-w64-mingw32.mkspiffs-7fefeac.zip", 
+                "url": "https://github.com/e-radionicacom/Croduino-Board-Definitions-for-Arduino-IDE/raw/master/x86_64-w64-mingw32.mkspiffs-7fefeac.zip", 
                 "checksum": "SHA-256:0dedc3ee977af99ffd160bb304e8bfb68a8545f2d1f2e4a3b534f2ae1a49d2c9", 
                 "host": "x86_64-mingw32", 
                 "archiveFileName": "x86_64-w64-mingw32.mkspiffs-7fefeac.zip", 
