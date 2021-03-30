@@ -1,0 +1,232 @@
+
+menu.xserial=U(S)ART support
+menu.usb=USB support (if available)
+menu.xusb=USB speed (if available)
+menu.virtio=Virtual serial support
+
+menu.opt=Optimize
+menu.rtlib=C Runtime Library
+menu.upload_method=Upload method
+
+
+################################################################################
+# Sduino STM32F103C8
+STM32F103.name=Sduino STM32F103C8
+
+STM32F103.build.core=arduino
+STM32F103.build.board=STM32F103
+STM32F103.build.mcu=cortex-m3
+STM32F103.build.series=STM32F1xx
+STM32F103.build.cmsis_lib_gcc=arm_cortexM3l_math
+STM32F103.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} {build.bootloader_flags}
+
+STM32F103.upload.maximum_size=65536
+STM32F103.upload.maximum_data_size=20480
+STM32F103.build.board=BLUEPILL_F103C8
+STM32F103.build.product_line=STM32F103xB
+STM32F103.build.variant=STM32F103C8
+
+
+# Upload menu
+
+STM32F103.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+STM32F103.menu.upload_method.swdMethod.upload.protocol=0
+STM32F103.menu.upload_method.swdMethod.upload.options=-g
+STM32F103.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+STM32F103.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+STM32F103.menu.upload_method.serialMethod.upload.protocol=1
+STM32F103.menu.upload_method.serialMethod.upload.options={serial.port.file} -s
+STM32F103.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+STM32F103.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+STM32F103.menu.upload_method.dfuMethod.upload.protocol=2
+STM32F103.menu.upload_method.dfuMethod.upload.options=-g
+STM32F103.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+STM32F103.menu.upload_method.bmpMethod=BMP (Black Magic Probe)
+STM32F103.menu.upload_method.bmpMethod.upload.protocol=gdb_bmp
+STM32F103.menu.upload_method.bmpMethod.upload.tool=bmp_upload
+
+STM32F103.menu.upload_method.hidMethod=HID Bootloader 2.2
+STM32F103.menu.upload_method.hidMethod.upload.protocol=hid22
+STM32F103.menu.upload_method.hidMethod.upload.tool=hid_upload
+STM32F103.menu.upload_method.hidMethod.build.flash_offset=0x800
+STM32F103.menu.upload_method.hidMethod.build.bootloader_flags=-DBL_HID -DVECT_TAB_OFFSET={build.flash_offset}
+
+STM32F103.menu.upload_method.dfu2Method=Maple DFU Bootloader 2.0
+STM32F103.menu.upload_method.dfu2Method.upload.protocol=maple
+STM32F103.menu.upload_method.dfu2Method.upload.tool=maple_upload
+STM32F103.menu.upload_method.dfu2Method.upload.usbID=1EAF:0003
+STM32F103.menu.upload_method.dfu2Method.upload.altID=2
+STM32F103.menu.upload_method.dfu2Method.build.flash_offset=0x2000
+STM32F103.menu.upload_method.dfu2Method.build.bootloader_flags=-DBL_LEGACY_LEAF -DVECT_TAB_OFFSET={build.flash_offset}
+
+STM32F103.menu.upload_method.dfuoMethod=Maple DFU Bootloader original
+STM32F103.menu.upload_method.dfuoMethod.upload.protocol=maple
+STM32F103.menu.upload_method.dfuoMethod.upload.tool=maple_upload
+STM32F103.menu.upload_method.dfuoMethod.upload.usbID=1EAF:0003
+STM32F103.menu.upload_method.dfuoMethod.upload.altID=1
+STM32F103.menu.upload_method.dfuoMethod.build.flash_offset=0x5000
+STM32F103.menu.upload_method.dfuoMethod.build.bootloader_flags=-DBL_LEGACY_LEAF -DVECT_TAB_OFFSET={build.flash_offset}
+
+#####################
+# Serialx activation
+STM32F103.menu.xserial.generic=Enabled (generic 'Serial')
+STM32F103.menu.xserial.none=Enabled (no generic 'Serial')
+STM32F103.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+STM32F103.menu.xserial.disabled=Disabled (no Serial support)
+STM32F103.menu.xserial.disabled.build.xSerial=
+
+# USB connectivity
+STM32F103.menu.usb.none=None
+STM32F103.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+STM32F103.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+STM32F103.menu.usb.CDC=CDC (no generic 'Serial')
+STM32F103.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+STM32F103.menu.usb.HID=HID (keyboard and mouse)
+STM32F103.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+STM32F103.menu.xusb.FS=Low/Full Speed
+STM32F103.menu.xusb.HS=High Speed
+STM32F103.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+STM32F103.menu.xusb.HSFS=High Speed in Full Speed mode
+STM32F103.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+# Optimizations
+
+STM32F103.menu.opt.osstd=Smallest (-Os default)
+STM32F103.menu.opt.oslto=Smallest (-Os) with LTO
+STM32F103.menu.opt.oslto.build.flags.optimize=-Os -flto
+STM32F103.menu.opt.o1std=Fast (-O1)
+STM32F103.menu.opt.o1std.build.flags.optimize=-O1
+STM32F103.menu.opt.o1lto=Fast (-O1) with LTO
+STM32F103.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+STM32F103.menu.opt.o2std=Faster (-O2)
+STM32F103.menu.opt.o2std.build.flags.optimize=-O2
+STM32F103.menu.opt.o2lto=Faster (-O2) with LTO
+STM32F103.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+STM32F103.menu.opt.o3std=Fastest (-O3)
+STM32F103.menu.opt.o3std.build.flags.optimize=-O3
+STM32F103.menu.opt.o3lto=Fastest (-O3) with LTO
+STM32F103.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+STM32F103.menu.opt.ogstd=Debug (-g)
+STM32F103.menu.opt.ogstd.build.flags.optimize=-g -Og
+
+# C Runtime Library
+
+STM32F103.menu.rtlib.nano=Newlib Nano (default)
+STM32F103.menu.rtlib.nanofp=Newlib Nano + Float Printf
+STM32F103.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+STM32F103.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+STM32F103.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+STM32F103.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+STM32F103.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+STM32F103.menu.rtlib.full=Newlib Standard
+STM32F103.menu.rtlib.full.build.flags.ldspecs=
+
+
+
+################################################################################
+# STM32L010RB board
+
+STM32L010RB.name=Sduino STM32L010_LORA
+ 
+STM32L010RB.build.core=arduino
+
+STM32L010RB.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+
+STM32L010RB.upload.maximum_size=131072
+STM32L010RB.upload.maximum_data_size=20480
+STM32L010RB.build.mcu=cortex-m0
+STM32L010RB.build.board=STM32L010RB
+STM32L010RB.build.series=STM32L0xx
+STM32L010RB.build.product_line=STM32L010xB
+STM32L010RB.build.variant=STM32L010RB
+STM32L010RB.build.cmsis_lib_gcc=arm_cortexM0l_math
+STM32L010RB.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} -D__CORTEX_SC=0
+
+
+
+# Upload menu
+
+
+STM32L010RB.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+STM32L010RB.menu.upload_method.swdMethod.upload.protocol=0
+STM32L010RB.menu.upload_method.swdMethod.upload.options=-g
+STM32L010RB.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+STM32L010RB.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+STM32L010RB.menu.upload_method.serialMethod.upload.protocol=1
+STM32L010RB.menu.upload_method.serialMethod.upload.options={serial.port.file} -s
+STM32L010RB.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+STM32L010RB.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+STM32L010RB.menu.upload_method.dfuMethod.upload.protocol=2
+STM32L010RB.menu.upload_method.dfuMethod.upload.options=-g
+STM32L010RB.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+STM32L010RB.menu.upload_method.MassStorage=Mass Storage
+STM32L010RB.menu.upload_method.MassStorage.upload.protocol=
+STM32L010RB.menu.upload_method.MassStorage.upload.tool=massStorageCopy
+
+
+
+# Serialx activation
+STM32L010RB.menu.xserial.generic=Enabled (generic 'Serial')
+STM32L010RB.menu.xserial.none=Enabled (no generic 'Serial')
+STM32L010RB.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+STM32L010RB.menu.xserial.disabled=Disabled (No Serial support)
+STM32L010RB.menu.xserial.disabled.build.xSerial=
+
+
+# USB connectivity
+STM32L010RB.menu.usb.none=None
+STM32L010RB.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+STM32L010RB.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+STM32L010RB.menu.usb.CDC=CDC (no generic 'Serial')
+STM32L010RB.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+STM32L010RB.menu.usb.HID=HID (keyboard and mouse)
+STM32L010RB.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+STM32L010RB.menu.xusb.FS=Low/Full Speed
+STM32L010RB.menu.xusb.HS=High Speed
+STM32L010RB.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+STM32L010RB.menu.xusb.HSFS=High Speed in Full Speed mode
+STM32L010RB.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+# Optimizations
+STM32L010RB.menu.opt.osstd=Smallest (-Os default)
+STM32L010RB.menu.opt.oslto=Smallest (-Os) with LTO
+STM32L010RB.menu.opt.oslto.build.flags.optimize=-Os -flto
+STM32L010RB.menu.opt.o1std=Fast (-O1)
+STM32L010RB.menu.opt.o1std.build.flags.optimize=-O1
+STM32L010RB.menu.opt.o1lto=Fast (-O1) with LTO
+STM32L010RB.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+STM32L010RB.menu.opt.o2std=Faster (-O2)
+STM32L010RB.menu.opt.o2std.build.flags.optimize=-O2
+STM32L010RB.menu.opt.o2lto=Faster (-O2) with LTO
+STM32L010RB.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+STM32L010RB.menu.opt.o3std=Fastest (-O3)
+STM32L010RB.menu.opt.o3std.build.flags.optimize=-O3
+STM32L010RB.menu.opt.o3lto=Fastest (-O3) with LTO
+STM32L010RB.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+STM32L010RB.menu.opt.ogstd=Debug (-g)
+STM32L010RB.menu.opt.ogstd.build.flags.optimize=-g -Og
+
+# C Runtime Library
+STM32L010RB.menu.rtlib.nano=Newlib Nano (default)
+STM32L010RB.menu.rtlib.nanofp=Newlib Nano + Float Printf
+STM32L010RB.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+STM32L010RB.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+STM32L010RB.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+STM32L010RB.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+STM32L010RB.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+STM32L010RB.menu.rtlib.full=Newlib Standard
+STM32L010RB.menu.rtlib.full.build.flags.ldspecs=
+
+
+
+
+
+
+
+

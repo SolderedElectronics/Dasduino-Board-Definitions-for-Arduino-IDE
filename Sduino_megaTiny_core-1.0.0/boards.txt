@@ -1,0 +1,109 @@
+##############################################################
+#      Tools Submenu Names
+##############################################################
+
+menu.chip=Chip
+menu.clock=Clock
+menu.clockopti=Clock (burn bootloader req'd, or see docs)
+menu.millis=millis()/micros()
+menu.uartvoltage=Voltage for UART baud (ignored for 2k/4k parts)
+menu.serialevent=Support SerialEvent
+menu.startuptime=Startup Time
+menu.startuptimeopti=Startup Time (burn bootloader req'd)
+menu.bodvoltage=BOD level if enabled (burn bootloader req'd)
+menu.bodmode=BOD Mode when active/sleeping (burn bootloader req'd)
+menu.eesave=Save EEPROM (burn bootloader req'd)
+menu.bootloaderuart=UART for Bootloader (burn bootloader req'd)
+menu.resetpin=UPDI Pin, READ DOCS or pick UPDI! (burn bootloader req'd)
+menu.resetpinopti=UPDI/reset pin (burn bootloader req'd)
+
+
+
+##############################################################
+#      Board Names
+##############################################################
+##atxy4o.name=ATtiny1614/1604/814/804/414/404/214/204 (Optiboot)
+## preuzeto sa megatinCore 19.11.2020. c088925
+
+
+###BIGZ:bot board (Atiny804) (optibot)
+Attiny.name=Sduino Attiny804
+
+##############################################################
+#      ATtiny1614/1604/814/804/414/404/214/204 (Optiboot)
+##############################################################
+
+Attiny.upload.workaround=
+Attiny.build.millistimer=D0
+Attiny.build.bootload=opti
+Attiny.build.board=AVR_ATtinyxy4
+Attiny.build.mcu=attiny{build.attiny}
+Attiny.build.serialeventabr=
+Attiny.build.millis=-DMILLIS_USE_TIMER{build.millistimer}
+Attiny.build.f_cpu={build.speed}000000L
+Attiny.upload.speed=115200
+
+Attiny.menu.chip.804=ATtiny804
+Attiny.menu.chip.804.build.board=AVR_ATtiny804
+Attiny.menu.chip.804.build.attiny=804
+Attiny.menu.chip.804.build.millistimer=A0
+Attiny.menu.chip.804.upload.maximum_size=7680
+Attiny.menu.chip.804.upload.maximum_data_size=512
+
+Attiny.menu.clockopti.16internal=16 MHz Internal
+Attiny.menu.clockopti.16internal.build.speed=16
+Attiny.menu.clockopti.16internal.build.clocksource=0
+# all others are handled by the default of 16 MHz
+
+Attiny.menu.millis.enabled=Enabled (default timer)
+
+Attiny.menu.bodvoltage.4v2=4.2V (20 MHZ or less)
+Attiny.menu.bodvoltage.4v2.bootloader.bodlevbits=111
+
+Attiny.menu.bodmode.disabled=Disabled/Disabled
+Attiny.menu.bodmode.disabled.bootloader.BODCFG=0x00
+
+Attiny.menu.uartvoltage.5v=Closer to 5v
+Attiny.menu.uartvoltage.5v.build.uartvoltage=5V
+
+Attiny.menu.serialevent.no=No (saves space)
+Attiny.menu.serialevent.no.build.serialevent=-DNOSERIALEVENT
+Attiny.upload.tool=avrdude
+
+Attiny.build.core=megatinycore
+Attiny.build.variant=txy4
+Attiny.build.extra_flags=-DARDUINO_attinyxy4 {build.serialevent} {build.millis} -DUARTBAUD{build.uartvoltage}
+Attiny.build.export_merged_output=true
+Attiny.upload.protocol=arduino
+Attiny.upload.extra_params=-D
+Attiny.build.text_section_start=.text=0x200
+Attiny.bootloader.flashcommand=-Uflash:w:{runtime.platform.path}/bootloaders/{bootloader.file}:i
+Attiny.bootloader.tool=avrdude
+
+Attiny.menu.bootloaderuart.alternate=TX:8 (PA1), RX:9 (PA2)
+Attiny.menu.bootloaderuart.alternate.bootloader.uartswap=_alt
+
+## ostavljeno za stavljanje bootlodera ako bude trebalo
+##Attiny.menu.bootloaderuart.default=TX:5 (PB2), RX:4 (PB3)
+##Attiny.menu.bootloaderuart.default.bootloader.uartswap=
+
+
+Attiny.menu.resetpinopti.reset=Reset (DANGER - Read docs first!)
+Attiny.menu.resetpinopti.reset.bootloader.file=optiboot_x/optiboot_txyz{bootloader.uartswap}_rst.hex
+Attiny.menu.resetpinopti.reset.bootloader.resetpinbits=10
+
+## ostavljeno za stavljanje bootlodera ako bude trebalo
+##Attiny.menu.resetpinopti.UPDI=UPDI (powercycle to enter bootloader)
+##Attiny.menu.resetpinopti.UPDI.bootloader.file=optiboot_x/optiboot_txyz{bootloader.uartswap}.hex
+##Attiny.menu.resetpinopti.UPDI.bootloader.resetpinbits=01
+
+Attiny.menu.startuptimeopti.64=64ms
+Attiny.menu.startuptimeopti.64.bootloader.SYSCFG1=0x07
+
+Attiny.bootloader.WDTCFG=0x00
+Attiny.bootloader.BODCFG=0b{bootloader.bodlevbits}{bootloader.bodmodebits}
+Attiny.bootloader.OSCCFG=0x01
+Attiny.bootloader.TCD0CFG=0x00
+Attiny.bootloader.SYSCFG0=0b1100{bootloader.resetpinbits}00
+Attiny.bootloader.APPEND=0x00
+Attiny.bootloader.BOOTEND=0x02
