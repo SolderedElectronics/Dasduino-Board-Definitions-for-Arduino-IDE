@@ -63,8 +63,8 @@
               "category": "Sduino",		  
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_AVR_core-1.0.0.zip", 
               "archiveFileName": "Sduino_AVR_core-1.0.0.zip",
-              "checksum": "SHA-256:5d6845198b023040bb78bbf029499efb53fdb7defcf54fa971a555ccd12b8e8a",
-              "size": "5715915",
+              "checksum": "SHA-256:f53db63cacdaa91d0e6ab0194c43270b061d53ffde6508f33a3384075f5c6fc7",
+              "size": "5715913",
               "version": "1.0.0", 
               "name": "Sduino AVR Boards",
               "architecture": "avr",
@@ -83,10 +83,10 @@
                   "online": "http://www.forum.soldered.com"
               },		
               "category": "Sduino_STM32",           
-              "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_STM32_core.zip", 
-              "archiveFileName": "Sduino_STM32_core.zip", 
-              "checksum": "SHA-256:f1bfaf8e81c774810bd70022a04eb2db7e0faec6a50b6e257e5aef17197b93f8",         
-              "size": "6754027",
+              "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_STM32_core-1.0.0.zip", 
+              "archiveFileName": "Sduino_STM32_core-1.0.0.zip", 
+              "checksum": "SHA-256:e1ee06c5e9e039f26c7f642d6a8614715bc38ca82e8fa9191894edb8d7ec4bf0",         
+              "size": "6774652",
               "version": "1.0.0", 
               "name": "Sduino STM32 Boards",
               "architecture": "stm32",           
@@ -95,7 +95,7 @@
                     "name": "Sduino STM32F103C8xx"
                 },
                 {
-                    "name": "STM32L010RB_Lora"
+                    "name": "Sduino STM32L010RB_Lora"
                 }
               ], 
               "toolsDependencies": [
@@ -115,7 +115,116 @@
                 "version": "5.5.1"
               }
               ]	  
-            } 
+            },
+            {
+                "help": {
+                    "online": "http://www.forum.soldered.com"
+                },		
+                "category": "Sduino",           
+                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_ESP32_core-1.0.0.zip", 
+                "archiveFileName": "Sduino_ESP32_core-1.0.0.zip", 
+                "checksum": "SHA-256:43776454896f8fa494a58096eba4d9ec1e544ab2a7e1f4c9476afc4e157d726c",         
+                "size": "46367859",
+                "version": "1.0.0", 
+                "name": "Sduino ESP32 Boards",
+                "architecture": "esp32",           
+                "boards": [
+                    {
+                        "name": "Sduino NOVA32 (ESP32)"
+                    },
+                    {
+                        "name": "Sduino LoRa ESP32"
+                    }
+                ], 
+                "toolsDependencies": [
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "1.22.0-96-g2852398-5.2.0", 
+                  "name": "xtensa-esp32-elf-gcc"
+                }, 
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "3.0.0", 
+                  "name": "esptool_py"
+                }, 
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "0.2.3", 
+                  "name": "mkspiffs"
+                }
+              ]          
+            },
+            {
+                "help": {
+                    "online": "http://www.forum.soldered.com"
+                },		
+                "category": "Sduino_megaTiny",           
+                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_megaTiny_core-1.0.0.zip", 
+                "archiveFileName": "Sduino_megaTiny_core-1.0.0.zip", 
+                "checksum": "SHA-256:bd59e26e05533e0bad0e4ca4e06d497cc3bc0409757bf62c79ce96444bb01ae3",         
+                "size": "8488096",
+                "version": "1.0.0", 
+                "name": "Sduino megaTiny Boards",
+                "architecture": "megaavr",           
+                "boards": [
+                    {
+                    "name": "Sduino Attiny 804"
+                    }
+                    
+                    ],
+                "toolsDependencies": [
+                {
+                  "packager": "Sduino_Boards",
+                  "name": "avr-gcc",
+                  "version": "7.3.0-atmel3.6.1-arduino7"
+                },
+                {
+                  "packager": "Sduino_Boards",
+                  "name": "avrdude",
+                  "version": "6.3.0-arduino17"
+                },
+                {
+                  "packager": "Sduino_Boards",
+                  "name": "arduinoOTA",
+                  "version": "1.3.0"
+                }
+              ]
+            },
+            {      
+                "help": {
+                "online": "http://www.forum.soldered.com/en/"
+                },
+                "category": "Sduino",		  
+                "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/raw/master/Sduino_ESP8266_core-1.0.0.zip", 
+                "archiveFileName": "Sduino_ESP8266_core-1.0.0.zip",
+                "checksum": "SHA-256:d778077dc443414c29da829ea142afee9982d6933199bfb0cdfec658c6a216d9", 
+                "size": "27124871",
+                "version": "1.0.0", 
+                "name": "Sduino ESP8266 Boards",
+                "architecture": "esp8266",            		  
+                "boards": [
+                {
+                    "name": "Sduino NOVA (ESP8266)"				
+                }
+                ],          
+                "toolsDependencies": [
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "2.5.0-3-20ed2b9", 
+                  "name": "esptool"
+                }, 
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "2.5.0-3-20ed2b9", 
+                  "name": "xtensa-lx106-elf-gcc"
+                }, 
+                {
+                  "packager": "Sduino_Boards", 
+                  "version": "2.5.0-3-20ed2b9", 
+                  "name": "mkspiffs"
+                }
+              ]           
+            }
         ],
       "tools": [
 		{
