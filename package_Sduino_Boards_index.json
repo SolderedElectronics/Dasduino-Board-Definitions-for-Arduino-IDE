@@ -521,7 +521,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.esptool-f80ae31.zip", 
-              "checksum": "SHA-256:e30f25a19a78635000401b083b479e111d591bac20cfd89b1bfdf36a60e9ee20", 
+              "checksum": "SHA-256:53982aa307f045affb4d78b6493f46f3272c84c6f20112e9986cca3ac396fd60", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.esptool-f80ae31.zip", 
               "size": "16466"
