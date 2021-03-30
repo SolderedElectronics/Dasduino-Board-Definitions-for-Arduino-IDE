@@ -466,7 +466,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
-              "checksum": "SHA-256:38b9ccc3b286546b026fb8a29fb2bd8fdab32c4711816a1a3cb0f11250b5c541", 
+              "checksum": "SHA-256:03674a35a451df08e2ca6ba0da7d134070b12b23def80bbc59aede210f27588a", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
               "size": "44935132"
