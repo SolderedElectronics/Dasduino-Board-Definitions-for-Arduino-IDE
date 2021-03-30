@@ -466,7 +466,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
-              "checksum": "SHA-256:03674a35a451df08e2ca6ba0da7d134070b12b23def80bbc59aede210f27588a", 
+              "checksum": "SHA-256:38b9ccc3b286546b026fb8a29fb2bd8fdab32c4711816a1a3cb0f11250b5c541", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.xtensa-lx106-elf-20ed2b9c.zip", 
               "size": "44935132"
@@ -521,7 +521,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.esptool-f80ae31.zip", 
-              "checksum": "SHA-256:53982aa307f045affb4d78b6493f46f3272c84c6f20112e9986cca3ac396fd60", 
+              "checksum": "SHA-256:e30f25a19a78635000401b083b479e111d591bac20cfd89b1bfdf36a60e9ee20", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.esptool-f80ae31.zip", 
               "size": "16466"
@@ -576,7 +576,7 @@
             }, 
             {
               "url": "https://github.com/e-radionicacom/Sduino-Board-Definitions-for-Arduino-IDE/tools/raw/master/i686-w64-mingw32.mkspiffs-7fefeac.zip", 
-              "checksum": "SHA-256:1927b8c3c31a6481ee7ef7776d63c623358ca756b8b5c62d28f8614b14bc1f02", 
+              "checksum": "SHA-256:ec661fb02c2635ac722eaaedf0a0c35474c43c72008f0ceefffb19af2f739d15", 
               "host": "i686-mingw32", 
               "archiveFileName": "i686-w64-mingw32.mkspiffs-7fefeac.zip", 
               "size": "337874"
