@@ -10,7 +10,7 @@ menu.upload_method=Upload method
 
 
 ################################################################################
-# Sduino STM32F103C8
+# Dasduino STM32F103C8
 swiftf1.name=Dasduino Swift F1
 
 swiftf1.build.core=arduino

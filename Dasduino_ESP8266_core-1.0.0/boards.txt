@@ -1,5 +1,5 @@
 ##############################################################
-connect.name=Sduino Connect (ESP8266)
+connect.name=Dasduino Connect (ESP8266)
 connect.build.board=ESP8266_GENERIC
 connect.upload.tool=esptool
 connect.upload.maximum_data_size=81920

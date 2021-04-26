@@ -1,8 +1,8 @@
 ##############################################################
-## Sduino Core w/ ATmega328P
+## Dasduino Core w/ ATmega328P
 ## ---------------------------
 
-core.name=Sduino Core (Atmega328P)
+core.name=Dasduino Core (Atmega328P)
 core.upload.tool=avrdude
 core.upload.protocol=arduino
 core.bootloader.tool=avrdude
@@ -34,7 +34,7 @@ menu.bootloader=Bootloader
 #############################
 
 # General
-LoRa.name=Sduino Core LoRa (Atmega328P)
+LoRa.name=Dasduino Core LoRa (Atmega328P)
 LoRa.upload.tool=avrdude
 LoRa.upload.maximum_data_size=2048
 LoRa.bootloader.tool=avrdude
