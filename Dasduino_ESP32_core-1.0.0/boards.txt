@@ -101,7 +101,7 @@ connectplus.menu.DebugLevel.verbose.build.code_debug=5
 
 ################################################################################
 
-lora32.name=Dasduino LoRa ESP32 
+lora32.name=Dasduino Connect LoRa ESP32 
 
 lora32.upload.tool=esptool_py
 lora32.upload.maximum_size=1310720

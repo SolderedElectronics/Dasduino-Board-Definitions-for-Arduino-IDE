@@ -34,7 +34,7 @@ menu.bootloader=Bootloader
 #############################
 
 # General
-LoRa.name=Sduino LoRa (Atmega328P)
+LoRa.name=Sduino Core LoRa (Atmega328P)
 LoRa.upload.tool=avrdude
 LoRa.upload.maximum_data_size=2048
 LoRa.bootloader.tool=avrdude
