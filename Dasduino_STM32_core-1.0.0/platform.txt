@@ -1,6 +1,6 @@
 
 
-name=Sduino STM32 Boards
+name=Dasduino STM32 Boards
 version=1.0.0
 
 # STM compile variables

@@ -1,5 +1,5 @@
 
-name=Sduino ESP8266 Boards
+name=Dasduino ESP8266 Boards
 version=1.0.0
 
 runtime.tools.xtensa-lx106-elf-gcc.path={runtime.platform.path}/tools/xtensa-lx106-elf

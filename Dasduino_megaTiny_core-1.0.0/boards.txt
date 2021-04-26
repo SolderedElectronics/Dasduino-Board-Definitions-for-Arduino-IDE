@@ -27,7 +27,7 @@ menu.resetpinopti=UPDI/reset pin (burn bootloader req'd)
 
 
 ###BIGZ:bot board (Atiny804) (optibot)
-Attiny.name=Sduino Attiny804
+Attiny.name=Dasduino Attiny804
 
 ##############################################################
 #      ATtiny1614/1604/814/804/414/404/214/204 (Optiboot)

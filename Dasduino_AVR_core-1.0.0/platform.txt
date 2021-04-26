@@ -1,6 +1,6 @@
 
 
-name=Sduino AVR Boards
+name=Dasduino AVR Boards
 version=1.0.0
 
 # AVR compile variables

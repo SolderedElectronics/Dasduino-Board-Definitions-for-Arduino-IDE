@@ -1,4 +1,4 @@
-name=Sduino ESP32 Boards
+name=Dasduino ESP32 Boards
 version=1.0.1
 
 

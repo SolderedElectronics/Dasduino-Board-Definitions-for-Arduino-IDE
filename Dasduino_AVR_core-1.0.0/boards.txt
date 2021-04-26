@@ -1,25 +1,25 @@
 ##############################################################
-## Sduino Basic w/ ATmega328P
+## Sduino Core w/ ATmega328P
 ## ---------------------------
 
-basic.name=Sduino Basic (Atmega328P)
-basic.upload.tool=avrdude
-basic.upload.protocol=arduino
-basic.bootloader.tool=avrdude
-basic.bootloader.unlock_bits=0x3F
-basic.bootloader.lock_bits=0x0F
-basic.build.f_cpu=16000000L
-basic.build.board=AVR_NANO
-basic.build.core=arduino
-basic.build.variant=eightanaloginputs
-basic.upload.maximum_size=30720
-basic.upload.maximum_data_size=2048
-basic.upload.speed=57600
-basic.bootloader.low_fuses=0xFF
-basic.bootloader.high_fuses=0xDA
-basic.bootloader.extended_fuses=0x05
-basic.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
-basic.build.mcu=atmega328p
+core.name=Sduino Core (Atmega328P)
+core.upload.tool=avrdude
+core.upload.protocol=arduino
+core.bootloader.tool=avrdude
+core.bootloader.unlock_bits=0x3F
+core.bootloader.lock_bits=0x0F
+core.build.f_cpu=16000000L
+core.build.board=AVR_NANO
+core.build.core=arduino
+core.build.variant=eightanaloginputs
+core.upload.maximum_size=30720
+core.upload.maximum_data_size=2048
+core.upload.speed=57600
+core.bootloader.low_fuses=0xFF
+core.bootloader.high_fuses=0xDA
+core.bootloader.extended_fuses=0x05
+core.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
+core.build.mcu=atmega328p
 
 # Menu options
 menu.clock=Clock

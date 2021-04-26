@@ -1,0 +1,232 @@
+
+menu.xserial=U(S)ART support
+menu.usb=USB support (if available)
+menu.xusb=USB speed (if available)
+menu.virtio=Virtual serial support
+
+menu.opt=Optimize
+menu.rtlib=C Runtime Library
+menu.upload_method=Upload method
+
+
+################################################################################
+# Sduino STM32F103C8
+swiftf1.name=Dasduino Swift F1
+
+swiftf1.build.core=arduino
+swiftf1.build.board=STM32F103
+swiftf1.build.mcu=cortex-m3
+swiftf1.build.series=STM32F1xx
+swiftf1.build.cmsis_lib_gcc=arm_cortexM3l_math
+swiftf1.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} {build.bootloader_flags}
+
+swiftf1.upload.maximum_size=65536
+swiftf1.upload.maximum_data_size=20480
+swiftf1.build.board=BLUEPILL_F103C8
+swiftf1.build.product_line=STM32F103xB
+swiftf1.build.variant=STM32F103C8
+
+
+# Upload menu
+
+swiftf1.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+swiftf1.menu.upload_method.swdMethod.upload.protocol=0
+swiftf1.menu.upload_method.swdMethod.upload.options=-g
+swiftf1.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+swiftf1.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+swiftf1.menu.upload_method.serialMethod.upload.protocol=1
+swiftf1.menu.upload_method.serialMethod.upload.options={serial.port.file} -s
+swiftf1.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+swiftf1.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+swiftf1.menu.upload_method.dfuMethod.upload.protocol=2
+swiftf1.menu.upload_method.dfuMethod.upload.options=-g
+swiftf1.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+swiftf1.menu.upload_method.bmpMethod=BMP (Black Magic Probe)
+swiftf1.menu.upload_method.bmpMethod.upload.protocol=gdb_bmp
+swiftf1.menu.upload_method.bmpMethod.upload.tool=bmp_upload
+
+swiftf1.menu.upload_method.hidMethod=HID Bootloader 2.2
+swiftf1.menu.upload_method.hidMethod.upload.protocol=hid22
+swiftf1.menu.upload_method.hidMethod.upload.tool=hid_upload
+swiftf1.menu.upload_method.hidMethod.build.flash_offset=0x800
+swiftf1.menu.upload_method.hidMethod.build.bootloader_flags=-DBL_HID -DVECT_TAB_OFFSET={build.flash_offset}
+
+swiftf1.menu.upload_method.dfu2Method=Maple DFU Bootloader 2.0
+swiftf1.menu.upload_method.dfu2Method.upload.protocol=maple
+swiftf1.menu.upload_method.dfu2Method.upload.tool=maple_upload
+swiftf1.menu.upload_method.dfu2Method.upload.usbID=1EAF:0003
+swiftf1.menu.upload_method.dfu2Method.upload.altID=2
+swiftf1.menu.upload_method.dfu2Method.build.flash_offset=0x2000
+swiftf1.menu.upload_method.dfu2Method.build.bootloader_flags=-DBL_LEGACY_LEAF -DVECT_TAB_OFFSET={build.flash_offset}
+
+swiftf1.menu.upload_method.dfuoMethod=Maple DFU Bootloader original
+swiftf1.menu.upload_method.dfuoMethod.upload.protocol=maple
+swiftf1.menu.upload_method.dfuoMethod.upload.tool=maple_upload
+swiftf1.menu.upload_method.dfuoMethod.upload.usbID=1EAF:0003
+swiftf1.menu.upload_method.dfuoMethod.upload.altID=1
+swiftf1.menu.upload_method.dfuoMethod.build.flash_offset=0x5000
+swiftf1.menu.upload_method.dfuoMethod.build.bootloader_flags=-DBL_LEGACY_LEAF -DVECT_TAB_OFFSET={build.flash_offset}
+
+#####################
+# Serialx activation
+swiftf1.menu.xserial.generic=Enabled (generic 'Serial')
+swiftf1.menu.xserial.none=Enabled (no generic 'Serial')
+swiftf1.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+swiftf1.menu.xserial.disabled=Disabled (no Serial support)
+swiftf1.menu.xserial.disabled.build.xSerial=
+
+# USB connectivity
+swiftf1.menu.usb.none=None
+swiftf1.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+swiftf1.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+swiftf1.menu.usb.CDC=CDC (no generic 'Serial')
+swiftf1.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+swiftf1.menu.usb.HID=HID (keyboard and mouse)
+swiftf1.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+swiftf1.menu.xusb.FS=Low/Full Speed
+swiftf1.menu.xusb.HS=High Speed
+swiftf1.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+swiftf1.menu.xusb.HSFS=High Speed in Full Speed mode
+swiftf1.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+# Optimizations
+
+swiftf1.menu.opt.osstd=Smallest (-Os default)
+swiftf1.menu.opt.oslto=Smallest (-Os) with LTO
+swiftf1.menu.opt.oslto.build.flags.optimize=-Os -flto
+swiftf1.menu.opt.o1std=Fast (-O1)
+swiftf1.menu.opt.o1std.build.flags.optimize=-O1
+swiftf1.menu.opt.o1lto=Fast (-O1) with LTO
+swiftf1.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+swiftf1.menu.opt.o2std=Faster (-O2)
+swiftf1.menu.opt.o2std.build.flags.optimize=-O2
+swiftf1.menu.opt.o2lto=Faster (-O2) with LTO
+swiftf1.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+swiftf1.menu.opt.o3std=Fastest (-O3)
+swiftf1.menu.opt.o3std.build.flags.optimize=-O3
+swiftf1.menu.opt.o3lto=Fastest (-O3) with LTO
+swiftf1.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+swiftf1.menu.opt.ogstd=Debug (-g)
+swiftf1.menu.opt.ogstd.build.flags.optimize=-g -Og
+
+# C Runtime Library
+
+swiftf1.menu.rtlib.nano=Newlib Nano (default)
+swiftf1.menu.rtlib.nanofp=Newlib Nano + Float Printf
+swiftf1.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+swiftf1.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+swiftf1.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+swiftf1.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+swiftf1.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+swiftf1.menu.rtlib.full=Newlib Standard
+swiftf1.menu.rtlib.full.build.flags.ldspecs=
+
+
+
+################################################################################
+# STM32L010RB board
+
+swiftl0.name=Dasduino swift L0 LORA
+ 
+swiftl0.build.core=arduino
+
+swiftl0.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+
+swiftl0.upload.maximum_size=131072
+swiftl0.upload.maximum_data_size=20480
+swiftl0.build.mcu=cortex-m0
+swiftl0.build.board=STM32L010RB
+swiftl0.build.series=STM32L0xx
+swiftl0.build.product_line=STM32L010xB
+swiftl0.build.variant=STM32L010RB
+swiftl0.build.cmsis_lib_gcc=arm_cortexM0l_math
+swiftl0.build.extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} -D__CORTEX_SC=0
+
+
+
+# Upload menu
+
+
+swiftl0.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+swiftl0.menu.upload_method.swdMethod.upload.protocol=0
+swiftl0.menu.upload_method.swdMethod.upload.options=-g
+swiftl0.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+swiftl0.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+swiftl0.menu.upload_method.serialMethod.upload.protocol=1
+swiftl0.menu.upload_method.serialMethod.upload.options={serial.port.file} -s
+swiftl0.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+swiftl0.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+swiftl0.menu.upload_method.dfuMethod.upload.protocol=2
+swiftl0.menu.upload_method.dfuMethod.upload.options=-g
+swiftl0.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+swiftl0.menu.upload_method.MassStorage=Mass Storage
+swiftl0.menu.upload_method.MassStorage.upload.protocol=
+swiftl0.menu.upload_method.MassStorage.upload.tool=massStorageCopy
+
+
+
+# Serialx activation
+swiftl0.menu.xserial.generic=Enabled (generic 'Serial')
+swiftl0.menu.xserial.none=Enabled (no generic 'Serial')
+swiftl0.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+swiftl0.menu.xserial.disabled=Disabled (No Serial support)
+swiftl0.menu.xserial.disabled.build.xSerial=
+
+
+# USB connectivity
+swiftl0.menu.usb.none=None
+swiftl0.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+swiftl0.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+swiftl0.menu.usb.CDC=CDC (no generic 'Serial')
+swiftl0.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+swiftl0.menu.usb.HID=HID (keyboard and mouse)
+swiftl0.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+swiftl0.menu.xusb.FS=Low/Full Speed
+swiftl0.menu.xusb.HS=High Speed
+swiftl0.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+swiftl0.menu.xusb.HSFS=High Speed in Full Speed mode
+swiftl0.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+# Optimizations
+swiftl0.menu.opt.osstd=Smallest (-Os default)
+swiftl0.menu.opt.oslto=Smallest (-Os) with LTO
+swiftl0.menu.opt.oslto.build.flags.optimize=-Os -flto
+swiftl0.menu.opt.o1std=Fast (-O1)
+swiftl0.menu.opt.o1std.build.flags.optimize=-O1
+swiftl0.menu.opt.o1lto=Fast (-O1) with LTO
+swiftl0.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+swiftl0.menu.opt.o2std=Faster (-O2)
+swiftl0.menu.opt.o2std.build.flags.optimize=-O2
+swiftl0.menu.opt.o2lto=Faster (-O2) with LTO
+swiftl0.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+swiftl0.menu.opt.o3std=Fastest (-O3)
+swiftl0.menu.opt.o3std.build.flags.optimize=-O3
+swiftl0.menu.opt.o3lto=Fastest (-O3) with LTO
+swiftl0.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+swiftl0.menu.opt.ogstd=Debug (-g)
+swiftl0.menu.opt.ogstd.build.flags.optimize=-g -Og
+
+# C Runtime Library
+swiftl0.menu.rtlib.nano=Newlib Nano (default)
+swiftl0.menu.rtlib.nanofp=Newlib Nano + Float Printf
+swiftl0.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+swiftl0.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+swiftl0.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+swiftl0.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+swiftl0.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+swiftl0.menu.rtlib.full=Newlib Standard
+swiftl0.menu.rtlib.full.build.flags.ldspecs=
+
+
+
+
+
+
+
+
