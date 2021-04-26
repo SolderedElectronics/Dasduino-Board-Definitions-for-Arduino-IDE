@@ -73,7 +73,7 @@
                 "name": "Dasduino Core (Atmega328P)"
               },
               {
-                "name": "Dasduino LoRa (Atmega328P)"
+                "name": "Dasduino Core LoRa (Atmega328P)"
               }			
               ],
               "toolsDependencies":[]          
@@ -123,8 +123,8 @@
                 "category": "Dasduino",           
                 "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.0.zip", 
                 "archiveFileName": "Dasduino_ESP32_core-1.0.0.zip", 
-                "checksum": "SHA-256:2e2507696b3c1b38875aea1abd3c48cb4568c98f085c330394e5e0f3853f7ea4",         
-                "size": "46371986",
+                "checksum": "SHA-256:1b2693840ca528500f94ada5934a0c463eea6ae0e18b06032d94374e6b7706bc",         
+                "size": "46371985",
                 "version": "1.0.0", 
                 "name": "Dasduino ESP32 Boards",
                 "architecture": "esp32",           
@@ -133,7 +133,7 @@
                         "name": "Dasduino ConnectPlus (ESP32)"
                     },
                     {
-                        "name": "Dasduino LoRa ESP32"
+                        "name": "Dasduino ConnectPlus LoRa ESP32"
                     }
                 ], 
                 "toolsDependencies": [
