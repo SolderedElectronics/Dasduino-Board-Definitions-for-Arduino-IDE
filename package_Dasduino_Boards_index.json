@@ -133,7 +133,7 @@
                         "name": "Dasduino ConnectPlus (ESP32)"
                     },
                     {
-                        "name": "Dasduino ConnectPlus LoRa ESP32"
+                        "name": "Dasduino ConnectPlus LoRa (ESP32)"
                     }
                 ], 
                 "toolsDependencies": [
