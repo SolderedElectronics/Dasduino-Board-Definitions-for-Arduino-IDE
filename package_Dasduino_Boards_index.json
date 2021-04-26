@@ -204,7 +204,7 @@
                 "architecture": "esp8266",            		  
                 "boards": [
                 {
-                    "name": "Dasduino CONNECT (ESP8266)"				
+                    "name": "Dasduino Connect (ESP8266)"				
                 }
                 ],          
                 "toolsDependencies": [
