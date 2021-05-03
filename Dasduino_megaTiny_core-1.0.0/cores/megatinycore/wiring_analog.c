@@ -107,7 +107,8 @@ bool analogReadResolution(uint8_t res) {
 }
 
 
-bool pushStartFlag = true;
+bool pushStartFlagPin0 = true;
+bool pushStartFlagPin1 = true;
 // Right now, PWM output only works on the pins with
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
@@ -116,12 +117,21 @@ void analogWrite(uint8_t pin, int val) {
 
     //hack to make analogWrite give max pwm for 10miliseconds
     //Used to give push start to the small electromotor for bigz
-    if(pushStartFlag)
+    if((pushStartFlagPin0 && pin == 0) || (pushStartFlagPin1 && pin == 1)) //Check if pin 0 or 1 is used
     {
         digitalWrite(pin, HIGH);
         delay(10);
         digitalWrite(pin, LOW);
-        pushStartFlag = false;
+        
+        if(pin == 0)
+        {
+            pushStartFlagPin0 = false;
+        }
+
+        if(pin == 1)
+        {
+            pushStartFlagPin1 = false;
+        }
     }
 
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
