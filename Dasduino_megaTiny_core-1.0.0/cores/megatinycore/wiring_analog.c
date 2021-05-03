@@ -112,6 +112,14 @@ bool analogReadResolution(uint8_t res) {
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
 void analogWrite(uint8_t pin, int val) {
+
+    //hack to make analogWrite give max pwm for 10miliseconds
+    //Used to give push start to the small electromotor for bigz
+    digitalWrite(pin, HIGH);
+    delay(10);
+    digitalWrite(pin, LOW);
+
+
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
   if (bit_pos == NOT_A_PIN) {
     return;
