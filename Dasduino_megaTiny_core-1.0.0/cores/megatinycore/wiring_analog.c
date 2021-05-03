@@ -124,7 +124,6 @@ void analogWrite(uint8_t pin, int val) {
         digitalWrite(pin, LOW);
         
         pushStartFlagPin0 = false;
-        Serial.println("Pin 0 push start");
     }
 
     if(pushStartFlagPin1 && pin == 1) 
@@ -134,7 +133,6 @@ void analogWrite(uint8_t pin, int val) {
         digitalWrite(pin, LOW);
         
         pushStartFlagPin1 = false;
-        Serial.println("Pin 1 push start");
     }
 
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
