@@ -113,7 +113,17 @@ bool pushStartFlagPin1 = true;
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
-void analogWrite(uint8_t pin, int val) {
+void analogWrite(uint8_t pin, int val) 
+{
+  uint8_t bit_pos  = digitalPinToBitPosition(pin);
+  if (bit_pos == NOT_A_PIN) {
+    return;
+  }
+  // We need to make sure the PWM output is enabled for those pins
+  // that support it.  Also, make sure the pin is in output mode
+  // for consistently with Wiring, which doesn't require a pinMode
+  // call for the analog output pins.
+  pinMode(pin, OUTPUT);
 
     //hack to make analogWrite give max pwm for 10miliseconds
     //Used to give push start to the small electromotor for bigz
@@ -134,16 +144,6 @@ void analogWrite(uint8_t pin, int val) {
         
         pushStartFlagPin1 = false;
     }
-
-  uint8_t bit_pos  = digitalPinToBitPosition(pin);
-  if (bit_pos == NOT_A_PIN) {
-    return;
-  }
-  // We need to make sure the PWM output is enabled for those pins
-  // that support it.  Also, make sure the pin is in output mode
-  // for consistently with Wiring, which doesn't require a pinMode
-  // call for the analog output pins.
-  pinMode(pin, OUTPUT);
 
   /* Get timer */
   uint8_t digital_pin_timer =  digitalPinToTimer(pin);
