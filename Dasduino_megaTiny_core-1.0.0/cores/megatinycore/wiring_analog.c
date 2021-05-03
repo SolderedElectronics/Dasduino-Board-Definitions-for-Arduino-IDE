@@ -107,8 +107,8 @@ bool analogReadResolution(uint8_t res) {
 }
 
 
-bool pushStartFlagPin0 = true;
-bool pushStartFlagPin1 = true;
+static bool pushStartFlagPin0 = true;
+static bool pushStartFlagPin1 = true;
 // Right now, PWM output only works on the pins with
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
