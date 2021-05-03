@@ -117,21 +117,24 @@ void analogWrite(uint8_t pin, int val) {
 
     //hack to make analogWrite give max pwm for 10miliseconds
     //Used to give push start to the small electromotor for bigz
-    if((pushStartFlagPin0 && pin == 0) || (pushStartFlagPin1 && pin == 1)) //Check if pin 0 or 1 is used
+    if(pushStartFlagPin0 && pin == 0) 
     {
         digitalWrite(pin, HIGH);
         delay(10);
         digitalWrite(pin, LOW);
         
-        if(pin == 0)
-        {
-            pushStartFlagPin0 = false;
-        }
+        pushStartFlagPin0 = false;
+        Serial.println("Pin 0 push start");
+    }
 
-        if(pin == 1)
-        {
-            pushStartFlagPin1 = false;
-        }
+    if(pushStartFlagPin1 && pin == 1) 
+    {
+        digitalWrite(pin, HIGH);
+        delay(10);
+        digitalWrite(pin, LOW);
+        
+        pushStartFlagPin1 = false;
+        Serial.println("Pin 1 push start");
     }
 
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
