@@ -106,15 +106,11 @@ bool analogReadResolution(uint8_t res) {
   return (res == 10); //but only return true if the value passed was the valid option, 10.
 }
 
-
-static bool pushStartFlagPin0 = true;
-static bool pushStartFlagPin1 = true;
 // Right now, PWM output only works on the pins with
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
-void analogWrite(uint8_t pin, int val) 
-{
+void analogWrite(uint8_t pin, int val) {
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
   if (bit_pos == NOT_A_PIN) {
     return;
@@ -124,26 +120,6 @@ void analogWrite(uint8_t pin, int val)
   // for consistently with Wiring, which doesn't require a pinMode
   // call for the analog output pins.
   pinMode(pin, OUTPUT);
-
-    //hack to make analogWrite give max pwm for 10miliseconds
-    //Used to give push start to the small electromotor for bigz
-    if(pushStartFlagPin0 && pin == 0) 
-    {
-        digitalWrite(pin, HIGH);
-        delay(10);
-        digitalWrite(pin, LOW);
-        
-        pushStartFlagPin0 = false;
-    }
-
-    if(pushStartFlagPin1 && pin == 1) 
-    {
-        digitalWrite(pin, HIGH);
-        delay(10);
-        digitalWrite(pin, LOW);
-        
-        pushStartFlagPin1 = false;
-    }
 
   /* Get timer */
   uint8_t digital_pin_timer =  digitalPinToTimer(pin);
@@ -168,6 +144,7 @@ void analogWrite(uint8_t pin, int val)
           timer_cmp_out = ((uint8_t *)(&TCA0.SPLIT.HCMP0)) + (bit_pos << 1);
           (*timer_cmp_out) = (val);
           TCA0.SPLIT.CTRLB |= (1 << (TCA_SPLIT_HCMP0EN_bp + bit_pos));
+          
         } else {
           timer_cmp_out = ((uint8_t *)(&TCA0.SPLIT.LCMP0)) + (bit_pos << 1);
           (*timer_cmp_out) = (val);

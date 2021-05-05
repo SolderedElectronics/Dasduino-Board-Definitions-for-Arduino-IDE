@@ -46,7 +46,7 @@
 
 //For a type B timer as millis, these #defines aren't needed!
 
-#define PWM_TIMER_PERIOD  0xFE  /* For frequency */
+#define PWM_TIMER_PERIOD  0xFF  /* For frequency */
 #define PWM_TIMER_COMPARE  0x80  /* For duty cycle */
 
 #if defined(MILLIS_USE_TIMERA0)
