@@ -111,6 +111,16 @@ bool analogReadResolution(uint8_t res) {
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
 void analogWrite(uint8_t pin, int val) {
+    val = val<200? val/2+95: val;
+
+    if(pin == 1)
+    {
+        delay(3);
+    }
+    else
+    {
+        delay(2);
+    }
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
   if (bit_pos == NOT_A_PIN) {
     return;
@@ -130,7 +140,7 @@ void analogWrite(uint8_t pin, int val) {
     case TIMERA0:
       if (val <= 0) { /* if zero or negative drive digital low */
         digitalWrite(pin, LOW);
-      } else if (val >= 255) { /* if max or greater drive digital high */
+      } else if (val >= 251) { /* if max or greater drive digital high */
         digitalWrite(pin, HIGH);
       } else {
         /* Calculate correct compare buffer register */
