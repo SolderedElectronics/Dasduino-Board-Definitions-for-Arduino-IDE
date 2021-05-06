@@ -111,8 +111,11 @@ bool analogReadResolution(uint8_t res) {
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
 void analogWrite(uint8_t pin, int val) {
-    val = val<200? val/2+95: val;
-
+    if (val > 0)
+    {
+        val = val<200? val/2+95: val;
+    }
+    
     if(pin == 1)
     {
         delay(3);
