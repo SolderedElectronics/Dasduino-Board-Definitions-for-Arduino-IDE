@@ -118,11 +118,11 @@ void analogWrite(uint8_t pin, int val) {
     
     if(pin == 1)
     {
-        delay(3);
+        delay(1);
     }
     else
     {
-        delay(2);
+        delay(3);
     }
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
   if (bit_pos == NOT_A_PIN) {
