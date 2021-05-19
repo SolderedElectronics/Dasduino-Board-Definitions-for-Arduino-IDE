@@ -106,14 +106,16 @@ bool analogReadResolution(uint8_t res) {
   return (res == 10); //but only return true if the value passed was the valid option, 10.
 }
 
+
 // Right now, PWM output only works on the pins with
 // hardware support.  These are defined in the appropriate
 // pins_*.c file.  For the rest of the pins, we default
 // to digital output.
 void analogWrite(uint8_t pin, int val) {
-    if (val > 0)
+
+    if(val > 0)
     {
-        val = val<200? val/2+90: val;
+        val = val<200? val/2+95:val;
     }
 
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
@@ -135,7 +137,7 @@ void analogWrite(uint8_t pin, int val) {
     case TIMERA0:
       if (val <= 0) { /* if zero or negative drive digital low */
         digitalWrite(pin, LOW);
-      } else if (val >= 251) { /* if max or greater drive digital high */
+      } else if (val >= 255) { /* if max or greater drive digital high */
         digitalWrite(pin, HIGH);
       } else {
         /* Calculate correct compare buffer register */
@@ -149,7 +151,6 @@ void analogWrite(uint8_t pin, int val) {
           timer_cmp_out = ((uint8_t *)(&TCA0.SPLIT.HCMP0)) + (bit_pos << 1);
           (*timer_cmp_out) = (val);
           TCA0.SPLIT.CTRLB |= (1 << (TCA_SPLIT_HCMP0EN_bp + bit_pos));
-          
         } else {
           timer_cmp_out = ((uint8_t *)(&TCA0.SPLIT.LCMP0)) + (bit_pos << 1);
           (*timer_cmp_out) = (val);

@@ -182,6 +182,7 @@ static void disableTimer() {
   #endif
 }
 
+
 #if defined USE_TIMERB0
   ISR(TCB0_INT_vect)
 #elif defined USE_TIMERB1
