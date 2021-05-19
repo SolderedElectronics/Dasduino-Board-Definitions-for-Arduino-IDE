@@ -113,17 +113,9 @@ bool analogReadResolution(uint8_t res) {
 void analogWrite(uint8_t pin, int val) {
     if (val > 0)
     {
-        val = val<200? val/2+95: val;
+        val = val<200? val/2+90: val;
     }
-    
-    if(pin == 1)
-    {
-        delay(1);
-    }
-    else
-    {
-        delay(3);
-    }
+
   uint8_t bit_pos  = digitalPinToBitPosition(pin);
   if (bit_pos == NOT_A_PIN) {
     return;
