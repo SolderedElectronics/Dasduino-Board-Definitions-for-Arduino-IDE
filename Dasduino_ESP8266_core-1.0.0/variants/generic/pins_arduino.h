@@ -32,9 +32,24 @@
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
-//Pins for Sduino NOVA
-static const uint8_t USER_BUTTON = 0;
-static const uint8_t WS_LED = 2;
+//Pins for Sduino Connect
+#define USER_BUTTON         0
+#define USER_LED            2
+
+#define I2C_SDA             SDA
+#define I2C_SCL             SCL
+
+#define SPI_SC              SS
+#define SPI_MISO            MISO
+#define SPI_MOSI            MOSI
+#define SPI_SCK             SCK
+
+#define PA4                 (4)
+#define PA5                 (5)
+#define PA12                (12)
+#define PA13                (13) 
+#define PA14                (14) 
+#define PA15                (15) 
 ///
 
 #ifndef LED_BUILTIN
