@@ -194,7 +194,7 @@
                 "help": {
                     "online": "http://www.forum.soldered.com"
                 },		
-                "category": "Dasduino_megaTiny",           
+                "category": "Dasduino megaTiny Boards",           
                 "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_megaTiny-1.0.0.zip", 
                 "archiveFileName": "Dasduino_megaTiny-1.0.0.zip", 
                 "checksum": "SHA-256:69a19807029bd43147e211e52f66f849d22eed9623bf5818d3601256296563ed",         
