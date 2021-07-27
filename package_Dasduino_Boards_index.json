@@ -192,7 +192,7 @@
             },
             {
                 "help": {
-                  "online": "https://arduino-esp8266.readthedocs.io/en/3.0.2/"
+                  "online": "http://www.forum.soldered.com"
                 },
                 "category": "Dasduino ESP",
                 "name": "Dasduino ESP8266 Boards",
