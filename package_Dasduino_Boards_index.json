@@ -168,7 +168,7 @@
                 "architecture": "megaavr",           
                 "boards": [
                     {
-                    "name": "Dasduino Attiny 804"
+                    "name": "Dasduino Lite"
                     }
                     
                     ],
