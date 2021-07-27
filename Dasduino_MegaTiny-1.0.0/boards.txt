@@ -227,9 +227,7 @@ liteo.menu.uartvoltage.3v.build.uartvoltage=3V
 
 ### BOOTLOADER UART PINS
 liteo.menu.bootloaderuart.default=TX:5 (PB2), RX:4 (PB3)
-liteo.menu.bootloaderuart.alternate=TX:8 (PA1), RX:9 (PA2)
 liteo.menu.bootloaderuart.default.bootloader.uartswap=
-liteo.menu.bootloaderuart.alternate.bootloader.uartswap=_alt
 
 ### UPDI/RESET PIN CONFIGURATION & OPTIBOOT ENTRY
 liteo.menu.resetpinopti.UPDI=UPDI, Optiboot for 8 sec. after power-on & reset
