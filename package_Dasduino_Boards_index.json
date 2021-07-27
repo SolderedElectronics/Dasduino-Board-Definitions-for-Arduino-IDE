@@ -191,7 +191,10 @@
               ]
             },
             {
-                "category": "Dasduino_ESP",
+                "help": {
+                  "online": "https://arduino-esp8266.readthedocs.io/en/3.0.2/"
+                },
+                "category": "Dasduino ESP",
                 "name": "Dasduino ESP8266 Boards",
                 "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.0.zip",
                 "version": "1.0.0",
@@ -206,29 +209,26 @@
                 ],
                 "toolsDependencies": [
                   {
-                    "packager": "esp8266",
+                    "packager": "Dasduino_Boards",
                     "version": "3.0.4-gcc10.3-1757bed",
                     "name": "xtensa-lx106-elf-gcc"
                   },
                   {
-                    "packager": "esp8266",
+                    "packager": "Dasduino_Boards",
                     "version": "3.0.4-gcc10.3-1757bed",
                     "name": "mkspiffs"
                   },
                   {
-                    "packager": "esp8266",
+                    "packager": "Dasduino_Boards",
                     "version": "3.0.4-gcc10.3-1757bed",
                     "name": "mklittlefs"
                   },
                   {
-                    "packager": "esp8266",
+                    "packager": "Dasduino_Boards",
                     "version": "3.7.2-post1",
                     "name": "python3"
                   }
-                ],
-                "help": {
-                  "online": "https://arduino-esp8266.readthedocs.io/en/3.0.2/"
-                }
+                ]
               }
         ],
       "tools": [
