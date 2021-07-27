@@ -52,30 +52,31 @@ public:
   WiFiClient(const WiFiClient&);
   WiFiClient& operator=(const WiFiClient&);
 
-  uint8_t status();
-  virtual int connect(CONST IPAddress& ip, uint16_t port);
-  virtual int connect(const char *host, uint16_t port);
+  virtual uint8_t status();
+  virtual int connect(IPAddress ip, uint16_t port) override;
+  virtual int connect(const char *host, uint16_t port) override;
   virtual int connect(const String& host, uint16_t port);
-  virtual size_t write(uint8_t);
-  virtual size_t write(const uint8_t *buf, size_t size);
+  virtual size_t write(uint8_t) override;
+  virtual size_t write(const uint8_t *buf, size_t size) override;
   virtual size_t write_P(PGM_P buf, size_t size);
-  size_t write(Stream& stream);
+  size_t write(Stream& stream) [[ deprecated("use stream.sendHow(client...)") ]];
 
-  // This one is deprecated, use write(Stream& instead)
-  size_t write(Stream& stream, size_t unitSize) __attribute__ ((deprecated));
+  virtual int available() override;
+  virtual int read() override;
+  virtual int read(uint8_t* buf, size_t size) override;
+  int read(char* buf, size_t size);
 
-  virtual int available();
-  virtual int read();
-  virtual int read(uint8_t *buf, size_t size);
-  virtual int peek();
+  virtual int peek() override;
   virtual size_t peekBytes(uint8_t *buffer, size_t length);
   size_t peekBytes(char *buffer, size_t length) {
     return peekBytes((uint8_t *) buffer, length);
   }
-  virtual bool flush(unsigned int maxWaitMs = 0);
-  virtual bool stop(unsigned int maxWaitMs = 0);
-  virtual uint8_t connected();
-  virtual operator bool();
+  virtual void flush() override { (void)flush(0); }
+  virtual void stop() override { (void)stop(0); }
+  bool flush(unsigned int maxWaitMs);
+  bool stop(unsigned int maxWaitMs);
+  virtual uint8_t connected() override;
+  virtual operator bool() override;
 
   IPAddress remoteIP();
   uint16_t  remotePort();
@@ -84,7 +85,7 @@ public:
 
   static void setLocalPortStart(uint16_t port) { _localPort = port; }
 
-  size_t availableForWrite();
+  int availableForWrite() override;
 
   friend class WiFiServer;
 
@@ -118,6 +119,22 @@ public:
   bool getSync() const;
   void setSync(bool sync);
 
+  // peek buffer API is present
+  virtual bool hasPeekBufferAPI () const override;
+
+  // return number of byte accessible by peekBuffer()
+  virtual size_t peekAvailable () override;
+
+  // return a pointer to available data buffer (size = peekAvailable())
+  // semantic forbids any kind of read() before calling peekConsume()
+  virtual const char* peekBuffer () override;
+
+  // consume bytes after use (see peekBuffer)
+  virtual void peekConsume (size_t consume) override;
+
+  virtual bool outputCanTimeout () override { return connected(); }
+  virtual bool inputCanTimeout () override { return connected(); }
+
 protected:
 
   static int8_t _s_connected(void* arg, void* tpcb, int8_t err);
@@ -127,6 +144,7 @@ protected:
   void _err(int8_t err);
 
   ClientContext* _client;
+  WiFiClient* _owned;
   static uint16_t _localPort;
 };
 

@@ -67,7 +67,6 @@ OS-less SDK defines. Defines some headers for things that aren't in the include 
 the xthal stack frame struct.
 */
 #include "osapi.h"
-#include "user_interface.h"
 
 void _xtos_set_exception_handler(int cause, void (exhandler)(struct XTensa_exception_frame_s *frame));
 
@@ -446,7 +445,7 @@ static inline int gdbHandleCommand() {
 					writeByte(i, gdbGetHexVal(&data, 8));
 				}
 				//Make sure caches are up-to-date. Procedure according to Xtensa ISA document, ISYNC inst desc.
-				asm volatile("ISYNC\nISYNC\n");
+				__asm__ __volatile__ ("ISYNC\nISYNC\n");
 				gdbSendPacketOK();
 			} else {
 				//Trying to do a software breakpoint on a flash proc, perhaps?
@@ -459,7 +458,7 @@ static inline int gdbHandleCommand() {
 		return ST_CONT;
 	} else if (cmd[0] == 's') {	//single-step instruction
 		//Single-stepping can go wrong if an interrupt is pending, especially when it is e.g. a task switch:
-		//the ICOUNT register will overflow in the task switch code. That is why we disable interupts when
+		//the ICOUNT register will overflow in the task switch code. That is why we disable interrupts when
 		//doing single-instruction stepping.
 		singleStepPs=gdbstub_savedRegs.ps;
 		gdbstub_savedRegs.ps=(gdbstub_savedRegs.ps & ~0xf) | (XCHAL_DEBUGLEVEL - 1);
@@ -900,7 +899,7 @@ void ATTR_GDBINIT gdbstub_set_uart_isr_callback(void (*func)(void*, uint8_t), vo
 
 
 //gdbstub initialization routine.
-void ATTR_GDBINIT gdbstub_init() {
+void gdbstub_init() {
 #if GDBSTUB_REDIRECT_CONSOLE_OUTPUT
 	os_install_putc1(gdbstub_semihost_putchar1);
 #endif
@@ -923,4 +922,4 @@ bool ATTR_GDBEXTERNFN gdb_present() {
 }
 
 void ATTR_GDBFN gdb_do_break() { gdbstub_do_break(); }
-void ATTR_GDBINIT gdb_init() __attribute__((alias("gdbstub_init")));
+void gdb_init() __attribute__((alias("gdbstub_init")));

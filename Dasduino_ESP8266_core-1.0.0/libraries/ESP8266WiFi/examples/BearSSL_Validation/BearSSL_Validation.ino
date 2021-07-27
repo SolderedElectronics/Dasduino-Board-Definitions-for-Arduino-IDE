@@ -6,7 +6,9 @@
 
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
+#include <StackThunk.h>
 #include <time.h>
+#include "certs.h"
 
 #ifndef STASSID
 #define STASSID "your-ssid"
@@ -16,8 +18,6 @@
 const char *ssid = STASSID;
 const char *pass = STAPSK;
 
-const char *   host = "api.github.com";
-const uint16_t port = 443;
 const char *   path = "/";
 
 // Set time via NTP, as required for x.509 validation
@@ -81,7 +81,8 @@ void fetchURL(BearSSL::WiFiClientSecure *client, const char *host, const uint16_
   }
   client->stop();
   uint32_t freeStackEnd = ESP.getFreeContStack();
-  Serial.printf("\nCONT stack used: %d\n-------\n\n", freeStackStart - freeStackEnd);
+  Serial.printf("\nCONT stack used: %d\n", freeStackStart - freeStackEnd);
+  Serial.printf("BSSL stack used: %d\n-------\n\n", stack_thunk_get_max_usage());
 }
 
 void fetchNoConfig() {
@@ -90,7 +91,7 @@ If there are no CAs or insecure options specified, BearSSL will not connect.
 Expect the following call to fail as none have been configured.
 )EOF");
   BearSSL::WiFiClientSecure client;
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 }
 
 void fetchInsecure() {
@@ -101,19 +102,21 @@ which is subject to man-in-the-middle (MITM) attacks.
 )EOF");
   BearSSL::WiFiClientSecure client;
   client.setInsecure();
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 }
 
 void fetchFingerprint() {
   Serial.printf(R"EOF(
 The SHA-1 fingerprint of an X.509 certificate can be used to validate it
 instead of the while certificate.  This is not nearly as secure as real
-X.509 validation, but is better than nothing.
+X.509 validation, but is better than nothing.  Also be aware that these
+fingerprints will change if anything changes in the certificate chain
+(i.e. re-generating the certificate for a new end date, any updates to
+the root authorities, etc.).
 )EOF");
   BearSSL::WiFiClientSecure client;
-  static const char fp[] PROGMEM = "5F:F1:60:31:09:04:3E:F2:90:D2:B0:8A:50:38:04:E8:37:9F:BC:76";
-  client.setFingerprint(fp);
-  fetchURL(&client, host, port, path);
+  client.setFingerprint(fingerprint_gitlab_com);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 }
 
 void fetchSelfSigned() {
@@ -137,51 +140,13 @@ needs to be paired with the private key of the site, which is obviously
 private and not shared.  A MITM without the private key would not be
 able to establish communications.
 )EOF");
-  // Extracted by: openssl x509 -pubkey -noout -in servercert.pem
-  static const char pubkey[] PROGMEM = R"KEY(
------BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy+3Up8qBkIn/7S9AfWlH
-Od8SdXmnWx+JCIHvnWzjFcLeLvQb2rMqqCDL5XDlvkyC5SZ8ZyLITemej5aJYuBv
-zcKPzyZ0QfYZiskU9nzL2qBQj8alzJJ/Cc32AWuuWrPrzVxBmOEW9gRCGFCD3m0z
-53y6GjcmBS2wcX7RagqbD7g2frEGko4G7kmW96H6dyh2j9Rou8TwAK6CnbiXPAM/
-5Q6dyfdYlHOCgP75F7hhdKB5gpprm9A/OnQsmZjUPzy4u0EKCxE8MfhBerZrZdod
-88ZdDG3CvTgm050bc+lGlbsT+s09lp0dgxSZIeI8+syV2Owt4YF/PdjeeymtzQdI
-wQIDAQAB
------END PUBLIC KEY-----
-)KEY";
   BearSSL::WiFiClientSecure client;
-  BearSSL::PublicKey key(pubkey);
+  BearSSL::PublicKey key(pubkey_gitlab_com);
   client.setKnownKey(&key);
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 }
 
 void fetchCertAuthority() {
-  static const char digicert[] PROGMEM = R"EOF(
------BEGIN CERTIFICATE-----
-MIIDxTCCAq2gAwIBAgIQAqxcJmoLQJuPC3nyrkYldzANBgkqhkiG9w0BAQUFADBs
-MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
-d3cuZGlnaWNlcnQuY29tMSswKQYDVQQDEyJEaWdpQ2VydCBIaWdoIEFzc3VyYW5j
-ZSBFViBSb290IENBMB4XDTA2MTExMDAwMDAwMFoXDTMxMTExMDAwMDAwMFowbDEL
-MAkGA1UEBhMCVVMxFTATBgNVBAoTDERpZ2lDZXJ0IEluYzEZMBcGA1UECxMQd3d3
-LmRpZ2ljZXJ0LmNvbTErMCkGA1UEAxMiRGlnaUNlcnQgSGlnaCBBc3N1cmFuY2Ug
-RVYgUm9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMbM5XPm
-+9S75S0tMqbf5YE/yc0lSbZxKsPVlDRnogocsF9ppkCxxLeyj9CYpKlBWTrT3JTW
-PNt0OKRKzE0lgvdKpVMSOO7zSW1xkX5jtqumX8OkhPhPYlG++MXs2ziS4wblCJEM
-xChBVfvLWokVfnHoNb9Ncgk9vjo4UFt3MRuNs8ckRZqnrG0AFFoEt7oT61EKmEFB
-Ik5lYYeBQVCmeVyJ3hlKV9Uu5l0cUyx+mM0aBhakaHPQNAQTXKFx01p8VdteZOE3
-hzBWBOURtCmAEvF5OYiiAhF8J2a3iLd48soKqDirCmTCv2ZdlYTBoSUeh10aUAsg
-EsxBu24LUTi4S8sCAwEAAaNjMGEwDgYDVR0PAQH/BAQDAgGGMA8GA1UdEwEB/wQF
-MAMBAf8wHQYDVR0OBBYEFLE+w2kD+L9HAdSYJhoIAu9jZCvDMB8GA1UdIwQYMBaA
-FLE+w2kD+L9HAdSYJhoIAu9jZCvDMA0GCSqGSIb3DQEBBQUAA4IBAQAcGgaX3Nec
-nzyIZgYIVyHbIUf4KmeqvxgydkAQV8GK83rZEWWONfqe/EW1ntlMMUu4kehDLI6z
-eM7b41N5cdblIZQB2lWHmiRk9opmzN6cN82oNLFpmyPInngiK3BD41VHMWEZ71jF
-hS9OMPagMRYjyOfiZRYzy78aG6A9+MpeizGLYAiJLQwGXFK3xPkKmNEVX58Svnw2
-Yzi9RKR/5CYrCsSXaQ3pjOLAEFe4yHYSkVXySGnYvCoCWw9E1CAx2/S6cCZdkGCe
-vEsXCS+0yx5DaMkHJ8HSXPfqIbloEpw8nL+e/IBcm2PN7EeqJSdnoDfzAIJ9VNep
-+OkuE6N36B9K
------END CERTIFICATE-----
-)EOF";
-
   Serial.printf(R"EOF(
 A specific certification authority can be passed in and used to validate
 a chain of certificates from a given server.  These will be validated
@@ -192,14 +157,14 @@ BearSSL does verify the notValidBefore/After fields.
 )EOF");
 
   BearSSL::WiFiClientSecure client;
-  BearSSL::X509List cert(digicert);
+  BearSSL::X509List cert(cert_USERTrust_RSA_Certification_Authority);
   client.setTrustAnchors(&cert);
   Serial.printf("Try validating without setting the time (should fail)\n");
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 
   Serial.printf("Try again after setting NTP time (should pass)\n");
   setClock();
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
 }
 
 void fetchFaster() {
@@ -212,18 +177,18 @@ may make sense
   BearSSL::WiFiClientSecure client;
   client.setInsecure();
   uint32_t now = millis();
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
   uint32_t delta = millis() - now;
   client.setInsecure();
   client.setCiphersLessSecure();
   now = millis();
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
   uint32_t delta2 = millis() - now;
   std::vector<uint16_t> myCustomList = { BR_TLS_RSA_WITH_AES_256_CBC_SHA256, BR_TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, BR_TLS_RSA_WITH_3DES_EDE_CBC_SHA };
   client.setInsecure();
   client.setCiphers(myCustomList);
   now = millis();
-  fetchURL(&client, host, port, path);
+  fetchURL(&client, gitlab_host, gitlab_port, path);
   uint32_t delta3 = millis() - now;
   Serial.printf("Using more secure: %dms\nUsing less secure ciphers: %dms\nUsing custom cipher list: %dms\n", delta, delta2, delta3);
 }

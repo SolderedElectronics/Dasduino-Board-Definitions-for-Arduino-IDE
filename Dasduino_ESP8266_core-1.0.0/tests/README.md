@@ -19,6 +19,8 @@ If you want to add emulation of a certain feature, add it into tests/host/common
 
 ### Running test cases
 
+**NOTE!** The test-on-host environment is dependent on some submodules. Make sure to run `git submodule update --init` before running any test.
+
 To run test cases, go to tests/host/ directory and run `make`. This will compile and run the tests. 
 
 If all tests pass, you will see "All tests passed" message and the exit code will be 0.
@@ -122,7 +124,7 @@ Makefile in tests/device/ directory handles compiling, uploading, and executing 
 
 Here are some of the supported targets:
 
-- `virtualenv`: prepares Python virtual environment inside tests/device/libaries/BSTest/virtualenv/. This has to be run once on each computer where tests are to be run. This target will use `pip` to install several Python libraries required by the test runner (see tests/device/libaries/BSTest/requirements.txt).
+- `virtualenv`: prepares Python virtual environment inside tests/device/libraries/BSTest/virtualenv/. This has to be run once on each computer where tests are to be run. This target will use `pip` to install several Python libraries required by the test runner (see tests/device/libraries/BSTest/requirements.txt).
 
 - `test_xxx/test_xxx.ino`: compiles, uploads, and runs the tests defined in `test_xxx/test_xxx.ino` sketch. Some extra options are available, these can be passed as additional arguments to `make`:
     - `NO_BUILD=1`: don't compile the test.

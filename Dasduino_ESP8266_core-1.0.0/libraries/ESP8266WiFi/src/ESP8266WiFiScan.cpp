@@ -98,7 +98,7 @@ int8_t ESP8266WiFiScanClass::scanNetworks(bool async, bool show_hidden, uint8 ch
             return WIFI_SCAN_RUNNING;
         }
 
-        esp_yield();
+        esp_yield(); // will resume when _scanDone fires
         return ESP8266WiFiScanClass::_scanCount;
     } else {
         return WIFI_SCAN_FAILED;
@@ -165,7 +165,10 @@ bool ESP8266WiFiScanClass::getNetworkInfo(uint8_t i, String &ssid, uint8_t &encT
         return false;
     }
 
-    ssid = (const char*) it->ssid;
+    char ssid_copy[33]; // Ensure space for maximum len SSID (32) plus trailing 0
+    memcpy(ssid_copy, it->ssid, sizeof(it->ssid));
+    ssid_copy[32] = 0; // Potentially add 0-termination if none present earlier
+    ssid = (const char*) ssid_copy;
     encType = encryptionType(i);
     rssi = it->rssi;
     bssid = it->bssid; // move ptr
@@ -320,7 +323,7 @@ void ESP8266WiFiScanClass::_scanDone(void* result, int status) {
     ESP8266WiFiScanClass::_scanComplete = true;
 
     if(!ESP8266WiFiScanClass::_scanAsync) {
-        esp_schedule();
+        esp_schedule(); // resume scanNetworks
     } else if (ESP8266WiFiScanClass::_onComplete) {
         ESP8266WiFiScanClass::_onComplete(ESP8266WiFiScanClass::_scanCount);
         ESP8266WiFiScanClass::_onComplete = nullptr;

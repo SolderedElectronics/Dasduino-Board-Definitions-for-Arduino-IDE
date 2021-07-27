@@ -29,11 +29,6 @@
  DEALINGS WITH THE SOFTWARE.
 */
 
-#include "lwip/opt.h"
-#include "lwip/udp.h"
-#include "lwip/inet.h"
-#include "lwip/igmp.h"
-#include "lwip/mem.h"
 #include <include/UdpContext.h>
 #include <poll.h>
 #include <map>
@@ -58,7 +53,7 @@ void check_incoming_udp ()
 		p.events = POLLIN;
 		if (poll(&p, 1, 0) && p.revents == POLLIN)
 		{
-			fprintf(stderr, MOCK "UDP poll(%d) -> cb\r", p.fd);
+			mockverbose("UDP poll(%d) -> cb\r", p.fd);
 			udp.second->mock_cb();
 		}
 	}

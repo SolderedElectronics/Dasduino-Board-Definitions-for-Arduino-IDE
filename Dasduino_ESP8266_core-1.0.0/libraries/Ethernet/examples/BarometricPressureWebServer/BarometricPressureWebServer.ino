@@ -1,40 +1,40 @@
 /*
   SCP1000 Barometric Pressure Sensor Display
 
-  Serves the output of a Barometric Pressure Sensor as a web page.
-  Uses the SPI library. For details on the sensor, see:
-  http://www.sparkfun.com/commerce/product_info.php?products_id=8161
-  http://www.vti.fi/en/support/obsolete_products/pressure_sensors/
+ Serves the output of a Barometric Pressure Sensor as a web page.
+ Uses the SPI library. For details on the sensor, see:
+ http://www.sparkfun.com/commerce/product_info.php?products_id=8161
 
-  This sketch adapted from Nathan Seidle's SCP1000 example for PIC:
-  http://www.sparkfun.com/datasheets/Sensors/SCP1000-Testing.zip
+ This sketch adapted from Nathan Seidle's SCP1000 example for PIC:
+ http://www.sparkfun.com/datasheets/Sensors/SCP1000-Testing.zip
 
-  Circuit:
-  SCP1000 sensor attached to pins 6,7, and 11 - 13:
-  DRDY: pin 6
-  CSB: pin 7
-  MOSI: pin 11
-  MISO: pin 12
-  SCK: pin 13
+ TODO: this hardware is long obsolete.  This example program should
+ be rewritten to use https://www.sparkfun.com/products/9721
 
-  created 31 July 2010
-  by Tom Igoe
-*/
+ Circuit:
+ SCP1000 sensor attached to pins 6,7, and 11 - 13:
+ DRDY: pin 6
+ CSB: pin 7
+ MOSI: pin 11
+ MISO: pin 12
+ SCK: pin 13
+
+ created 31 July 2010
+ by Tom Igoe
+ */
 
 #include <Ethernet.h>
 // the sensor communicates using SPI, so include the library:
 #include <SPI.h>
 
 
-// assign a MAC address for the ethernet controller.
+// assign a MAC address for the Ethernet controller.
 // fill in your address here:
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
 // assign an IP address for the controller:
 IPAddress ip(192, 168, 1, 20);
-IPAddress gateway(192, 168, 1, 1);
-IPAddress subnet(255, 255, 255, 0);
 
 
 // Initialize the Ethernet server library
@@ -58,18 +58,43 @@ long pressure = 0;
 long lastReadingTime = 0;
 
 void setup() {
+  // You can use Ethernet.init(pin) to configure the CS pin
+  //Ethernet.init(10);  // Most Arduino shields
+  //Ethernet.init(5);   // MKR ETH shield
+  //Ethernet.init(0);   // Teensy 2.0
+  //Ethernet.init(20);  // Teensy++ 2.0
+  //Ethernet.init(15);  // ESP8266 with Adafruit Featherwing Ethernet
+  //Ethernet.init(33);  // ESP32 with Adafruit Featherwing Ethernet
+
   // start the SPI library:
   SPI.begin();
 
-  // start the Ethernet connection and the server:
+  // start the Ethernet connection
   Ethernet.begin(mac, ip);
+
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  // Check for Ethernet hardware present
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) {
+    Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware. :(");
+    while (true) {
+      delay(1); // do nothing, no point running without Ethernet hardware
+    }
+  }
+  if (Ethernet.linkStatus() == LinkOFF) {
+    Serial.println("Ethernet cable is not connected.");
+  }
+
+  // start listening for clients
   server.begin();
 
-  // initalize the  data ready and chip select pins:
+  // initalize the data ready and chip select pins:
   pinMode(dataReadyPin, INPUT);
   pinMode(chipSelectPin, OUTPUT);
-
-  Serial.begin(9600);
 
   //Configure SCP1000 for low noise configuration:
   writeRegister(0x02, 0x2D);
@@ -131,7 +156,7 @@ void listenForEthernetClients() {
   if (client) {
     Serial.println("Got a client");
     // an http request ends with a blank line
-    boolean currentLineIsBlank = true;
+    bool currentLineIsBlank = true;
     while (client.connected()) {
       if (client.available()) {
         char c = client.read();
