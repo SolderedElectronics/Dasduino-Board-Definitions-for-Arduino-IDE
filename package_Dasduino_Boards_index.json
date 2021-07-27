@@ -164,7 +164,7 @@
                 "checksum": "SHA-256:8de372c26a649cf4d212bcc075c797fe0d2b49e44afad727cb1eb7524f3fac7f",         
                 "size": "8489669",
                 "version": "1.0.0", 
-                "name": "Dasduino megaTiny Boards",
+                "name": "Dasduino megaTiny Boards (BigZ)",
                 "architecture": "megaavr",           
                 "boards": [
                     {
