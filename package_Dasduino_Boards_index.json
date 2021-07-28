@@ -195,8 +195,8 @@
                     "category": "Dasduino megaTiny Boards",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_MegaTiny-1.0.0.zip",
                     "archiveFileName": "Dasduino_MegaTiny-1.0.0.zip",
-                    "checksum": "SHA-256:5ab3957f229a433da3ee5895d02eed89df7361fd7110a017a8de84fce7ff187a",
-                    "size": "9331009",
+                    "checksum": "SHA-256:dc3455a4c9406031c038d10b15b376e0910b28e7d56012310355caf207a133e7",
+                    "size": "9331004",
                     "version": "1.0.0",
                     "name": "Dasduino MegaTiny Boards",
                     "architecture": "megaavr",
@@ -233,8 +233,8 @@
                     "version": "1.0.0",
                     "architecture": "esp8266",
                     "archiveFileName": "Dasduino_ESP8266_core-1.0.0.zip",
-                    "size": "36986542",
-                    "checksum": "SHA-256:e7b4a792f068f16aacf3ddda28394caff0722df646c6843e8bf8cdfdce378af7",
+                    "size": "36986543",
+                    "checksum": "SHA-256:04439a667747e84f730b30db89b6cfef5b0dca2deda464a30897885857b1ed38",
                     "boards": [
                         {
                             "name": "Dasduino Connect (ESP8266)"
