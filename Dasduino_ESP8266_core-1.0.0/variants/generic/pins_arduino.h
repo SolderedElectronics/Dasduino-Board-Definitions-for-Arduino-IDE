@@ -36,28 +36,28 @@ static const uint8_t SCL = PIN_WIRE_SCL;
  * Pins for dasduino connect
  */
 //GPIO
-#define PA0             (0)
-#define PA2             (2)
-#define PA4             (4)
-#define PA5             (5)
-#define PA12            (12)
-#define PA13            (13)
-#define PA14            (14)
-#define PA15            (15)
-#define PA16            (16)
+#define PA0 (0)
+#define PA2 (2)
+#define PA4 (4)
+#define PA5 (5)
+#define PA12 (12)
+#define PA13 (13)
+#define PA14 (14)
+#define PA15 (15)
+#define PA16 (16)
 
 //Comunication
-#define I2C_SCL         PIN_WIRE_SCL
-#define I2C_SDA         PIN_WIRE_SDA
+#define I2C_SCL PIN_WIRE_SCL
+#define I2C_SDA PIN_WIRE_SDA
 
-#define SPI_SS          PIN_SPI_SS
-#define SPI_MOSI        PIN_SPI_MOSI
-#define SPI_MISO        PIN_SPI_MISO
-#define SPI_SCK         PIN_SPI_SCK
+#define SPI_SS PIN_SPI_SS
+#define SPI_MOSI PIN_SPI_MOSI
+#define SPI_MISO PIN_SPI_MISO
+#define SPI_SCK PIN_SPI_SCK
 
 //Miscelaneus
-#define USER_BUTTON     PA0
-#define USER_LED        PA2
+#define BUTTON_BUILTIN PA0
+#define LEDWS_BUILTIN PA2
 
 /*****************************/
 

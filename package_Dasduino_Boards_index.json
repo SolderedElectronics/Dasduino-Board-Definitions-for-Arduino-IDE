@@ -233,8 +233,8 @@
                     "version": "1.0.0",
                     "architecture": "esp8266",
                     "archiveFileName": "Dasduino_ESP8266_core-1.0.0.zip",
-                    "size": "36986543",
-                    "checksum": "SHA-256:04439a667747e84f730b30db89b6cfef5b0dca2deda464a30897885857b1ed38",
+                    "size": "38546377",
+                    "checksum": "SHA-256:c8009fc5fd53beb7f4e6a53b72b24cba0256bfa73386c2521c89084b54cddb7f",
                     "boards": [
                         {
                             "name": "Dasduino Connect (ESP8266)"
