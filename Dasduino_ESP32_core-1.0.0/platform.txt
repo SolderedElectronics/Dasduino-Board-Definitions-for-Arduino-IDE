@@ -1,57 +1,89 @@
-name=Dasduino ESP32 Boards
-version=1.0.1
+
+# ESP8266 platform
+# ------------------------------
+
+# For more info:
+# https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
+
+name=Dasduino ESP8266 Boards
+version=1.0.0
+
+# These will be removed by the packager script when doing a JSON release
 
 
-tools.esptool_py.path={runtime.tools.esptool_py.path}
-tools.esptool_py.cmd=esptool
-tools.esptool_py.cmd.linux=esptool.py
-tools.esptool_py.cmd.windows=esptool.exe
 
-tools.esptool_py.network_cmd=python "{runtime.platform.path}/tools/espota.py"
-tools.esptool_py.network_cmd.windows="{runtime.platform.path}/tools/espota.exe"
 
-tools.gen_esp32part.cmd=python "{runtime.platform.path}/tools/gen_esp32part.py"
-tools.gen_esp32part.cmd.windows="{runtime.platform.path}/tools/gen_esp32part.exe"
+runtime.tools.signing={runtime.platform.path}/tools/signing.py
+runtime.tools.elf2bin={runtime.platform.path}/tools/elf2bin.py
+runtime.tools.sizes={runtime.platform.path}/tools/sizes.py
+runtime.tools.makecorever={runtime.platform.path}/tools/makecorever.py
+runtime.tools.mkdir={runtime.platform.path}/tools/mkdir.py
+runtime.tools.cp={runtime.platform.path}/tools/cp.py
+runtime.tools.eboot={runtime.platform.path}/bootloaders/eboot/eboot.elf
 
-compiler.warning_flags=-w
-compiler.warning_flags.none=-w
-compiler.warning_flags.default=
-compiler.warning_flags.more=-Wall -Werror=all
-compiler.warning_flags.all=-Wall -Werror=all -Wextra
+compiler.warning_flags=-w -Werror=return-type
+compiler.warning_flags.none=-w -Werror=return-type
+compiler.warning_flags.default=-Werror=return-type
+compiler.warning_flags.more=-Wall -Werror=return-type
+compiler.warning_flags.all=-Wall -Wextra -Werror=return-type
 
-compiler.path={runtime.tools.xtensa-esp32-elf-gcc.path}/bin/
+build.lwip_lib=-llwip_gcc
+build.lwip_include=lwip/include
+build.lwip_flags=-DLWIP_OPEN_SRC
+
+build.vtable_flags=-DVTABLES_IN_FLASH
+
+build.sslflags=
+build.mmuflags=
+build.non32xferflags=
+
+build.exception_flags=-fno-exceptions
+build.stdcpp_lib=-lstdc++
+build.stdcpp_level=-std=gnu++17
+
+build.stacksmash_flags=
+
+build.float=-u _printf_float -u _scanf_float
+build.led=
+
+# default SDK for all boards
+# (generic board overrides this variable)
+build.sdk=NONOSDK22x_190703
+#build.sdk=NONOSDK22x_191024
+#build.sdk=NONOSDK22x_191105
+
+compiler.path={runtime.tools.xtensa-lx106-elf-gcc.path}/bin/
 compiler.sdk.path={runtime.platform.path}/tools/sdk
-compiler.cpreprocessor.flags=-DESP_PLATFORM -DMBEDTLS_CONFIG_FILE="mbedtls/esp_config.h" -DHAVE_CONFIG_H -DGCC_NOT_5_2_0=0 -DWITH_POSIX "-I{compiler.sdk.path}/include/config" "-I{compiler.sdk.path}/include/app_trace" "-I{compiler.sdk.path}/include/app_update" "-I{compiler.sdk.path}/include/asio" "-I{compiler.sdk.path}/include/bootloader_support" "-I{compiler.sdk.path}/include/bt" "-I{compiler.sdk.path}/include/coap" "-I{compiler.sdk.path}/include/console" "-I{compiler.sdk.path}/include/driver" "-I{compiler.sdk.path}/include/efuse" "-I{compiler.sdk.path}/include/esp-tls" "-I{compiler.sdk.path}/include/esp32" "-I{compiler.sdk.path}/include/esp_adc_cal" "-I{compiler.sdk.path}/include/esp_event" "-I{compiler.sdk.path}/include/esp_http_client" "-I{compiler.sdk.path}/include/esp_http_server" "-I{compiler.sdk.path}/include/esp_https_ota" "-I{compiler.sdk.path}/include/esp_https_server" "-I{compiler.sdk.path}/include/esp_ringbuf" "-I{compiler.sdk.path}/include/esp_websocket_client" "-I{compiler.sdk.path}/include/espcoredump" "-I{compiler.sdk.path}/include/ethernet" "-I{compiler.sdk.path}/include/expat" "-I{compiler.sdk.path}/include/fatfs" "-I{compiler.sdk.path}/include/freemodbus" "-I{compiler.sdk.path}/include/freertos" "-I{compiler.sdk.path}/include/heap" "-I{compiler.sdk.path}/include/idf_test" "-I{compiler.sdk.path}/include/jsmn" "-I{compiler.sdk.path}/include/json" "-I{compiler.sdk.path}/include/libsodium" "-I{compiler.sdk.path}/include/log" "-I{compiler.sdk.path}/include/lwip" "-I{compiler.sdk.path}/include/mbedtls" "-I{compiler.sdk.path}/include/mdns" "-I{compiler.sdk.path}/include/micro-ecc" "-I{compiler.sdk.path}/include/mqtt" "-I{compiler.sdk.path}/include/newlib" "-I{compiler.sdk.path}/include/nghttp" "-I{compiler.sdk.path}/include/nimble" "-I{compiler.sdk.path}/include/nvs_flash" "-I{compiler.sdk.path}/include/openssl" "-I{compiler.sdk.path}/include/protobuf-c" "-I{compiler.sdk.path}/include/protocomm" "-I{compiler.sdk.path}/include/pthread" "-I{compiler.sdk.path}/include/sdmmc" "-I{compiler.sdk.path}/include/smartconfig_ack" "-I{compiler.sdk.path}/include/soc" "-I{compiler.sdk.path}/include/spi_flash" "-I{compiler.sdk.path}/include/spiffs" "-I{compiler.sdk.path}/include/tcp_transport" "-I{compiler.sdk.path}/include/tcpip_adapter" "-I{compiler.sdk.path}/include/ulp" "-I{compiler.sdk.path}/include/unity" "-I{compiler.sdk.path}/include/vfs" "-I{compiler.sdk.path}/include/wear_levelling" "-I{compiler.sdk.path}/include/wifi_provisioning" "-I{compiler.sdk.path}/include/wpa_supplicant" "-I{compiler.sdk.path}/include/xtensa-debug-module" "-I{compiler.sdk.path}/include/esp-face" "-I{compiler.sdk.path}/include/esp32-camera" "-I{compiler.sdk.path}/include/esp-face" "-I{compiler.sdk.path}/include/fb_gfx"
 
-compiler.c.cmd=xtensa-esp32-elf-gcc
-compiler.c.flags=-std=gnu99 -Os -g3 -fstack-protector -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib -Wpointer-arith {compiler.warning_flags} -Wno-maybe-uninitialized -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-deprecated-declarations -Wno-unused-parameter -Wno-sign-compare -Wno-old-style-declaration -MMD -c
+compiler.libc.path={runtime.platform.path}/tools/sdk/libc/xtensa-lx106-elf
+compiler.cpreprocessor.flags=-D__ets__ -DICACHE_FLASH -U__STRICT_ANSI__ -D_GNU_SOURCE "-I{compiler.sdk.path}/include" "-I{compiler.sdk.path}/{build.lwip_include}" "-I{compiler.libc.path}/include" "-I{build.path}/core"
 
-compiler.cpp.cmd=xtensa-esp32-elf-g++
-compiler.cpp.flags=-std=gnu++11 -Os -g3 -Wpointer-arith -fexceptions -fstack-protector -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib {compiler.warning_flags} -Wno-error=maybe-uninitialized -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-unused-but-set-parameter -Wno-missing-field-initializers -Wno-sign-compare -fno-rtti -MMD -c
+compiler.c.cmd=xtensa-lx106-elf-gcc
+compiler.c.flags=-c {compiler.warning_flags} -std=gnu17 {build.stacksmash_flags} -Os -g -free -fipa-pta -Wpointer-arith -Wno-implicit-function-declaration -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals -falign-functions=4 -MMD -ffunction-sections -fdata-sections {build.exception_flags} {build.sslflags} {build.mmuflags} {build.non32xferflags}
 
-compiler.S.cmd=xtensa-esp32-elf-gcc
-compiler.S.flags=-c -g3 -x assembler-with-cpp -MMD -mlongcalls
+compiler.S.cmd=xtensa-lx106-elf-gcc
+compiler.S.flags=-c -g -x assembler-with-cpp -MMD -mlongcalls "-I{runtime.tools.xtensa-lx106-elf-gcc.path}/include/"
 
-compiler.c.elf.cmd=xtensa-esp32-elf-gcc
-compiler.c.elf.flags=-nostdlib "-L{compiler.sdk.path}/lib" "-L{compiler.sdk.path}/ld" -T esp32_out.ld -T esp32.project.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.libgcc.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority  -u __cxa_guard_dummy -u __cxx_fatal_exception
-compiler.c.elf.libs=-lgcc -lopenssl -lbtdm_app -lfatfs -lwps -lcoexist -lwear_levelling -lesp_http_client -lprotobuf-c -lhal -lnewlib -ldriver -lbootloader_support -lpp -lfreemodbus -lmesh -lsmartconfig -ljsmn -lwpa -lethernet -lphy -lapp_trace -lconsole -lulp -lwpa_supplicant -lfreertos -lbt -lmicro-ecc -lesp32-camera -lcxx -lxtensa-debug-module -ltcp_transport -lod -lmdns -ldetection -lvfs -lpe -lesp_websocket_client -lespcoredump -lesp_ringbuf -lsoc -lcore -lfb_gfx -lsdmmc -llibsodium -lcoap -ltcpip_adapter -lprotocomm -lesp_event -limage_util -lc_nano -lesp-tls -lasio -lrtc -lspi_flash -lwpa2 -lwifi_provisioning -lesp32 -lface_recognition -lapp_update -lnghttp -ldl -lspiffs -lface_detection -lefuse -lunity -lesp_https_server -lespnow -lnvs_flash -lesp_adc_cal -llog -ldetection_cat_face -lsmartconfig_ack -lexpat -lm -lfr -lmqtt -lc -lheap -lmbedtls -llwip -lnet80211 -lesp_http_server -lpthread -ljson -lesp_https_ota -lfd  -lstdc++
+compiler.c.elf.flags=-g {compiler.warning_flags} -Os -nostdlib -Wl,--no-check-sections -u app_entry {build.float} -Wl,-static "-L{compiler.sdk.path}/lib" "-L{compiler.sdk.path}/lib/{build.sdk}" "-L{build.path}" "-L{compiler.libc.path}/lib" "-Tlocal.eagle.flash.ld" -Wl,--gc-sections -Wl,-wrap,system_restart_local -Wl,-wrap,spi_flash_read
 
-compiler.as.cmd=xtensa-esp32-elf-as
+compiler.c.elf.cmd=xtensa-lx106-elf-gcc
+compiler.c.elf.libs=-lhal -lphy -lpp -lnet80211 {build.lwip_lib} -lwpa -lcrypto -lmain -lwps -lbearssl -lespnow -lsmartconfig -lairkiss -lwpa2 {build.stdcpp_lib} -lm -lc -lgcc
 
-compiler.ar.cmd=xtensa-esp32-elf-ar
+compiler.cpp.cmd=xtensa-lx106-elf-g++
+compiler.cpp.flags=-c {compiler.warning_flags} {build.stacksmash_flags} -Os -g -free -fipa-pta -mlongcalls -mtext-section-literals -fno-rtti -falign-functions=4 {build.stdcpp_level} -MMD -ffunction-sections -fdata-sections {build.exception_flags} {build.sslflags} {build.mmuflags} {build.non32xferflags}
+
+compiler.as.cmd=xtensa-lx106-elf-as
+
+compiler.ar.cmd=xtensa-lx106-elf-ar
 compiler.ar.flags=cru
 
-compiler.size.cmd=xtensa-esp32-elf-size
+compiler.elf2hex.cmd=esptool
+compiler.elf2hex.flags=
 
-compiler.libraries.ldflags=
+compiler.size.cmd=xtensa-lx106-elf-size
 
-# This can be overriden in boards.txt
-build.flash_size=4MB
-build.flash_mode=dio
-build.boot=bootloader
-build.code_debug=0
-build.defines=
-build.extra_flags=-DESP32 -DCORE_DEBUG_LEVEL={build.code_debug} {build.defines}
+# This can be overridden in boards.txt
+build.extra_flags=-DESP8266
 
 # These can be overridden in platform.local.txt
 compiler.c.extra_flags=
@@ -61,51 +93,78 @@ compiler.cpp.extra_flags=
 compiler.ar.extra_flags=
 compiler.objcopy.eep.extra_flags=
 compiler.elf2hex.extra_flags=
-compiler.libraries.ldflags=
 
-# Build Dir: {build.path}
-# Sketch Dir: {build.source.path}
-recipe.hooks.prebuild.1.pattern=bash -c "[ ! -f {build.source.path}/partitions.csv ] || cp -f {build.source.path}/partitions.csv {build.path}/partitions.csv"
-recipe.hooks.prebuild.2.pattern=bash -c "[ -f {build.path}/partitions.csv ] || cp {runtime.platform.path}/tools/partitions/{build.partitions}.csv {build.path}/partitions.csv"
-recipe.hooks.prebuild.1.pattern.windows=cmd /c if exist "{build.source.path}\partitions.csv" copy /y "{build.source.path}\partitions.csv" "{build.path}\partitions.csv"
-recipe.hooks.prebuild.2.pattern.windows=cmd /c if not exist "{build.path}\partitions.csv" copy "{runtime.platform.path}\tools\partitions\{build.partitions}.csv" "{build.path}\partitions.csv"
+## generate file with git version number
+## needs git
+recipe.hooks.sketch.prebuild.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.signing}" --mode header --publickey "{build.source.path}/public.key" --out "{build.path}/core/Updater_Signing.h"
+# This is quite a working hack. This form of prebuild hook, while intuitive, is not explicitly documented.
+
+
+## Build the app.ld linker file
+recipe.hooks.linking.prelink.1.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.mkdir}" -p "{build.path}/ld_h/"
+recipe.hooks.linking.prelink.2.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.cp}" "{runtime.platform.path}/tools/sdk/ld/{build.flash_ld}" "{build.path}/ld_h/local.eagle.flash.ld.h"
+recipe.hooks.linking.prelink.3.pattern="{compiler.path}{compiler.c.cmd}" -CC -E -P {build.vtable_flags} {build.mmuflags} "{build.path}/ld_h/local.eagle.flash.ld.h" -o "{build.path}/local.eagle.flash.ld"
+recipe.hooks.linking.prelink.4.pattern="{compiler.path}{compiler.c.cmd}" -CC -E -P {build.vtable_flags} {build.mmuflags} "{runtime.platform.path}/tools/sdk/ld/eagle.app.v6.common.ld.h" -o "{build.path}/local.eagle.app.v6.common.ld"
 
 ## Compile c files
-recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.c.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.c.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.c.flags} -D{build.sdk}=1 -DF_CPU={build.f_cpu} {build.lwip_flags} {build.debug_port} {build.debug_level} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" {build.led} {build.flash_flags} {compiler.c.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
 
 ## Compile c++ files
-recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} -D{build.sdk}=1 -DF_CPU={build.f_cpu} {build.lwip_flags} {build.debug_port} {build.debug_level} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" {build.led} {build.flash_flags} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
 
 ## Compile S files
-recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.S.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.S.flags} -D{build.sdk}=1 -DF_CPU={build.f_cpu} {build.lwip_flags} {build.debug_port} {build.debug_level} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" {build.led} {build.flash_flags} {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
 
 ## Create archives
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
 ## Combine gc-sections, archives, and objects
-recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} {compiler.libraries.ldflags} -Wl,--start-group {object_files} "{archive_file_path}" {compiler.c.elf.libs} -Wl,--end-group -Wl,-EL -o "{build.path}/{build.project_name}.elf"
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {build.exception_flags} -Wl,-Map "-Wl,{build.path}/{build.project_name}.map" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" -Wl,--start-group {object_files} "{archive_file_path}" {compiler.c.elf.libs} -Wl,--end-group "-L{build.path}"
 
-## Create partitions.bin
-recipe.objcopy.partitions.bin.pattern={tools.gen_esp32part.cmd} -q "{build.path}/partitions.csv" "{build.path}/{build.project_name}.partitions.bin"
+## Create eeprom
+recipe.objcopy.eep.pattern=
 
-## Create bin
-recipe.objcopy.bin.pattern="{tools.esptool_py.path}/{tools.esptool_py.cmd}" --chip esp32 elf2image --flash_mode "{build.flash_mode}" --flash_freq "{build.flash_freq}" --flash_size "{build.flash_size}" -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf"
-recipe.objcopy.bin.pattern.linux=python "{tools.esptool_py.path}/{tools.esptool_py.cmd}" --chip esp32 elf2image --flash_mode "{build.flash_mode}" --flash_freq "{build.flash_freq}" --flash_size "{build.flash_size}" -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf"
+## Create hex
+recipe.objcopy.hex.1.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.elf2bin}" --eboot "{runtime.tools.eboot}" --app "{build.path}/{build.project_name}.elf" --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size {build.flash_size} --path "{runtime.tools.xtensa-lx106-elf-gcc.path}/bin" --out "{build.path}/{build.project_name}.bin"
+recipe.objcopy.hex.2.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.signing}" --mode sign --privatekey "{build.source.path}/private.key" --bin "{build.path}/{build.project_name}.bin" --out "{build.path}/{build.project_name}.bin.signed" --legacy "{build.path}/{build.project_name}.bin.legacy_sig"
+recipe.objcopy.hex.3.pattern="{runtime.tools.python3.path}/python3" -I "{runtime.tools.sizes}" --elf "{build.path}/{build.project_name}.elf" --path "{runtime.tools.xtensa-lx106-elf-gcc.path}/bin" --mmu "{build.mmuflags}"
 
-## Save bin
+## Save hex
 recipe.output.tmp_file={build.project_name}.bin
 recipe.output.save_file={build.project_name}.{build.variant}.bin
 
 ## Compute size
 recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"
-recipe.size.regex=^(?:\.iram0\.text|\.iram0\.vectors|\.dram0\.data|\.flash\.text|\.flash\.rodata|)\s+([0-9]+).*
-recipe.size.regex.data=^(?:\.dram0\.data|\.dram0\.bss|\.noinit)\s+([0-9]+).*
+recipe.size.regex=^(?:\.irom0\.text|\.text|\.text1|\.data|\.rodata|)\s+([0-9]+).*
+recipe.size.regex.data=^(?:\.data|\.rodata|\.bss)\s+([0-9]+).*
+#recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
 
 # ------------------------------
 
-tools.esptool_py.upload.protocol=esp32
-tools.esptool_py.upload.params.verbose=
-tools.esptool_py.upload.params.quiet=
-tools.esptool_py.upload.pattern="{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
-tools.esptool_py.upload.pattern.linux=python "{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
-tools.esptool_py.upload.network_pattern={network_cmd} -i "{serial.port}" -p "{network.port}" "--auth={network.password}" -f "{build.path}/{build.project_name}.bin"
+tools.esptool.path=
+# Because the variable expansion doesn't allow one tool to find another, the following lines
+# will point to "{runtime.platform.path}/tools/python3/python3" in GIT and
+# "{runtime.tools.python3.path}/python3" for JSON board manager releases.
+tools.esptool.cmd={runtime.tools.python3.path}/python3
+tools.esptool.network_cmd={runtime.tools.python3.path}/python3
+
+
+
+tools.esptool.upload.protocol=esp
+# esptool.py --trace option is a debug option, not a verbose option
+tools.esptool.upload.params.verbose=
+tools.esptool.upload.params.quiet=
+
+# First, potentially perform an erase or nothing
+# Next, do the binary upload
+# Combined in one rule because Arduino doesn't support upload.1.pattern/upload.3.pattern
+tools.esptool.upload.pattern="{cmd}" -I "{runtime.platform.path}/tools/upload.py" --chip esp8266 --port "{serial.port}" --baud "{upload.speed}" "{upload.verbose}" {upload.erase_cmd} {upload.resetmethod} write_flash 0x0 "{build.path}/{build.project_name}.bin"
+tools.esptool.upload.network_pattern="{network_cmd}" -I "{runtime.platform.path}/tools/espota.py" -i "{serial.port}" -p "{network.port}" "--auth={network.password}" -f "{build.path}/{build.project_name}.bin"
+
+tools.mkspiffs.cmd=mkspiffs
+tools.mkspiffs.cmd.windows=mkspiffs.exe
+tools.mkspiffs.path={runtime.tools.mkspiffs.path}
+
+tools.mklittlefs.cmd=mklittlefs
+tools.mklittlefs.cmd.windows=mklittlefs.exe
+tools.mklittlefs.path={runtime.platform.path}/tools/mklittlefs
