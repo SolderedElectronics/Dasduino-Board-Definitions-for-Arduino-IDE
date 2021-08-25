@@ -26,7 +26,6 @@
 
 #include <avr/pgmspace.h>
 
-
 // Definitions to make sure all variants will be supported
 #if defined(__AVR_ATmega48__)
 #define __AVR_ATMEGA48A__
@@ -85,20 +84,22 @@
 #define __AVR_ATMEGA168P__
 #endif
 
-
 // Digital pins
-#define NUM_DIGITAL_PINS            (23)
+#define NUM_DIGITAL_PINS (23)
 
 // PWM pins
 #if defined(__AVR_ATmega8__)
-  #define digitalPinHasPWM(p)      ((p) == 9 || (p) == 10 || (p) == 11)
+#define digitalPinHasPWM(p) ((p) == 9 || (p) == 10 || (p) == 11)
 #else
-  #define digitalPinHasPWM(p)      ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
+#define digitalPinHasPWM(p) ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
 #endif
 
 // Builtin LED
 #define LED_BUILTIN (13)
 static const uint8_t LED = LED_BUILTIN;
+
+#define BUTTON_BUILTIN 7
+#define LEDWS_BUILTIN 8
 
 // Analog pins
 #define PIN_A0 (14)
@@ -117,36 +118,37 @@ static const uint8_t A4 = PIN_A4;
 static const uint8_t A5 = PIN_A5;
 static const uint8_t A6 = PIN_A6;
 static const uint8_t A7 = PIN_A7;
-#define NUM_ANALOG_INPUTS           (8)
-#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
-#define analogPinToChannel(p)       ((p) < NUM_ANALOG_INPUTS ? (p) : (p) >= 14 ? (p) - 14 : -1)
+#define NUM_ANALOG_INPUTS (8)
+#define analogInputToDigitalPin(p) ((p < 6) ? (p) + 14 : -1)
+#define analogPinToChannel(p) ((p) < NUM_ANALOG_INPUTS ? (p) : (p) >= 14 ? (p)-14 \
+																		 : -1)
 
 // SPI
-#define PIN_SPI_SS    (10)
-#define PIN_SPI_MOSI  (11)
-#define PIN_SPI_MISO  (12)
-#define PIN_SPI_SCK   (13)
-static const uint8_t SS   = PIN_SPI_SS;
+#define PIN_SPI_SS (10)
+#define PIN_SPI_MOSI (11)
+#define PIN_SPI_MISO (12)
+#define PIN_SPI_SCK (13)
+static const uint8_t SS = PIN_SPI_SS;
 static const uint8_t MOSI = PIN_SPI_MOSI;
 static const uint8_t MISO = PIN_SPI_MISO;
-static const uint8_t SCK  = PIN_SPI_SCK;
+static const uint8_t SCK = PIN_SPI_SCK;
 
 // i2c
-#define PIN_WIRE_SDA  (18)
-#define PIN_WIRE_SCL  (19)
+#define PIN_WIRE_SDA (18)
+#define PIN_WIRE_SCL (19)
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
 // Interrupts
-#define EXTERNAL_NUM_INTERRUPTS     (2)
-#define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
+#define EXTERNAL_NUM_INTERRUPTS (2)
+#define digitalPinToInterrupt(p) ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
 
 // PCINT
 #if !defined(__AVR_ATmega8__)
-#define digitalPinToPCICR(p)    (((p) >= 0 && (p) <= 22) ? (&PCICR) : ((uint8_t *)0))
+#define digitalPinToPCICR(p) (((p) >= 0 && (p) <= 22) ? (&PCICR) : ((uint8_t *)0))
 #define digitalPinToPCICRbit(p) (((p) <= 7) ? 2 : (((p) <= 13) ? 0 : (((p) <= 19) ? 1 : (((p) <= 21) ? 0 : -1))))
-#define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK2) : (((p) <= 13) ? (&PCMSK0) : (((p) <= 19) ? (&PCMSK1) : (((p) <= 21) ? (&PCMSK0) : (((p) <= 22) ? (&PCMSK1) : ((uint8_t *)0))))))
-#define digitalPinToPCMSKbit(p) (((p) <= 7) ? (p) : (((p) <= 13) ? ((p) - 8) : (((p) <= 21) ? ((p) - 14) : (((p) <= 22) ? ((p) - 16) : -1))))
+#define digitalPinToPCMSK(p) (((p) <= 7) ? (&PCMSK2) : (((p) <= 13) ? (&PCMSK0) : (((p) <= 19) ? (&PCMSK1) : (((p) <= 21) ? (&PCMSK0) : (((p) <= 22) ? (&PCMSK1) : ((uint8_t *)0))))))
+#define digitalPinToPCMSKbit(p) (((p) <= 7) ? (p) : (((p) <= 13) ? ((p)-8) : (((p) <= 21) ? ((p)-14) : (((p) <= 22) ? ((p)-16) : -1))))
 #endif
 
 #define PIN_PD0 0
@@ -181,25 +183,25 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 const uint16_t PROGMEM port_to_mode_PGM[] = {
 	NOT_A_PORT,
 	NOT_A_PORT,
-	(uint16_t) &DDRB,
-	(uint16_t) &DDRC,
-	(uint16_t) &DDRD,
+	(uint16_t)&DDRB,
+	(uint16_t)&DDRC,
+	(uint16_t)&DDRD,
 };
 
 const uint16_t PROGMEM port_to_output_PGM[] = {
 	NOT_A_PORT,
 	NOT_A_PORT,
-	(uint16_t) &PORTB,
-	(uint16_t) &PORTC,
-	(uint16_t) &PORTD,
+	(uint16_t)&PORTB,
+	(uint16_t)&PORTC,
+	(uint16_t)&PORTD,
 };
 
 const uint16_t PROGMEM port_to_input_PGM[] = {
 	NOT_A_PORT,
 	NOT_A_PORT,
-	(uint16_t) &PINB,
-	(uint16_t) &PINC,
-	(uint16_t) &PIND,
+	(uint16_t)&PINB,
+	(uint16_t)&PINC,
+	(uint16_t)&PIND,
 };
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
