@@ -63,7 +63,7 @@
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-1.0.0.zip",
                     "checksum": "SHA-256:cd128c8880d26dc67d6e125ed948fda7e85df83d211dc88732a31cfb6287c87d",
-                    "size": "5719089",
+                    "size": "5978432",
                     "version": "1.0.0",
                     "name": "Dasduino AVR Boards",
                     "architecture": "avr",
