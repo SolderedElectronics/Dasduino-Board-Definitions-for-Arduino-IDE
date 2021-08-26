@@ -227,7 +227,9 @@ lite.menu.uartvoltage.3v.build.uartvoltage=3V
 
 ### BOOTLOADER UART PINS
 lite.menu.bootloaderuart.default=TX:5 (PB2), RX:4 (PB3)
+lite.menu.bootloaderuart.alternate=TX:8 (PA1), RX:9 (PA2)
 lite.menu.bootloaderuart.default.bootloader.uartswap=
+lite.menu.bootloaderuart.alternate.bootloader.uartswap=_alt
 
 ### UPDI/RESET PIN CONFIGURATION & OPTIBOOT ENTRY
 lite.menu.resetpinopti.UPDI=UPDI, Optiboot for 8 sec. after power-on & reset
