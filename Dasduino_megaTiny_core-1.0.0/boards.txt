@@ -80,12 +80,8 @@ lite.build.text_section_start=.text=0x200
 lite.bootloader.flashcommand=-Uflash:w:{runtime.platform.path}/bootloaders/{bootloader.file}:i
 lite.bootloader.tool=avrdude
 
-lite.menu.bootloaderuart.alternate=TX:8 (PA1), RX:9 (PA2)
-lite.menu.bootloaderuart.alternate.bootloader.uartswap=_alt
-
 lite.menu.bootloaderuart.default=TX:5 (PB2), RX:4 (PB3)
 lite.menu.bootloaderuart.default.bootloader.uartswap=
-
 
 lite.menu.resetpinopti.reset=Reset (DANGER - Read docs first!)
 lite.menu.resetpinopti.reset.bootloader.file=optiboot_x/optiboot_txyz{bootloader.uartswap}_rst.hex
