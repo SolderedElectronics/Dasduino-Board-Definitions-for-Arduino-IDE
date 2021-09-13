@@ -62,8 +62,8 @@
                     "category": "Dasduino",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-1.0.0.zip",
-                    "checksum": "SHA-256:adcc9c4eac4c54af3a20457180efd4078cff1b87691cd823eeb82292e86af879",
-                    "size": "6017932",
+                    "checksum": "SHA-256:d97d60202c2c8f0dfc48946889e086e8fb2dcbbcd71e9f6213f5eab528d362b7",
+                    "size": "6022051",
                     "version": "1.0.0",
                     "name": "Dasduino AVR Boards",
                     "architecture": "avr",
@@ -73,6 +73,9 @@
                         },
                         {
                             "name": "Dasduino Core LoRa (Atmega328P)"
+                        },
+                        {
+                            "name": "Dasduino Coreplus (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": []
