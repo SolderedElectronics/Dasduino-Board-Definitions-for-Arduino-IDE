@@ -43,7 +43,7 @@ UartClass::UartClass(
     { hwserial_rx_pin, hwserial_tx_pin, uart_mux },
     { hwserial_rx_pin_swap, hwserial_tx_pin_swap, uart_mux_swap }
   },
-  _pin_set(1),
+  _pin_set(0),
   _written(false),
   _rx_buffer_head(0),
   _rx_buffer_tail(0),

@@ -19,7 +19,7 @@
 
 #ifndef Arduino_h
 #define Arduino_h
-
+#include "core_parts.h"
 #include "api/ArduinoAPI.h"
 
 #include <avr/pgmspace.h>
@@ -29,39 +29,160 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+  // Constant checks error handler
+  void badArg(const char*) __attribute__((error("")));
+  void badCall(const char*) __attribute__((error("")));
+  inline __attribute__((always_inline)) void check_constant_pin(pin_size_t pin)
+  {
+    if(!__builtin_constant_p(pin))
+      badArg("Fast digital pin must be a constant");
+  }
+/* ADC-related stuff */
+/* With 2.3.0, we do the same thing as ATTinyCore and DxCore to specify
+   that something is a channel number: set the high bit 1, since it is
+   incredibly unlikely that a part with more than 127 digital pins will
+   ever be supported by this core */
 
-/* Analog reference options */
+#define ADC_CH(ch)      (0x80 | (ch))
 
-/* Change in mega4809: two places to define analog reference
-  - VREF peripheral defines internal reference
-  - analog peripherals define internal/Vdd/external
-*/
+#if MEGATINYCORE_SERIES < 2
+  /* ADC constants for 0/1-series */
+  #define INTERNAL0V55    (VREF_ADC0REFSEL_0V55_gc >> VREF_ADC0REFSEL_gp)
+  #define INTERNAL1V1     (VREF_ADC0REFSEL_1V1_gc >> VREF_ADC0REFSEL_gp)
+  #define INTERNAL2V5     (VREF_ADC0REFSEL_2V5_gc >> VREF_ADC0REFSEL_gp)
+  #define INTERNAL4V3     INTERNAL4V34
+  #define INTERNAL4V34    (VREF_ADC0REFSEL_4V34_gc >> VREF_ADC0REFSEL_gp)
+  #define INTERNAL1V5     (VREF_ADC0REFSEL_1V5_gc >> VREF_ADC0REFSEL_gp)
 
-// internal from VREF
+  #define DEFAULT         ADC_REFSEL_VDDREF_gc
+  #define INTERNAL        ADC_REFSEL_INTREF_gc
+  #define VDD             ADC_REFSEL_VDDREF_gc
 
-/* Values shifted to avoid clashing with ADC REFSEL defines
-  Will shift back in analog_reference function
-*/
-#define INTERNAL0V55 (VREF_ADC0REFSEL_0V55_gc >> VREF_ADC0REFSEL_gp)
-#define INTERNAL1V1 (VREF_ADC0REFSEL_1V1_gc >> VREF_ADC0REFSEL_gp)
-#define INTERNAL2V5 (VREF_ADC0REFSEL_2V5_gc >> VREF_ADC0REFSEL_gp)
-#define INTERNAL4V3 INTERNAL4V34
-#define INTERNAL4V34 (VREF_ADC0REFSEL_4V34_gc >> VREF_ADC0REFSEL_gp)
-#define INTERNAL1V5 (VREF_ADC0REFSEL_1V5_gc >> VREF_ADC0REFSEL_gp)
+  #if (defined(__AVR_ATtiny1614__) || defined(__AVR_ATtiny1616__) || defined(__AVR_ATtiny1617__) || defined(__AVR_ATtiny3216__) || defined(__AVR_ATtiny3217__) )
+    #define EXTERNAL      ADC_REFSEL_VREFA_gc
+  #endif
 
-#define DEFAULT     ADC_REFSEL_VDDREF_gc
-#define INTERNAL    ADC_REFSEL_INTREF_gc
-#define VDD         ADC_REFSEL_VDDREF_gc
-#ifdef DAC0
-#define ADC_DAC0 ADC_MUXPOS_DAC0_gc
+  #define ADC_TEMPERATURE ADC_CH(ADC_MUXPOS_TEMPSENSE_gc)
+  #define ADC_INTREF      ADC_CH(ADC_MUXPOS_INTREF_gc)
+  #define ADC_GROUND      ADC_CH(ADC_MUXPOS_GND_gc)
+  #ifdef DAC0
+    #define ADC_DAC0      ADC_CH(ADC_MUXPOS_DAC0_gc)
+    #define ADC_DACREF0   ADC_DAC0
+  #endif
+  // DACREF1 and DACREF2 can only be measured with ADC1. ADC1 is not exposed by megaTinyCore at this time.
+  #define ADC_DEFAULT_SAMPLE_LENGTH 14
+  #define ADC_ACC2        0x81
+  #define ADC_ACC4        0x82
+  #define ADC_ACC8        0x83
+  #define ADC_ACC16       0x84
+  #define ADC_ACC32       0x85
+  #define ADC_ACC64       0x86
+
+  #define getAnalogSampleDuration()   (ADC0.SAMPCTRL)
+
+#else
+  /* ADC constants for 2-series */
+  #define VDD             (0) /* ADC_REFSEL_VDD_gc    */
+  #define DEFAULT         VDD /* Gee, I really wish these were named differently - both names are horrendously generic and could mean lots of different things that should be distinguished. */
+  #define EXTERNAL        (2) /* ADC_REFSEL_VREFA_gc  */
+  #define INTERNAL1V024   (4) /* ADC_REFSEL_1024MV_gc */
+  #define INTERNAL2V048   (5) /* ADC_REFSEL_2048MV_gc */
+  #define INTERNAL2V5     (6) /* ADC_REFSEL_2500MV_gc */
+  #define INTERNAL4V096   (7) /* ADC_REFSEL_4096MV_gc */
+  #define INTERNAL4V1     INTERNAL4V096 /* Alias */
+
+  #define AC_REF_1V024    (VREF_AC0REFSEL_1V024_gc)
+  #define AC_REF_2V048    (VREF_AC0REFSEL_2V048_gc)
+  #define AC_REF_2V5      (VREF_AC0REFSEL_2V5_gc)
+  #define AC_REF_4V096    (VREF_AC0REFSEL_4V096_gc)
+  #define AC_REF_VDD      (VREF_AC0REFSEL_AVDD_gc)
+  #define AC_REF_4V1      AC_REF_4V096/* Alias */
+
+  #define ADC_TEMPERATURE ADC_CH(ADC_MUXPOS_TEMPSENSE_gc)
+  #define ADC_GROUND      ADC_CH(ADC_MUXPOS_GND_gc)
+  #define ADC_DACREF0     ADC_CH(ADC_MUXPOS_DACREF0_gc)
+  #define ADC_DAC0        ADC_DACREF0 /* for compatibility, since on tinyAVR 0/1-seies, the DAC0 voltage is also AC0 DACREF if used */
+  #define ADC_VDDDIV10    ADC_CH(ADC_MUXPOS_VDDDIV10_gc)
+
+  /* >= 1us - can't use clockcycles per microsecond from timers.h because
+  this needs to always round up */
+  #if !(F_CPU >= 32000000)
+    #define TIMEBASE_1US (((F_CPU + 999999UL)/1000000UL) << ADC_TIMEBASE_gp)
+  #else
+    #define TIMEBASE_1US (31 << ADC_TIMEBASE_gp)
+  #endif
+
+  #define ADC_DEFAULT_SAMPLE_LENGTH 15
+  #define ADC_ACC2        0x81
+  #define ADC_ACC4        0x82
+  #define ADC_ACC8        0x83
+  #define ADC_ACC16       0x84
+  #define ADC_ACC32       0x85
+  #define ADC_ACC64       0x86
+  #define ADC_ACC128      0x87
+  #define ADC_ACC256      0x88
+  #define ADC_ACC512      0x89
+  #define ADC_ACC1024     0x8A
+
+  #define getAnalogSampleDuration()   (ADC0.CTRLE)
+
+  #define LOW_LAT_ON      0x03
+  #define LOW_LAT_OFF     0x02
+  #define PGA_KEEP_ON     0x08
+  #define PGA_AUTO_OFF    0x0C
+  #define PGA_OFF_ONCE    0x04
+
 #endif
 
-#if (defined(__AVR_ATtiny1614__) || defined(__AVR_ATtiny1616__) || defined(__AVR_ATtiny1617__) || defined(__AVR_ATtiny3216__) || defined(__AVR_ATtiny3217__) )
-#define EXTERNAL  ADC_REFSEL_VREFA_gc
-#endif
+/* Errors in analogReadEnh and analogReadDiff are large negative numbers,
+ * since it's a signed long  returned, and  a raw maximally accumulated
+ * differential reading could be a huge negative number. Largest negative
+ * possible is -2 147 483 648; It would be hard to tell the difference between
+ * that and -2147483647, or -2147483646 and remember which is which,
+ * so they start at -2100000000.
+ * Errors for normal analogRead are small negative numbers because
+ * analogRead should never return a negative. Neither should analogReadEnh
+ * but I decided to have only 2 sets of ADC errors, not three.  */
 
-#define ADC_TEMPERATURE ADC_MUXPOS_TEMPSENSE_gc
-#define ADC_INTREF ADC_MUXPOS_INTREF_gc
+#define ADC_ERROR_BAD_PIN_OR_CHANNEL                -32765
+#define ADC_ERROR_DISABLED                          -32767
+#define ADC_ERROR_BUSY                              -32766
+#define ADC_ENH_ERROR_BAD_PIN_OR_CHANNEL       -2100000000
+// positive channel is not (0x80 | valid_channel) nor a digital pin number
+// referring to a pin with analog input.
+#define ADC_ENH_ERROR_BUSY                     -2100000001
+// The ADC is currently performing another conversion in the background (either
+// in free-running mode or a long-running burst conversion; taking a burst
+// accumulated reading and then calling a specified function when the result
+// was finally ready may be supported in a future version.
+#define ADC_ENH_ERROR_INVALID_SAMPLE_LENGTH    -2100000002
+// SAMPLEN can be specified when calling analogReadEnh; an invalid value was
+// specified. The maximum depends on the hardware.
+#define ADC_ENH_ERROR_RES_TOO_LOW              -2100000003
+// analogReadEnh() must not be called with a resolution lower than 8-bits.
+// you can right-shift as well as the library can.
+#define ADC_ENH_ERROR_RES_TOO_HIGH             -2100000004
+// Only resonlutions that can be generated through accumulator oversample
+// + decimation are supported, maximum is 13, 15, or 17 bits. This will
+// also be returned if a larger raw accumulated result is requested.
+#define ADC_DIFF_ERROR_BAD_NEG_PIN             -2100000005
+// Analog pin given as negative pin is not a valid negative mux pin
+#define ADC_ENH_ERROR_NOT_DIFF_ADC             -2100000006
+// analogReadDiff() called from a part without a differential ADC;
+// Never actually returned, because we give compile error here
+#define ADC_ENH_ERROR_DISABLED                 -2100000007
+// The ADC is not currently enabled.
+#define ADC_ERROR_INVALID_CLOCK                     -32764
+// Returned by analogClockSpeed if the value in the register is currently unknown, or if an invalid frequency is requested.
+
+
+#if (!defined(TCB_CLKSEL2_bm))
+  // This means it's a tinyAVR 0/1-series, or a megaAVR 0-series.
+  // Their TCB_CLKSEL enums use different names for the clock settings, for reasons unclear.
+  // To align with the future, we use the Dx-series names for these.
+  #define TCB_CLKSEL_DIV2_gc TCB_CLKSEL_CLKDIV2_gc
+  #define TCB_CLKSEL_DIV1_gc TCB_CLKSEL_CLKDIV1_gc
+#endif
 
 #define VCC_5V0 2
 #define VCC_3V3 1
@@ -71,17 +192,82 @@ extern "C" {
 #define noInterrupts() cli()
 
 
+// NON-STANDARD API
+
+
+void init_ADC0(void); /* Called by init() after clock is set */
+void init_ADC1(void); /* Called by init() on parts with ADC1 */
+void init_clock(void);/* called by init() first  */
+void init_millis();   /* called by init() last   */
+void init_timers();   /* called by init()        */
+void init_TCA0();     /* called by init_timers() */
+void init_TCD0();     /* called by init_timers() */
+
+// Peripheral takeover
+// These will remove things controlled by
+// these timers from analogWrite()/turnOffPWM()
+// 0x40 - TCD0, 0x10 - TCA0
+void takeOverTCA0();
+void takeOverTCD0();
+
+// millis() timer control
+void stop_millis();                   // Disable the interrupt and stop counting millis.
+void restart_millis();                // Reinitialize the timer and start counting millis again
+void set_millis(uint32_t newmillis);  // set current millis time.
+/* Expected usage:
+ * uint32_t oldmillis=millis();
+ * stop_millis();
+ * user_code_that_messes with timer
+ * set_millis(oldmillis+estimated_time_spent_above)
+ * restart millis();
+ *
+ * Also, this might at times be appropriate
+ * set_millis(millis() + known_offset);
+ * after doing something that we know will block too long for millis to keep time
+ * see also
+ */
+
+// DIGITAL I/O EXTENDED FUNCTIONS
+// Covered in documentation.
+int32_t     analogReadEnh(        uint8_t pin, /* no neg */ uint8_t res, uint8_t gain);
+int32_t     analogReadDiff(       uint8_t pos, uint8_t neg, uint8_t res, uint8_t gain);
+int16_t     analogClockSpeed(     int16_t frequency,        uint8_t options);
+bool        analogSampleDuration( uint8_t dur);
+void        DACReference(         uint8_t mode);
+void        ADCPowerOptions(      uint8_t options); /* 2-series only */
+
+// DIGITAL I/O EXTENDED FUNCTIONS
+// Covered in documentation.
+void           openDrain(uint8_t pinNumber,   uint8_t val);
+int8_t   digitalReadFast(uint8_t pinNumber               );
+void    digitalWriteFast(uint8_t pinNumber,   uint8_t val);
+void       openDrainFast(uint8_t pinNumber,   uint8_t val);
+void        pinConfigure(uint8_t pinNumber, uint16_t mode);
+void          turnOffPWM(uint8_t pinNumber               ); /* Turns off pins that analogWrite() can turn on PWM for. Does nothing if the pin is outputting PWM, but user has "taken over" that timer,
+nor does it do anything to PWM generated by a type B timer, which are not used by analogWrite()*/
+
 // avr-libc defines _NOP() since 1.6.2
+// It does? Better tell avr-gcc, because it insists otherwise...
 #ifndef _NOP
 #define _NOP() do { __asm__ volatile ("nop"); } while (0)
 #endif
+#ifndef _NOPNOP
+// rjmp to current address is 1 instruction for a 2 cycle delay, as opposed for 2 for pair of NOPs.
+#define _NOPNOP() do { __asm__ volatile ("rjmp .+0"); } while (0)
+#endif
+/* note also that rcall .+2, cpse r0, r0, ret should do 8 (2 + 4 + 2) cycles in 3 words
+ * assuming I'm not missing something, then, this would also work
+ * rcall .+4, rcall .+2 cpse r0, r0, ret  ->> 2 + 4 + 2 + 4 + 2 = 14 cycles in 4 words.
+ * 2 + n words = 2 + 6n cycles. But best of all, if you have an assembly function with ret naturally a part of it in range
+ * rcall the 'ing the already used ret is a 6 cycle NOP ;-) */
+
 
 /* Allows performing a correction on the CPU value using the signature row
-  values indicating oscillator error provided from the device manufacturer */
+   values indicating oscillator error provided from the device manufacturer */
 #define PERFORM_SIGROW_CORRECTION_F_CPU 0
 
-// We declare it here... we never define it anywhere.... I think I'd rather a user get the more straightforward error message?
-//uint16_t clockCyclesPerMicrosecondComp(uint32_t clk);
+// We declared it here... we never defined it anywhere, and I'll be damned if I know what it is supposed to do....
+// uint16_t clockCyclesPerMicrosecondComp(uint32_t clk);
 
 uint16_t clockCyclesPerMicrosecond();
 unsigned long clockCyclesToMicroseconds(unsigned long cycles);
@@ -91,7 +277,7 @@ unsigned long microsecondsToClockCycles(unsigned long microseconds);
 uint16_t millisClockCyclesPerMicrosecond();
 unsigned long millisClockCyclesToMicroseconds(unsigned long cycles);
 unsigned long microsecondsToMillisClockCycles(unsigned long microseconds);
-
+__attribute__ ((noinline)) void _delayMicroseconds(unsigned int us);
 // Get the bit location within the hardware port of the given virtual pin.
 // This comes from the pins_*.c file for the active board configuration.
 
@@ -104,270 +290,69 @@ extern const uint8_t digital_pin_to_timer[];
 // This comes from the pins_*.c file for the active board configuration.
 //
 // These perform slightly better as macros compared to inline functions
-//
-#define NOT_A_PIN 255
-#define NOT_A_PORT 255
-#define NOT_AN_INTERRUPT 255
 
-#define PA 0
-#define PB 1
-#define PC 2
-#define PD 3
-#define PE 4
-#define PF 5
-#define NUM_TOTAL_PORTS 6
+#define digitalPinToPort(pin)               ((pin  < NUM_TOTAL_PINS)  ? digital_pin_to_port[pin]          : NOT_A_PIN )
+#define digitalPinToBitPosition(pin)        ((pin  < NUM_TOTAL_PINS)  ? digital_pin_to_bit_position[pin]  : NOT_A_PIN )
+#define digitalPinToBitMask(pin)            ((pin  < NUM_TOTAL_PINS)  ? digital_pin_to_bit_mask[pin]      : NOT_A_PIN )
+#define digitalPinToTimer(pin)              ((pin  < NUM_TOTAL_PINS)  ? digital_pin_to_timer[pin]         : NOT_ON_TIMER )
+#define portToPortStruct(port)              ((port < NUM_TOTAL_PORTS) ? ((PORT_t *) &PORTA + port)                  : NULL)
+#define digitalPinToPortStruct(pin)         ((pin  < NUM_TOTAL_PINS)  ? ((PORT_t *) &PORTA + digitalPinToPort(pin)) : NULL)
+#define analogPinToBitPosition(pin)         ((digitalPinToAnalogInput(pin) != NOT_A_PIN) ? digital_pin_to_bit_position[pin] : NOT_A_PIN )
+#define analogPinToBitMask(pin)             ((digitalPinToAnalogInput(pin) != NOT_A_PIN) ? digital_pin_to_bit_mask[pin]     : NOT_A_PIN )
+#define getPINnCTRLregister(port, bit_pos)  (((port != NULL) && (bit_pos < NOT_A_PIN)) ? ((volatile uint8_t *)&(port->PIN0CTRL) + bit_pos) : NULL )
 
-// These are used for two things: identifying the timer on a pin
-// and for the MILLIS_TIMER define that the uses can test which timer
-// actually being used for millis is actually being used
-// Reasoning these constants are what they are:
-// Low 3 bits are the number of that peripheral
-// other bits specify the type of timer
-// TCA=0x10, TCB=0x20, TCD=0x40 (leaving room in case Microchip ever decides to release a TCC)
-// DAC=0x80, RTC=0x90,
-// Things that aren't hardware timers with output compare are after that
-// DAC output isn't a timer, but has to be treated as such by PINMODE
-// RTC timer is a tiner, but certainly not that kind of timer
-#define NOT_ON_TIMER 0x00
-#define TIMERA0 0x10
-#define TIMERA1 0x11 // Not present on any tinyAVR 0/1-series
-#define TIMERB0 0x20
-#define TIMERB1 0x21
-#define TIMERB2 0x22 // Not present on any tinyAVR 0/1-series
-#define TIMERB3 0x23 // Not present on any tinyAVR 0/1-series
-#define TIMERB4 0x23 // Not present on any tinyAVR 0/1-series
-#define TIMERB5 0x23 // Not present on any tinyAVR 0/1-series
-#define TIMERD0 0x40
-#define DACOUT 0x80
-#define TIMERRTC 0x90
-#define TIMERRTC_XTAL 0x91
-
-void setup_timers();
-
-#define digitalPinToPort(pin) ( (pin < NUM_TOTAL_PINS) ? digital_pin_to_port[pin] : NOT_A_PIN )
-#define digitalPinToBitPosition(pin) ( (pin < NUM_TOTAL_PINS) ? digital_pin_to_bit_position[pin] : NOT_A_PIN )
-#define analogPinToBitPosition(pin) ( (digitalPinToAnalogInput(pin)!=NOT_A_PIN) ? digital_pin_to_bit_position[pin] : NOT_A_PIN )
-#define digitalPinToBitMask(pin) ( (pin < NUM_TOTAL_PINS) ? digital_pin_to_bit_mask[pin] : NOT_A_PIN )
-#define analogPinToBitMask(pin) ( (digitalPinToAnalogInput(pin)!=NOT_A_PIN) ? digital_pin_to_bit_mask[pin] : NOT_A_PIN )
-#define digitalPinToTimer(pin) ( (pin < NUM_TOTAL_PINS) ? digital_pin_to_timer[pin] : NOT_ON_TIMER )
-
-#define portToPortStruct(port) ( (port < NUM_TOTAL_PORTS) ? ((PORT_t *)&PORTA + port) : NULL)
-#define digitalPinToPortStruct(pin) ( (pin < NUM_TOTAL_PINS) ? ((PORT_t *)&PORTA + digitalPinToPort(pin)) : NULL)
-#define getPINnCTRLregister(port, bit_pos) ( ((port != NULL) && (bit_pos < NOT_A_PIN)) ? ((volatile uint8_t *)&(port->PIN0CTRL) + bit_pos) : NULL )
 #define digitalPinToInterrupt(P) (P)
 
-#define portOutputRegister(P) ( (volatile uint8_t *)( &portToPortStruct(P)->OUT ) )
-#define portInputRegister(P) ( (volatile uint8_t *)( &portToPortStruct(P)->IN ) )
-#define portModeRegister(P) ( (volatile uint8_t *)( &portToPortStruct(P)->DIR ) )
-
-//#defines to identify part families
-#if defined(__AVR_ATtiny3227__)
-#define MEGATINYCORE_MCU 3227
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx27__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny1627__)
-#define MEGATINYCORE_MCU 1627
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx27__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny827__)
-#define MEGATINYCORE_MCU 827
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx27__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny427__)
-#define MEGATINYCORE_MCU 427
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx27__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny3226__)
-#define MEGATINYCORE_MCU 3226
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx26__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny1626__)
-#define MEGATINYCORE_MCU 1626
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx26__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny826__)
-#define MEGATINYCORE_MCU 826
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx26__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny426__)
-#define MEGATINYCORE_MCU 426
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx26__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny3224__)
-#define MEGATINYCORE_MCU 3224
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx24__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny1624__)
-#define MEGATINYCORE_MCU 1624
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx24__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny824__)
-#define MEGATINYCORE_MCU 824
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx24__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny424__)
-#define MEGATINYCORE_MCU 424
-#define MEGATINYCORE_SERIES 2
-#define __AVR_ATtinyx24__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny3217__)
-#define MEGATINYCORE_MCU 3217
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx17__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny1617__)
-#define MEGATINYCORE_MCU 1617
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx17__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny817__)
-#define MEGATINYCORE_MCU 817
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx17__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny417__)
-#define MEGATINYCORE_MCU 417
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx17__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny3207__)
-#define MEGATINYCORE_MCU 3207
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx07__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny1607__)
-#define MEGATINYCORE_MCU 1607
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx07__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny807__)
-#define MEGATINYCORE_MCU 807
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx07__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny407__)
-#define MEGATINYCORE_MCU 407
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx07__
-#define __AVR_ATtinyxy7__
-#elif defined(__AVR_ATtiny3216__)
-#define MEGATINYCORE_MCU 3216
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny1616__)
-#define MEGATINYCORE_MCU 1616
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny816__)
-#define MEGATINYCORE_MCU 816
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny416__)
-#define MEGATINYCORE_MCU 416
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx16__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny1606__)
-#define MEGATINYCORE_MCU 1606
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny806__)
-#define MEGATINYCORE_MCU 806
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny406__)
-#define MEGATINYCORE_MCU 406
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx06__
-#define __AVR_ATtinyxy6__
-#elif defined(__AVR_ATtiny214__)
-#define MEGATINYCORE_MCU 214
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx14__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny1614__)
-#define MEGATINYCORE_MCU 1614
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx14__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny814__)
-#define MEGATINYCORE_MCU 814
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx14__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny414__)
-#define MEGATINYCORE_MCU 414
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx14__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny204__)
-#define MEGATINYCORE_MCU 204
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx04__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny804__)
-#define MEGATINYCORE_MCU 804
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx04__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny404__)
-#define MEGATINYCORE_MCU 404
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx04__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny1604__)
-#define MEGATINYCORE_MCU 1604
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx04__
-#define __AVR_ATtinyxy4__
-#elif defined(__AVR_ATtiny212__)
-#define MEGATINYCORE_MCU 212
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx12__
-#define __AVR_ATtinyxy2__
-#elif defined(__AVR_ATtiny412__)
-#define MEGATINYCORE_MCU 412
-#define MEGATINYCORE_SERIES 1
-#define __AVR_ATtinyx12__
-#define __AVR_ATtinyxy2__
-#elif defined(__AVR_ATtiny202__)
-#define MEGATINYCORE_MCU 202
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx02__
-#define __AVR_ATtinyxy2__
-#elif defined(__AVR_ATtiny402__)
-#define MEGATINYCORE_MCU 402
-#define MEGATINYCORE_SERIES 0
-#define __AVR_ATtinyx02__
-#define __AVR_ATtinyxy2__
-#else
-#error "Can't-happen: unknown chip somehow being used!"
-#endif
-
-#if (MEGATINYCORE_SERIES==2)
-#error "tinyAVR 2-series parts are not yet supported"
-#endif
-
-// Version related defines now handled in platform.txt
-#define MEGATINYCORE_NUM ((MEGATINYCORE_MAJOR<<24)+(MEGATINYCORE_MINOR<<16)+(MEGATINYCORE_PATCH<<8)+MEGATINYCORE_RELEASED)
+#define portOutputRegister(P) ((volatile uint8_t *)(&portToPortStruct(P)->OUT))
+#define portInputRegister(P)  ((volatile uint8_t *)(&portToPortStruct(P)->IN ))
+#define portModeRegister(P)   ((volatile uint8_t *)(&portToPortStruct(P)->DIR))
 
 
+
+/* These are used as the second argument to pinConfigure(pin,  configuration)
+ * You can bitwise OR as many of these as you want, or just do one. Very
+ * flexible function; not the world's fastest though. Directives are handled
+ * in the order that their non-alias representations are shown in this list.
+ * There is no ordering for directives effecting the same bitfield. A bitwise
+ * combination of these will instead generate a different result - both
+ * setting and clearing the same configuration bit at once will generally
+ * toggle it if that option is available. If that option is not available
+ * the directive is invalid; this core makes no claims relating to the behavior
+ * of pinConfigure() when configuration is invalid. */
+#define PIN_DIR_OUTPUT       0x0001 // Alias
+#define PIN_DIR_INPUT        0x0002 // Alias
+#define PIN_DIR_OUT          0x0001 // Alias
+#define PIN_DIR_IN           0x0002 // Alias
+#define PIN_DIR_TOGGLE       0x0003 // Alias
+#define PIN_OUT_HIGH         0x0004 // Alias
+#define PIN_OUT_LOW          0x0008 // Alias
+#define PIN_OUT_TOGGLE       0x000C // Alias
+#define PIN_DIRSET           0x0001
+#define PIN_DIRCLR           0x0002
+#define PIN_DIRTGL           0x0003
+#define PIN_OUTSET           0x0004
+#define PIN_OUTCLR           0x0008
+#define PIN_OUTTGL           0x000C
+#define PIN_INPUT_ENABLE     0x0080
+#define PIN_INT_CHANGE       0x0090
+#define PIN_INT_RISE         0x00A0
+#define PIN_INT_FALL         0x00B0
+#define PIN_INPUT_DISABLE    0x00C0
+#define PIN_INT_LEVEL        0x00D0
+#define PIN_PULLUP           0x0100 // Alias
+#define PIN_NOPULLUP         0x0200 // Alias
+#define PIN_PULLUP_ON        0x0100
+#define PIN_PULLUP_OFF       0x0200
+#define PIN_PULLUP_TGL       0x0300 // I suppose I can see uses for this
+#define PIN_INVERT_ON        0x4000
+#define PIN_INVERT_OFF       0x8000
+#define PIN_INVERT_TGL       0xC000 // One of the less useful ones...
+#define PIN_INLVL_TTL        0x1000 // MVIO parts only
+#define PIN_INLVL_SCHMIT     0x2000 // MVIO parts only
+#define PIN_INLVL_ON         0x1000 // MVIO parts only
+#define PIN_INLVL_OFF        0x2000 // MVIO parts only
+// Used for openDrain()
+#define FLOATING      HIGH
 
 
 #ifdef __cplusplus
@@ -376,28 +361,71 @@ void setup_timers();
 
 #ifdef __cplusplus
   #include "UART.h"
-
+  int32_t analogReadEnh( uint8_t pin,              uint8_t res = ADC_NATIVE_RESOLUTION, uint8_t gain = 0);
+  int32_t analogReadDiff(uint8_t pos, uint8_t neg, uint8_t res = ADC_NATIVE_RESOLUTION, uint8_t gain = 0);
+  int16_t analogClockSpeed(int16_t frequency = 0, uint8_t options = 0);
 #endif
 
+// Include the variants
 #include "pins_arduino.h"
+
+// Based on those, some ugly formulae for "smart-pin" defines that follow the mux regs around:
+
+
 #ifdef PIN_WIRE_SCL_PINSWAP_1
-  #define SDA ((uint8_t) (PORTMUX.CTRLB&PORTMUX_TWI0_bm?PIN_WIRE_SDA_PINSWAP_1:PIN_WIRE_SDA))
-  #define SCL ((uint8_t) (PORTMUX.CTRLB&PORTMUX_TWI0_bm?PIN_WIRE_SCL_PINSWAP_1:PIN_WIRE_SCL))
-#else
-  static const uint8_t SDA = PIN_WIRE_SDA;
-  static const uint8_t SCL = PIN_WIRE_SCL;
+  #define SDA_NOW ((uint8_t) (PORTMUX.CTRLB & PORTMUX_TWI0_bm ? PIN_WIRE_SDA_PINSWAP_1 : PIN_WIRE_SDA))
+  #define SCL_NOW ((uint8_t) (PORTMUX.CTRLB & PORTMUX_TWI0_bm ? PIN_WIRE_SCL_PINSWAP_1 : PIN_WIRE_SCL))
+  static const uint8_t SDA_ALT __attribute__ ((deprecated("Use SDA_ALT1 to match the conventions used in DxCore"))) = PIN_WIRE_SDA_PINSWAP_1; /* deprecated */
+  static const uint8_t SCL_ALT __attribute__ ((deprecated("Use SCL_ALT1 to match the conventions used in DxCore"))) = PIN_WIRE_SCL_PINSWAP_1; /* deprecated */
+  static const uint8_t SDA_ALT1 = PIN_WIRE_SCL_PINSWAP_1;
+  static const uint8_t SCL_ALT1 = PIN_WIRE_SCL_PINSWAP_1;
 #endif
+static const uint8_t SDA = PIN_WIRE_SDA;
+static const uint8_t SCL = PIN_WIRE_SCL;
+
 
 #ifdef PIN_SPI_SCK_PINSWAP_1
-  #define SS ((uint8_t) (PORTMUX.CTRLB&PORTMUX_SPI0_bm?PIN_SPI_SS_PINSWAP_1:PIN_SPI_SS))
-  #define MOSI ((uint8_t) (PORTMUX.CTRLB&PORTMUX_SPI0_bm?PIN_SPI_MOSI_PINSWAP_1:PIN_SPI_MOSI))
-  #define MISO ((uint8_t) (PORTMUX.CTRLB&PORTMUX_SPI0_bm?PIN_SPI_MISO_PINSWAP_1:PIN_SPI_MISO))
-  #define SCK ((uint8_t) (PORTMUX.CTRLB&PORTMUX_SPI0_bm?PIN_SPI_SCK_PINSWAP_1:PIN_SPI_SCK))
+  #define SS_NOW    ((uint8_t) (PORTMUX.CTRLB & PORTMUX_SPI0_bm ? PIN_SPI_SS_PINSWAP_1    : PIN_SPI_SS))
+  #define MOSI_NOW  ((uint8_t) (PORTMUX.CTRLB & PORTMUX_SPI0_bm ? PIN_SPI_MOSI_PINSWAP_1  : PIN_SPI_MOSI))
+  #define MISO_NOW  ((uint8_t) (PORTMUX.CTRLB & PORTMUX_SPI0_bm ? PIN_SPI_MISO_PINSWAP_1  : PIN_SPI_MISO))
+  #define SCK_NOW   ((uint8_t) (PORTMUX.CTRLB & PORTMUX_SPI0_bm ? PIN_SPI_SCK_PINSWAP_1   : PIN_SPI_SCK))
+  static const uint8_t SS_ALT    __attribute__ ((deprecated("Use SS_ALT1 to match the conventions used in DxCore"  ))) = PIN_SPI_SS_PINSWAP_1; /* deprecated */
+  static const uint8_t MOSI_ALT  __attribute__ ((deprecated("Use MOSI_ALT1 to match the conventions used in DxCore"))) = PIN_SPI_MOSI_PINSWAP_1; /* deprecated */
+  static const uint8_t MISO_ALT  __attribute__ ((deprecated("Use MISO_ALT1 to match the conventions used in DxCore"))) = PIN_SPI_MISO_PINSWAP_1; /* deprecated */
+  static const uint8_t SCK_ALT   __attribute__ ((deprecated("Use SCK_ALT1 to match the conventions used in DxCore" ))) = PIN_SPI_SCK_PINSWAP_1; /* deprecated */
+  static const uint8_t SS_ALT1   = PIN_SPI_SS_PINSWAP_1;
+  static const uint8_t MOSI_ALT1 = PIN_SPI_MOSI_PINSWAP_1;
+  static const uint8_t MISO_ALT1 = PIN_SPI_MISO_PINSWAP_1;
+  static const uint8_t SCK_ALT1  = PIN_SPI_SCK_PINSWAP_1;
+#endif
+static const uint8_t SS   = PIN_SPI_SS;
+static const uint8_t MOSI = PIN_SPI_MOSI;
+static const uint8_t MISO = PIN_SPI_MISO;
+static const uint8_t SCK  = PIN_SPI_SCK;
+
+
+
+#define CORE_HAS_FASTIO 1
+#define CORE_HAS_OPENDRAIN 1
+#define CORE_HAS_PINCONFIG 1
+#define CORE_HAS_FASTPINMODE 0
+
+#if (MEGATINYCORE_SERIES == 2)
+  // if analogReadEnh() supplied, this is defined as 1
+  #define CORE_HAS_ANALOG_ENH 1
+  // if analogReadDiff() supplied, this is defined as 1
+  #define CORE_HAS_ANALOG_DIFF 1
 #else
-  static const uint8_t SS   = PIN_SPI_SS;
-  static const uint8_t MOSI = PIN_SPI_MOSI;
-  static const uint8_t MISO = PIN_SPI_MISO;
-  static const uint8_t SCK  = PIN_SPI_SCK;
+  #define CORE_HAS_ANALOG_ENH 1
+  // if analogReadDiff() supplied, this is defined as 1
+  #define CORE_HAS_ANALOG_DIFF 0
+#endif
+
+
+#ifndef SUPPORT_LONG_TONES
+  #if (PROGMEM_SIZE > 8192)
+    #define SUPPORT_LONG_TONES 1
+  #endif
 #endif
 
 

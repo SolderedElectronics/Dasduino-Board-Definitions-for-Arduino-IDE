@@ -4,8 +4,15 @@
 # For more info:
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 
-name=Dasduino megaTiny Boards
-version=1.0.0
+name=megaTinyCore
+versionnum.major=2
+versionnum.minor=4
+versionnum.patch=3
+versionnum.postfix=
+versionnum.released=0
+
+version={versionnum.major}.{versionnum.minor}.{versionnum.patch}{versionnum.postfix}
+
 build.versiondefines=-DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DMEGATINYCORE="{version}" -DMEGATINYCORE_MAJOR={versionnum.major}UL -DMEGATINYCORE_MINOR={versionnum.minor}UL -DMEGATINYCORE_PATCH={versionnum.patch}UL -DMEGATINYCORE_RELEASED={versionnum.released}
 
 # AVR compile variables
@@ -16,26 +23,28 @@ compiler.warning_flags.none=-w
 compiler.warning_flags.default=
 compiler.warning_flags.more=-Wall
 compiler.warning_flags.all=-Wall -Wextra
-
 # Default "compiler.path" is correct, change only if you want to override the initial value
 compiler.path={runtime.tools.avr-gcc.path}/bin/
 compiler.c.cmd=avr-gcc
-compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects
-compiler.c.elf.flags={compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -Wl,--section-start={build.text_section_start}
+compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects -mrelax
+compiler.c.elf.flags={compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections -Wl,--section-start={build.text_section_start} -mrelax
 compiler.c.elf.cmd=avr-gcc
 compiler.S.flags=-c -g -x assembler-with-cpp -flto -MMD
 compiler.cpp.cmd=avr-g++
-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -MMD -flto
+compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=c++17 -fpermissive -Wno-sized-deallocation -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -Wno-error=narrowing -MMD -flto -mrelax
 compiler.ar.cmd=avr-gcc-ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=avr-objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.objdump.cmd=avr-objdump
 compiler.objdump.flags=--disassemble --source --line-numbers --demangle --section=.text
+compiler.nm.cmd=avr-nm
+compiler.nm.flags=--numeric-sort --line-numbers --demangle --print-size --format=s
 compiler.elf2hex.flags=-O ihex -R .eeprom
 compiler.elf2hex.bin.flags=-O binary -R .eeprom
 compiler.elf2hex.cmd=avr-objcopy
 compiler.ldflags=
+compiler.libraries.ldflags=
 compiler.size.cmd=avr-size
 
 # This can be overridden in boards.txt
@@ -68,7 +77,7 @@ archive_file_path={build.path}/{archive_file}
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
 ## Combine gc-sections, archives, and objects
-recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" "-L{build.path}" -lm
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o {compiler.ldflags} "{build.path}/{build.project_name}.elf" {object_files} {compiler.libraries.ldflags} "{build.path}/{archive_file}" "-L{build.path}" -lm
 
 ## Create output files (.eep and .hex)
 recipe.objcopy.eep.pattern="{compiler.path}{compiler.objcopy.cmd}" {compiler.objcopy.eep.flags} {compiler.objcopy.eep.extra_flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.eep"
@@ -77,19 +86,32 @@ recipe.objcopy.bin.pattern="{compiler.path}{compiler.elf2hex.cmd}" {compiler.elf
 
 ## Save disassembler listing
 recipe.hooks.objcopy.postobjcopy.1.pattern.windows=cmd /C "{compiler.path}{compiler.objdump.cmd}" {compiler.objdump.flags} "{build.path}/{build.project_name}.elf" > "{build.path}/{build.project_name}.lst"
-recipe.hooks.objcopy.postobjcopy.1.pattern.linux=chmod +x "{runtime.platform.path}/create_disassembler_listing.sh"
-recipe.hooks.objcopy.postobjcopy.1.pattern.macosx=chmod +x "{runtime.platform.path}/create_disassembler_listing.sh"
-recipe.hooks.objcopy.postobjcopy.2.pattern.linux="{runtime.platform.path}/create_disassembler_listing.sh" "{compiler.path}{compiler.objdump.cmd}" "{compiler.objdump.flags}" "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.lst"
-recipe.hooks.objcopy.postobjcopy.2.pattern.macosx="{runtime.platform.path}/create_disassembler_listing.sh" "{compiler.path}{compiler.objdump.cmd}" "{compiler.objdump.flags}" "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.lst"
+recipe.hooks.objcopy.postobjcopy.1.pattern.linux=bash -c "{compiler.path}{compiler.objdump.cmd} {compiler.objdump.flags} {build.path}/{build.project_name}.elf > {build.path}/{build.project_name}.lst"
+recipe.hooks.objcopy.postobjcopy.1.pattern.macosx=bash -c "{compiler.path}{compiler.objdump.cmd} {compiler.objdump.flags} {build.path}/{build.project_name}.elf > {build.path}/{build.project_name}.lst"
+
+## Save memory map
+recipe.hooks.objcopy.postobjcopy.2.pattern.windows=cmd /C "{compiler.path}{compiler.nm.cmd}" {compiler.nm.flags}  "{build.path}/{build.project_name}.elf" > "{build.path}/{build.project_name}.map"
+recipe.hooks.objcopy.postobjcopy.2.pattern.linux=bash -c "{compiler.path}{compiler.nm.cmd} {compiler.nm.flags}  {build.path}/{build.project_name}.elf > {build.path}/{build.project_name}.map"
+recipe.hooks.objcopy.postobjcopy.2.pattern.macosx=bash -c "{compiler.path}{compiler.nm.cmd} {compiler.nm.flags}  {build.path}/{build.project_name}.elf > {build.path}/{build.project_name}.map"
+
+
+## This is the name that memory maps, assembly listings and hex files will be output as
+build.extraassetname={build.project_name}.t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}.m{build.millistimer}
 
 ## Save hex
+# Needs to be specified separately completely, because otherwise some parts of it don't resolve for reasons I dont understand.
 recipe.output.tmp_file={build.project_name}.hex
-recipe.output.save_file={build.project_name}.t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}{build.serialeventabr}.m{build.millistimer}.hex
+recipe.output.save_file={build.project_name}.t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}.m{build.millistimer}.hex
 
 ## Save lst
-recipe.hooks.savehex.presavehex.1.pattern.windows=cmd /C copy "{build.path}\{build.project_name}.lst" "{sketch_path}\{build.project_name}.t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}{build.serialeventabr}.m{build.millistimer}.lst"
-recipe.hooks.savehex.presavehex.1.pattern.linux=cp "{build.path}/{build.project_name}.lst" "{sketch_path}/{build.project_name}t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}{build.serialeventabr}.m{build.millistimer}.lst"
-recipe.hooks.savehex.presavehex.1.pattern.macosx=cp "{build.path}/{build.project_name}.lst" "{sketch_path}/{build.project_name}.t{build.attiny}{build.bootload}.{build.speed}c{build.clocksource}.u{build.uartvoltage}{build.serialeventabr}.m{build.millistimer}.lst"
+recipe.hooks.savehex.presavehex.1.pattern.windows=cmd /C copy "{build.path}\{build.project_name}.lst" "{sketch_path}\{build.extraassetname}.lst"
+recipe.hooks.savehex.presavehex.1.pattern.linux=cp "{build.path}/{build.project_name}.lst" "{sketch_path}/{build.extraassetname}.lst"
+recipe.hooks.savehex.presavehex.1.pattern.macosx=cp "{build.path}/{build.project_name}.lst" "{sketch_path}/{build.extraassetname}.lst"
+
+## Save map
+recipe.hooks.savehex.presavehex.2.pattern.windows=cmd /C copy "{build.path}\{build.project_name}.map" "{sketch_path}\{build.extraassetname}.map"
+recipe.hooks.savehex.presavehex.2.pattern.linux=cp "{build.path}/{build.project_name}.map" "{sketch_path}/{build.extraassetname}.map"
+recipe.hooks.savehex.presavehex.2.pattern.macosx=cp "{build.path}/{build.project_name}.map" "{sketch_path}/{build.extraassetname}.map"
 
 ## Compute
 recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"
@@ -113,19 +135,19 @@ tools.avrdude.config.path={runtime.platform.path}/avrdude.conf
 
 tools.avrdude.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
 
+tools.avrdude.program.params.verbose=-v
+tools.avrdude.program.params.quiet=-q -q
+# tools.avrdude.upload.verify is needed for backwards compatibility with IDE 1.6.8 or older, IDE 1.6.9 or newer overrides this value
+tools.avrdude.program.verify=
+tools.avrdude.program.params.noverify=-V
+tools.avrdude.program.pattern="{cmd.path}" "-C{config.path}" {program.verbose} -p{build.mcu}{upload.workaround} -c{protocol}{upload.with_programmer_not_available_for_bootloader_boards} {program.extra_params} "-Ufuse2:w:{bootloader.OSCCFG}:m" "-Ufuse6:w:{bootloader.SYSCFG1}:m" "-Ufuse8:w:{bootloader.BOOTEND}:m" "-Uflash:w:{build.path}/{build.project_name}.hex:i"
+
 tools.avrdude.upload.params.verbose=-v
 tools.avrdude.upload.params.quiet=-q -q
 # tools.avrdude.upload.verify is needed for backwards compatibility with IDE 1.6.8 or older, IDE 1.6.9 or newer overrides this value
 tools.avrdude.upload.verify=
 tools.avrdude.upload.params.noverify=-V
-tools.avrdude.upload.pattern="{cmd.path}" "-C{config.path}" {upload.verbose} -p{build.mcu}{upload.workaround} -c{upload.protocol} -P{serial.port} {upload.extra_params} -b{upload.speed} "-Uflash:w:{build.path}/{build.project_name}.hex:i"
-
-tools.avrdude.program.params.verbose=-v
-tools.avrdude.program.params.quiet=-q -q
-# tools.avrdude.program.verify is needed for backwards compatibility with IDE 1.6.8 or older, IDE 1.6.9 or newer overrides this value
-tools.avrdude.program.verify=
-tools.avrdude.program.params.noverify=-V
-tools.avrdude.program.pattern="{cmd.path}" "-C{config.path}" {program.verbose} {program.verify} -p{build.mcu} -c{protocol} {program.extra_params} "-Uflash:w:{build.path}/{build.project_name}.hex:i"
+tools.avrdude.upload.pattern="{cmd.path}" "-C{config.path}" {upload.verbose} {program.verify} -p{build.mcu}{upload.workaround} -c{upload.protocol} {upload.extra_params} {upload.serialparams} "-Uflash:w:{build.path}/{build.project_name}.hex:i"
 
 tools.avrdude.erase.params.verbose=-v
 tools.avrdude.erase.params.quiet=-q -q
@@ -133,14 +155,48 @@ tools.avrdude.erase.pattern=
 
 tools.avrdude.bootloader.params.verbose=-v
 tools.avrdude.bootloader.params.quiet=-q -q
-tools.avrdude.bootloader.pattern="{cmd.path}" "-C{config.path}" {bootloader.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -e "-Ufuse0:w:{bootloader.WDTCFG}:m" "-Ufuse1:w:{bootloader.BODCFG}:m" "-Ufuse2:w:{bootloader.OSCCFG}:m" "-Ufuse4:w:{bootloader.TCD0CFG}:m" "-Ufuse5:w:{bootloader.SYSCFG0}:m" "-Ufuse6:w:{bootloader.SYSCFG1}:m" "-Ufuse7:w:{bootloader.APPEND}:m" "-Ufuse8:w:{bootloader.BOOTEND}:m" "{bootloader.flashcommand}"
+tools.avrdude.bootloader.pattern="{cmd.path}" "-C{config.path}" {bootloader.verbose} -p{build.mcu}{upload.workaround} -c{protocol} {program.extra_params} -e "-Ufuse0:w:{bootloader.WDTCFG}:m" "-Ufuse1:w:{bootloader.BODCFG}:m" "-Ufuse2:w:{bootloader.OSCCFG}:m" "-Ufuse4:w:{bootloader.TCD0CFG}:m" "-Ufuse5:w:{bootloader.SYSCFG0}:m" "-Ufuse6:w:{bootloader.SYSCFG1}:m" "-Ufuse7:w:{bootloader.APPEND}:m" "-Ufuse8:w:{bootloader.BOOTEND}:m" "{bootloader.avrdudestring}"
 
 tools.avrdude_remote.upload.pattern=/usr/bin/run-avrdude /tmp/sketch.hex {upload.verbose} -p{build.mcu}
 
 tools.avrdude.upload.network_pattern="{network_cmd}" -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -d -v
 
-# USB Default Flags
-# Default blank usb manufacturer will be filled in at compile time
-# - from numeric vendor ID, set to Unknown otherwise
-build.usb_manufacturer="Unknown"
-build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
+# SerialUPDI - new in 2.2.0, renamed to SerialUPDI since 2.4.0 because a lot of the unused functionality of pymcuprog is no longer present, though still based on the same pymcuprog codebase.
+
+#################################
+# This is the line for use with
+#    MANUAL INSTALLATIONS
+#
+# The build script comments out the line (or lines, but
+# there's only one) starting with tools.serialupdi.cmd
+# See the ManualPython document for information
+# on making this programming option work w/out board manager
+
+tools.serialupdi.cmd={runtime.platform.path}/tools/python3/python3
+
+################################
+# BOARD MANAGER INSTALLATIONS
+#
+# This is for the board manager version where we can
+# automatically grab and install an appropriate
+# python package; it ends up in a different place:
+# Build script removes all instances of #REMOVE#
+# at the start of a line.
+
+#REMOVE#tools.serialupdi.cmd={runtime.tools.python3.path}/python3
+
+tools.serialupdi.erase.params.verbose=
+tools.serialupdi.erase.params.quiet=
+tools.serialupdi.erase.pattern=
+
+tools.serialupdi.bootloader.params.verbose=
+tools.serialupdi.bootloader.params.quiet=
+tools.serialupdi.bootloader.pattern="{cmd}" -u "{runtime.platform.path}/tools/prog.py" -t {protocol} {program.extra_params} -d {build.mcu}{upload.workaround} --fuses 0:{bootloader.WDTCFG} 1:{bootloader.BODCFG} 2:{bootloader.OSCCFG} 4:{bootloader.TCD0CFG} 5:{bootloader.SYSCFG0} 6:{bootloader.SYSCFG1} 7:{bootloader.APPEND} 8:{bootloader.BOOTEND} {bootloader.serialupdistring}
+
+tools.serialupdi.program.params.verbose=
+tools.serialupdi.program.params.quiet=
+tools.serialupdi.program.pattern="{cmd}" -u "{runtime.platform.path}/tools/prog.py" -t {protocol}{upload.with_programmer_not_available_for_bootloader_boards} {program.extra_params} -d {build.mcu}{upload.workaround} --fuses 2:{bootloader.OSCCFG} 6:{bootloader.SYSCFG1} 8:{bootloader.BOOTEND} "-f{build.path}/{build.project_name}.hex" -a write
+
+#Expert mode (allows disabling the UPDI pin, outside the context of burning a bootloader. Hence it can only be reprogrammed with an HV UPDI programmer) Uncomment these recipes to enable.
+#tools.avrdude.program.pattern="{cmd.path}" "-C{config.path}" -p{build.mcu}{upload.workaround} -c{protocol} {program.extra_params} "-Ufuse2:w:{bootloader.OSCCFG}:m" "-Ufuse5:w:{bootloader.SYSCFG0}:m" "-Ufuse6:w:{bootloader.SYSCFG1}:m" "-Ufuse8:w:{bootloader.BOOTEND}:m" "-Uflash:w:{build.path}/{build.project_name}.hex:i"
+#tools.serialupdi.program.pattern="{cmd}" -u "{runtime.platform.path}/tools/prog.py" -t {protocol} {program.extra_params} -d {build.mcu} --fuses 2:{bootloader.OSCCFG} 5:{bootloader.SYSCFG0}  6:{bootloader.SYSCFG1} 8:{bootloader.BOOTEND} "-f{build.path}/{build.project_name}.hex" -a write

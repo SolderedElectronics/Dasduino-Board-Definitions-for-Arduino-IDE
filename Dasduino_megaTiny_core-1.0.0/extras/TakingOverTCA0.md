@@ -1,30 +1,37 @@
-# Taking over TCA0 for your owm PWM
+# Reconfiguring a Type A timer (like TCA0)
 
-We have received many questions from users about how to take over TCA0 to generate 16-bit PWM or change the output frequency. There are a few non-obvious complications here, and this page aims to clear this up. First, before you begin, make sure you have megaTinyCore 1.1.6 - in prior versions, the type B timer(s) are clocked from the prescaled clock of TCA0 when they are used as a millis/micros source or for low frequency output with tone() - which meant that reconfiguring TCA0 would break that functionality as well. In 1.1.6, the only thing included with the core that is broken by reconfiguring the TCA0 prescaler is the Servo library, and that is fixed for 1.1.7.
+We have received many questions from users about how to take over TCA0 to generate 16-bit PWM or change the output frequency. There are a few non-obvious complications here, and this document aims to clear up these confusions. First, before you begin, make sure you have a recemt version of megaTinyCore installed. This document references functions added in the 2.3.x versions; pre-2.x versions further contain significant differences that render much of this document inapplicable. What is written here largely applies to TCA1 on the AVR Dx-series parts, and is expected to apply to the AVR EA-series as well, though no definitive information on those parts beyond their mention in the AVR EA-series technical brief has been released. It it unlikely that any relevant changes will be madem but not impossible.
 
+## For far more information on type A timers
+Microchip has made available a Technical Brief describing the capabilities of the Type A timer, which is arguably the most powerful timer available on modern AVR devices (one could argue that the type D tiemr on the tinyAVR 1-series, AVR DA, DB, and DD-series parts is more powerful. I disagree with that claim; while it is unquestionably more complex and is capable of some tasks which the TCA is not, it is applicable to significantly fewer use cases, and far more challenging to configure). That technical brief describes all applications of the type A timer, not just PWM (and also assumes it is starting from power on reset (POR) state; if you are using code from there, you can call takeOverTCA0() to both reset it to this state, and ensure that the core does not subsequently mess with it).
+
+[Technical Brief 3217: Getting started with TCA](https://www.microchip.com/en-us/application-notes/tb3217)
+
+## Reconfiguring TCA0 while using megaTinyCore
 The most common point of confusion is the fact that megaTinyCore, out of the box, configures TCA0 for use in "Split Mode" - this allows it to generate 6 8-bit PWM signals. This provides 2 additional PWM pins (3 if TCB0 is needed for other purposes) - and since analogWrite() only supports 8-bit PWM anyway, when using the Arduino API functions, there is no loss of functionality imposed by this. You must disable the timer when switching between modes, and Microchip recommends that you issue a reset command - this will reset the period, count, and compare registers to their default values. Note that in split mode, the two low bits must also be 1, or the command is ignored. The intent of those bits is unclear, as only 00 (none) and 11 (both) are listed as valid.
-
-```
+```c++
   TCA0.SPLIT.CTRLA=0; //disable TCA0 and set divider to 1
   TCA0.SPLIT.CTRLESET=TCA_SPLIT_CMD_RESET_gc|0x03; //set CMD to RESET to do a hard reset of TCA0 and enable for both halves.
   TCA0.SPLIT.CTRLD=0; //turn off split mode
 ```
 Note that as these bits have the same function in SINGLE and SPLIT mode, it does not matter whether you reference them as TCA0.SINGLE.* or TCA0.SPLIT.*
 
-Once this has been done, further configuration is straightforward. Failing to turn off split mode when you intend to, however, can result in strange behavior.
+However, **all that isn't necessary on recent versions of megaTinyCore**, because a function to do that - as well as cease all manipulation of the TCA0 by all API calls - is provided. Simply calling `takeOverTCA0()` will perform a hard reset of the timer, and mark it as being controlled exclusively by the user. The second function of this function prevents analogWrite() and digitalWrite() on the relevant pins from manipulating registers related to TCA0. This is critical if you've taken over the timer and altered the relevant PORTMUX registers - otherwise digitalWrite() to a pin that nominallty has PWM, but doesn't after your reconfigurations would result in thwe corresponding PWM channel (which you have pointing to a different pin) being turned off, for example.
 
-### Avoid using TCA0 as the millis timer
+Once this has been done, further configuration is straightforward. Failing to turn off split mode when you intend to, however, will result in strange behavior. Among other things, that determines whether the 16-bit registers are treated as 16-bit registers or pairs of 8-bit registers.
+
+With the introduction of `takeOverTCA0()`, it should be called in all cases where settings of TCA0 which could change behavior of the standard Arduino API functions are manipulated by writing to the TCA0 registers. If this function is not called, unexpected and unwanted behavior may be experienced when the Arduino API functions are used after such reconfigurations of TCA0. That is not indicative of a defect in the core, but of a defect in the sketch.
+
+## Avoid using TCA0 as the millis timer
 Reconfiguring TCA0 when it is used as the millis timer source will result in loss of timekeeping functionality. When doing this, you should avoid using TCA0 as the millis source. To ensure that you don't forget to set the millis timer correctly, it is suggested to put code like the following in your sketch to halt compile if you later open the sketch and did not choose the correct millis timer source.
-
-```
+```c++
 #ifdef MILLIS_USE_TIMERA0
 #error "This sketch takes over TCA0 - please use a different timer for millis"
 #endif
 ```
 
 Better yet, you can verify that you chose the intended millis timer, rather than that you didn't pick the most unsuitable one:
-
-```
+```c++
 #ifndef MILLIS_USE_TIMERB0
 #error "This sketch is written for use with TCB0 as the millis timing source"
 #endif
@@ -32,24 +39,23 @@ Better yet, you can verify that you chose the intended millis timer, rather than
 
 In these examples, it is also used to make sure one doesn't try to run them on a part where the mappings of the channels to pins are different (ie, the 8-pin parts).
 
-##### Added complication for 8-pin parts
-On the 8-pin parts, the default location for WO0 is the same as for WO3: PA3, ie, you can't get an extra channel from split mode. However, WO0 can be moved from it's default location to PA7 via the PORTMUX; megaTinyCore does this to get the extra PWM channel out of the box. This is controlled by `PORTMUX.CTRLC`. Nothing else is controlled by this register, so you can just set it to the compiler-provided constants. None of the other parts supported by megaTinyCore have PWM pins blocking each other like this.
+### Added complication for 8-pin parts
+On the 8-pin parts, the default location for WO0 is the same as for WO3: PA3, ie, you can't get an extra channel from split mode with the default pin assignments. However, WO0 can be moved from it's default location to PA7 via the PORTMUX; megaTinyCore does this to get the extra PWM channel. This is controlled by `PORTMUX.CTRLC`. None of the other parts supported by megaTinyCore have PWM pins on TCA0 blocking each other like this.
 
-```
+```c++
 PORTMUX.CTRLC = PORTMUX_TCA00_DEFAULT_gc;   // Move it back to PA3
 PORTMUX.CTRLC = PORTMUX_TCA00_ALTERNATE_gc; // Move it to PA7
 
 ```
 
-# Examples
+## Examples
 Now for the fun part - example code!
 
 A note about the pin numbers - we use the PORT_Pxn notation to refer to pins; when I mention in the comments the pin number, that is an Arduino (logical) pin number, not a physical pin number (generally, this documentation does not refer to physical pin numbers except on the pinout charts). Because the mappings of peripherals to pins by the port and pin within the port is constant across the non-8-pin parts, this means the examples (except the one for 8-pin parts) will all work on all 14, 20, and 28-pin parts.
 
 
-### Example 1: 16-bit PWM in single mode, dual slope with interrupt.
-
-```
+### Example 1: 16-bit PWM in single mode, dual slope with interrupt
+```c++
 #if defined(MILLIS_USE_TIMERA0)||defined(__AVR_ATtinyxy2__)
 #error "This sketch takes over TCA0, don't use for millis here.  Pin mappings on 8-pin parts are different"
 #endif
@@ -82,8 +88,7 @@ ISR(TCA0_OVF_vect) { //on overflow, we will increment TCA0.CMP0, this will happe
 
 ### Example 2: Variable frequency and duty cycle PWM
 This generates PWM similar to above (though without the silly interrupt to change the duty cycle), but takes it a step further with two functions to set the duty cycle and frequency.
-
-```
+```c++
 #if defined(MILLIS_USE_TIMERA0)||defined(__AVR_ATtinyxy2__)
 #error "This sketch takes over TCA0, don't use for millis here.  Pin mappings on 8-pin parts are different"
 #endif
@@ -142,8 +147,7 @@ void setFrequency(unsigned long freqInHz) {
 
 ### Example 3: High speed 8-bit PWM on PA3 on 8-pin part
 A user requested (#152) high speed PWM on PA3 on an 8-pin part. They wanted split mode disabled, and PWM frequency higher than 62KHz. This is indeed possible - though do note that the maximum frequency of PWM possible with a full 8 bits of resolution and 20MHz system clock is 78.125 kHz (20000000/256) - and the next higher frequency for which perfect 8-bit resolution is possible is half that, 39.061 kHz. Higher fequencies require lower resolution (see above example for one approach, which can also be used for intermediate frequencies) though if the frequency is constant, varying your input between 0 and the period instead of using map() is desirable, as map may not be smooth. As a further aside, if 78.125kHz is suitable, there is no need to disable split mode....
-
-```
+```c++
 #if defined(MILLIS_USE_TIMERA0)||!defined(__AVR_ATtinyxy2__)
 #error "This sketch is for an 8-pin part and takes over TCA0"
 #endif
@@ -189,9 +193,8 @@ void loop() { //Lets generate some output just to prove it works
 ```
 
 ### Example 4: Quick bit of fun with split mode
-A quick example of how cool split mode can be - You can get two different PWM frequencies out of the same timer. Split mode only has one mode - both halves of the timer independently count down.
-
-```
+A quick example of how cool split mode can be - You can get two different PWM frequencies out of the same timer! Split mode only has one mode - both halves of the timer independently count down.
+```c++
 #if defined(MILLIS_USE_TIMERA0)||defined(__AVR_ATtinyxy2__)
 #error "This sketch takes over TCA0, don't use for millis here.  Pin mappings on 8-pin parts are different"
 #endif

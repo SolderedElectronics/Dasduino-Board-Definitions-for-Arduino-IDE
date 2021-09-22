@@ -59,10 +59,14 @@
   #define MILLIS_TIMER TIMERD0
 #elif defined(MILLIS_USE_TIMERRTC_XTAL)
   #define MILLIS_TIMER TIMERRTC_XTAL
+#elif defined(MILLIS_USE_TIMERRTC_XOSC)
+  #define MILLIS_TIMER TIMERRTC_XOSC
 #elif defined(MILLIS_USE_TIMERRTC)
   #define MILLIS_TIMER TIMERRTC
-#else
+#elif defined(MILLIS_USE_TIMERNONE)
   #define MILLIS_TIMER NOT_ON_TIMER
+#else
+  #error "Millis timer not specified, nor is millis disabled - can't happen!"
 #endif
 
 #endif

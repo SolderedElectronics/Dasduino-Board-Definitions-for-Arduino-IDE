@@ -31,13 +31,13 @@ SPIClass::SPIClass() {
 
 }
 
-bool SPIClass::pins(uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK, uint8_t pinSS) {
+bool SPIClass::pins(__attribute__((unused))uint8_t pinMOSI, __attribute__((unused)) uint8_t pinMISO, __attribute__((unused)) uint8_t pinSCK, __attribute__((unused)) uint8_t pinSS) {
   #if defined(PORTMUX_CTRLB)
-  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1) && defined(PIN_SPI_SS_PINSWAP_1))
-  if (pinMOSI == PIN_SPI_MOSI_PINSWAP_1 && pinMISO == PIN_SPI_MISO_PINSWAP_1 && pinSCK == PIN_SPI_SCK_PINSWAP_1 && pinSS == PIN_SPI_SS_PINSWAP_1) {
+  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1))
+  if (pinMOSI == PIN_SPI_MOSI_PINSWAP_1 && pinMISO == PIN_SPI_MISO_PINSWAP_1 && pinSCK == PIN_SPI_SCK_PINSWAP_1 /* && pinSS == PIN_SPI_SS_PINSWAP_1 */) {
     _uc_mux = PORTMUX_SPI0_bm;
     return true;
-  } else if (pinMOSI == PIN_SPI_MOSI && pinMISO == PIN_SPI_MISO && pinSCK == PIN_SPI_SCK && pinSS == PIN_SPI_SS) {
+  } else if (pinMOSI == PIN_SPI_MOSI && pinMISO == PIN_SPI_MISO && pinSCK == PIN_SPI_SCK /*&& pinSS == PIN_SPI_SS */) {
     _uc_mux = 0;
     return true;
   } else {
@@ -46,16 +46,17 @@ bool SPIClass::pins(uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK, uint8_t pi
   }
   #endif
   #elif defined(PORTMUX_SPIROUTEA)
-  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2) && defined(PIN_SPI_SS_PINSWAP_2))
-  if (pinMOSI == PIN_SPI_MOSI_PINSWAP_2 && pinMISO == PIN_SPI_MISO_PINSWAP_2 && pinSCK == PIN_SPI_SCK_PINSWAP_2 && pinSS == PIN_SPI_SS_PINSWAP_2) {
+  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2))
+  if (pinMOSI == PIN_SPI_MOSI_PINSWAP_2 && pinMISO == PIN_SPI_MISO_PINSWAP_2 && pinSCK == PIN_SPI_SCK_PINSWAP_2 /* && pinSS == PIN_SPI_SS_PINSWAP_2 */) {
     _uc_mux = 2;
     return true;
   } else
   #endif
-    if (pinMOSI == PIN_SPI_MOSI_PINSWAP_1 && pinMISO == PIN_SPI_MISO_PINSWAP_1 && pinSCK == PIN_SPI_SCK_PINSWAP_1 && pinSS == PIN_SPI_SS_PINSWAP_1) {
+  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1))
+    if (pinMOSI == PIN_SPI_MOSI_PINSWAP_1 && pinMISO == PIN_SPI_MISO_PINSWAP_1 && pinSCK == PIN_SPI_SCK_PINSWAP_1 /* && pinSS == PIN_SPI_SS_PINSWAP_1 */) {
       _uc_mux = 1;
       return true;
-    } else if (pinMOSI == PIN_SPI_MOSI && pinMISO == PIN_SPI_MISO && pinSCK == PIN_SPI_SCK && pinSS == PIN_SPI_SS) {
+    } else if (pinMOSI == PIN_SPI_MOSI && pinMISO == PIN_SPI_MISO && pinSCK == PIN_SPI_SCK /* && pinSS == PIN_SPI_SS */) {
       _uc_mux = 0;
       return true;
     } else {
@@ -63,11 +64,12 @@ bool SPIClass::pins(uint8_t pinMOSI, uint8_t pinMISO, uint8_t pinSCK, uint8_t pi
       return false;
     }
   #endif
+  #endif
   return false;
 }
-bool SPIClass::swap(uint8_t state) {
+bool SPIClass::swap(__attribute__((unused))uint8_t state) {
   #if defined(PORTMUX_CTRLB)
-  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1) && defined(PIN_SPI_SS_PINSWAP_1))
+  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1))
   if (state == 1) {
     _uc_mux = PORTMUX_SPI0_bm;
     return true;
@@ -80,7 +82,7 @@ bool SPIClass::swap(uint8_t state) {
   }
   #endif
   #elif defined(PORTMUX_SPIROUTEA)
-  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2) && defined(PIN_SPI_SS_PINSWAP_2))
+  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2))
   if (state == 2) {
     _uc_mux = 2;
     return true;
@@ -109,12 +111,12 @@ void SPIClass::begin() {
   PORTMUX.SPIROUTEA = _uc_mux | (PORTMUX.SPIROUTEA & ~3);
   #endif
 
-  #if ((defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1) && defined(PIN_SPI_SS_PINSWAP_1)) || (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2) && defined(PIN_SPI_SS_PINSWAP_2)))
+  #if ((defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1)) || (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2)))
   if (_uc_mux == 0) {
     pinMode(PIN_SPI_MOSI, OUTPUT);
     pinMode(PIN_SPI_SCK, OUTPUT);
   }
-  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1) && defined(PIN_SPI_SS_PINSWAP_1))
+  #if (defined(PIN_SPI_MOSI_PINSWAP_1) && defined(PIN_SPI_MISO_PINSWAP_1) && defined(PIN_SPI_SCK_PINSWAP_1))
   #ifdef PORTMUX_CTRLB
   else if (_uc_mux == PORTMUX_SPI0_bm)
   #else
@@ -125,7 +127,7 @@ void SPIClass::begin() {
     pinMode(PIN_SPI_SCK_PINSWAP_1, OUTPUT);
   }
   #endif
-  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2) && defined(PIN_SPI_SS_PINSWAP_2))
+  #if (defined(PIN_SPI_MOSI_PINSWAP_2) && defined(PIN_SPI_MISO_PINSWAP_2) && defined(PIN_SPI_SCK_PINSWAP_2))
   else if (_uc_mux == 2) {
     pinMode(PIN_SPI_MOSI_PINSWAP_2, OUTPUT);
     pinMode(PIN_SPI_SCK_PINSWAP_2, OUTPUT);
@@ -294,7 +296,7 @@ void SPIClass::setDataMode(uint8_t mode) {
 
 void SPIClass::setClockDivider(uint8_t div) {
   SPI0.CTRLA = ((SPI0.CTRLA &
-                 ((~SPI_PRESC_gm) | (~SPI_CLK2X_bm)))   // mask out values
+                 (~(SPI_PRESC_gm | SPI_CLK2X_bm)))   // mask out values
                 | div);                           // write value
 }
 
