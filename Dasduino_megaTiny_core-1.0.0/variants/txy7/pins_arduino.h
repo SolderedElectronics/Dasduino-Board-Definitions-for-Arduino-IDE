@@ -43,7 +43,6 @@
 #define NUM_I2C_PINS                  (2) // (SDA / SCL)
 #define NUM_SPI_PINS                  (3) // (MISO / MOSI / SCK)
 #define NUM_TOTAL_PINS                (22)
-#define PINS_COUNT                    (22)
 
 #define EXTERNAL_NUM_INTERRUPTS       (22)
 
@@ -61,26 +60,12 @@
   #define digitalPinToAnalogInput(p)  (((p) < 4) ? ((p) + 4) : ((((p) > 17) && ((p) < 21)) ? ((p) - 17) : (((p) < 8) ? ((p) + 2) : (((p) < 16) ? (p):NOT_A_PIN))))
 #endif
 
-#ifdef DAC0
-  #define DAC_PIN      (PIN_PA6)
-#endif
 
-#ifndef LED_BUILTIN
-  #define LED_BUILTIN  (PIN_PA7)
-#endif
-
-/*
-      ####   ###  ####  ##### #   # #   # #   #
-      #   # #   # #   #   #   ## ## #   #  # #
-      ####  #   # ####    #   # # # #   #   #
-      #     #   # # #     #   #   # #   #  # #
-      #      ###  #  #    #   #   #  ###  #   #
-*/
 #define SPI_MUX                       (0)
+#define PIN_SPI_SS                    (PIN_PA0)
 #define PIN_SPI_MOSI                  (PIN_PA1)
 #define PIN_SPI_MISO                  (PIN_PA2)
 #define PIN_SPI_SCK                   (PIN_PA3)
-#define PIN_SPI_SS                    (PIN_PA4)
 #if defined(PORTMUX_SPI0_bm) || defined(PORTMUX_SPIROUTEA)
   #define PIN_SPI_SCK_PINSWAP_1       (PIN_PC0)
   #define PIN_SPI_MISO_PINSWAP_1      (PIN_PC1)
@@ -139,13 +124,22 @@
   #define PIN_HWSERIAL1_XCK             (PIN_PA3)
   #define PIN_HWSERIAL1_XDIR            (PIN_PA4)
 
-  #define HWSERIAL1_MUX_PINSWAP_1       (0x04)
+  #define HWSERIAL1_MUX_PINSWAP_1       (0x01)
   #define PIN_HWSERIAL1_TX_PINSWAP_1    (PIN_PC2)
   #define PIN_HWSERIAL1_RX_PINSWAP_1    (PIN_PC1)
   #define PIN_HWSERIAL1_XCK_PINSWAP_1   (PIN_PC0)
   #define PIN_HWSERIAL1_XDIR_PINSWAP_1  (PIN_PC3)
 #endif
 
+#ifdef DAC0
+  #define DAC_PIN      (PIN_PA6)
+#endif
+
+#ifndef LED_BUILTIN
+  #define LED_BUILTIN  (PIN_PA7)
+#endif
+
+#define PINS_COUNT     (22u)
 
 #define PIN_PA4        (0)
 #define PIN_PA5        (1)
@@ -212,13 +206,6 @@ static const uint8_t    A11 = PIN_PB0;
   static const uint8_t  A15 = PIN_PC3;
 #endif
 
-/*
-            ####  ### #   #      ##  ####  ####   ##  #   #  ###
-            #   #  #  ##  #     #  # #   # #   # #  #  # #  #
-            ####   #  # # #     #### ####  ####  ####   #    ###
-            #      #  #  ##     #  # # #   # #   #  #   #       #
-            #     ### #   #     #  # #  #  #  #  #  #   #    ###
-*/
 
 #ifdef ARDUINO_MAIN
 

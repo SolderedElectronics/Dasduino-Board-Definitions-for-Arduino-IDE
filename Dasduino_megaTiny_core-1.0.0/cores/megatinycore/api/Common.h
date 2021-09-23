@@ -16,6 +16,7 @@ void yield(void);
 #define INPUT_PULLUP  0x02
 #define LSBFIRST      0x00
 #define MSBFIRST      0x01
+#define FLOAT         HIGH
 
 
 #define PI            3.1415926535897932384626433832795
@@ -40,9 +41,9 @@ void yield(void);
 
 #ifndef constrain
 #define constrain(x,low,high)   ({  \
-  __typeof__ (x)    _x = (x);           \
-  __typeof__ (low)  _l = (low);         \
-  __typeof__ (high) _h = (high);        \
+  typeof (x)    _x = (x);           \
+  typeof (low)  _l = (low);         \
+  typeof (high) _h = (high);        \
   _x < _l ? _l : _x > _h ? _h :_x ;})
 #endif
 
@@ -55,24 +56,25 @@ void yield(void);
 #endif
 
 #ifndef sq
-#define sq(x)        ({ __typeof__ (x) _x = (x); _x * _x; })
+#define sq(x)        ({ typeof (x) _x = (x); _x * _x; })
 #endif
 
 #ifndef round
-#define round(x)     ({ __typeof__ (x) _x = (x);  _x >= 0 ? (long)x + 0.5 : (long)x - 0.5 ;})
+#define round(x)     ({ typeof (x) _x = (x);  _x >= 0 ? (long)x + 0.5 : (long)x - 0.5 ;})
 #endif
 
 typedef void (*voidFuncPtr)(void);
 
 // interrupts() / noInterrupts() must be defined by the core
 
-// a bunch of really silly hand-holding macros!
-#define lowByte(w)  ((uint8_t) ((w)    &  0xff))
-#define highByte(w) ((uint8_t) ((w)    >>    8))
+#define lowByte(w) ((uint8_t) ((w) & 0xff))
+#define highByte(w) ((uint8_t) ((w) >> 8))
+
 #define  bitRead(value, bit) (((value) >> (bit)) & 0x01)
 #define   bitSet(value, bit)  ((value) |= (1UL << (bit)))
 #define bitClear(value, bit)  ((value) &= ~(1UL << (bit)))
 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
+
 #ifndef bit
 #define bit(b) (1UL << (b))
 #endif
@@ -97,11 +99,21 @@ typedef uint8_t pin_size_t;
 
 void    pinMode(         pin_size_t pinNumber, uint8_t mode);
 void    digitalWrite(    pin_size_t pinNumber, uint8_t val);
+void    digitalWriteFast(pin_size_t pinNumber, uint8_t val);
 int8_t  digitalRead(     pin_size_t pinNumber);
+int8_t  digitalReadFast( pin_size_t pinNumber);
+void    openDrain(       pin_size_t pinNumber, uint8_t val);
+void    openDrainFast(   pin_size_t pinNumber, uint8_t val);
 void    analogWrite(     pin_size_t pinNumber, int value);
+void    turnOffPWM(      pin_size_t pinNumber);
+void    pinConfig(       pin_size_t pinNumber, uint16_t mode);
 int     analogRead(      pin_size_t pinNumber);
 void    analogReference(         uint8_t mode);
 bool    analogReadResolution(     uint8_t res);
+bool    analogSampleDuration(     uint8_t dur);
+void    DACReference(            uint8_t mode);
+
+
 
 unsigned long millis(void);
 unsigned long micros(void);

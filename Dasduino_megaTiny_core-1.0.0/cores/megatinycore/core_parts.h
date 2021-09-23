@@ -1,6 +1,8 @@
 /* Core Parts - a part of Arduino.h for megaTinyCore 2.3.0 and later
  * This is directly included by Arduino.h and nothing else; it just moves
- * clutter out of that file.
+ * a bunch of macros that had started to make Arduino.h hard to read out
+ * of that file - most significantly the part-identification and version
+ * macro handling stuff
  *
  * Spence Konde 2021 - megaTinyCore is free software (LGPL 2.1)
  * See LICENSE.txt for full legal boilerplate if you must */
@@ -241,7 +243,6 @@
 #define DACOUT 0x80         // 1-series only. "PWM" output source only
 #define TIMERRTC 0x90       // millis timing source only
 #define TIMERRTC_XTAL 0x91  // 1/2-series only, millis timing source only
-#define TIMERRTC_XOSC 0x92  // 1/2-series only, millis timing source only
 
 
 #if MEGATINYCORE_SERIES == 2
@@ -263,23 +264,8 @@
   #if !defined(SIGROW_OSC20ERR5V)
     #define SIGROW_OSC20ERR5V (SIGROW.reserved_3[3])
   #endif
-#else
-  /* 0/1-series, on the other hand, doesm't have these.... */
-  #if !defined(SIGROW_OSCCAL16M0)
-    #define SIGROW_OSCCAL16M0 _SFR_MEM8(0x1118)
-  #endif
-  #if !defined(SIGROW_OSCCAL16M1)
-    #define SIGROW_OSCCAL16M1 _SFR_MEM8(0x1119)
-  #endif
-  #if !defined(SIGROW_OSCCAL20M0)
-    #define SIGROW_OSCCAL20M0 _SFR_MEM8(0x111A)
-  #endif
-  #if !defined(SIGROW_OSCCAL20M1)
-    #define SIGROW_OSCCAL20M1 _SFR_MEM8(0x111B)
-  #endif
 #endif
 
-#define CLOCK_TUNE_START (USER_SIGNATURES_SIZE - 12)
 
 
 // This define can get black-hole'ed somehow (reported on platformio) likely the ugly syntax to pass a string define from platform.txt via a -D
@@ -288,18 +274,13 @@
 // recognizing it as megaTinyCore and hence would fail to compile when that conditional compilation was required to make it build.
 // From: https://github.com/adafruit/Adafruit_BusIO/issues/43
 #ifndef MEGATINYCORE
-  #define MEGATINYCORE "Unknown 2.4.0+"
+  #define MEGATINYCORE "Unknown 2.3.0+"
 #endif
 
 // Version related defines now handled in platform.txt
 #define MEGATINYCORE_NUM ((MEGATINYCORE_MAJOR<<24)+(MEGATINYCORE_MINOR<<16)+(MEGATINYCORE_PATCH<<8)+MEGATINYCORE_RELEASED)
 
-#if (defined(MILLIS_USE_TIMERRTC_XTAL) || defined(MILLIS_USE_TIMERRTC_XOSC))
-  #if (MEGATINYCORE_SERIES==0 || defined(__AVR_ATtinyxy2__))
-    #error "Only the tinyAVR 1-series and 2-series parts with at least 8 pins support external RTC timebase"
-  #endif
-  #define MILLIS_USE_TIMERRTC
-#endif
+
 
  /* HARDWARE FEATURES - Used by #ifdefs and as constants in calculations in
   * the core and in libraries; it is hoped that these are at least somewhat

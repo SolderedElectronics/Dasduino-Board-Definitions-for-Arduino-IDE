@@ -1,22 +1,23 @@
 /***********************************************************************|
-| tinyAVR Configurable Custom Logic library                             |
-| Modulate.ino                                                          |
-|                                                                       |
-| A library for interfacing with the megaAVR Configurable Custom Logic. |
-| Developed in 2019 by MCUdude.       Example by Spence Konde 2020-2021 |
-| https://github.com/MCUdude/            https://github.com/SpenceKonde |
-|                                                                       |
-| In this example we use the configurable logic peripherals of the      |
-| tinyAVR to achieve the "modulate one timer's wave output with another"|
-| behavior like some of the more full-featured classic megaAVR parts    |
-| We set one input to TCA0 WO1, the other to TCB0 WO, and mask the third|
-| and set the truth table so that the output is only HIGH when both are |
-| As can be immediately seen, this is vastly more powerful than what the|
-| classic AVRs were capable of, where this could be done only with two  |
-| timers on a single pin.                                               |
-| We could even use the CCL as an event generator to move the output to |
-| one of the EVOUT pins!                                                |
-|***********************************************************************/
+  | tinyAVR Configurable Custom Logic library                             |
+  |                                                                       |
+  | Modulate.ino                                                   |
+  |                                                                       |
+  | A library for interfacing with the megaAVR Configurable Custom Logic. |
+  | Developed in 2019 by MCUdude.                                         |
+  | https://github.com/MCUdude/                                           |
+  |                                                                       |
+  | In this example we use the configurable logic peripherals of the      |
+  | tinyAVR to achieve the "modulate one timer's wave output with another"|
+  | behavior like some of the more full-featured classic megaAVR parts    |
+  | We set one input to TCA0 WO1, the other to TCB0 WO, and mask the third|
+  | and set the truth table so that the output is only HIGH when both are |
+  | As can be immediately seen, this is vastly more powerful than what the|
+  | classic AVRs were capable of, where this could be done only with two  |
+  | timers on a single pin.                                               |
+  | We could even use the CCL as an event generator to move the output to |
+  | one of the EVOUT pins!                                                |
+  |***********************************************************************/
 
 // Make sure this compiles on 8-pin parts for the automated tests...
 #if !defined(__AVR_ATtinyxy2__)
@@ -32,8 +33,12 @@ void setup() {
 
 
   Logic0.enable = true;               // Enable logic block 0
-  Logic0.input0 = in::tcb;            // TCB channel - TCB0. On everything except 0/1-series tinyAVR, that's because this is input 0.
-  //                                     On those, it's because there's a in::tcb1 option too...
+  #if MEGATINYCORE_SERIES!=2          // tinyAVR 1-series parts with 16k or 32k flash have a second TCB.
+  Logic0.input0 = in::tcb0;           // and either of them can be used by any of the CCL inputs.
+  #else                               // Every other AVR with a CCL didn't do it like that - they have one
+  Logic0.input0 = in::tcb0;           // TCB channel, and if that's input0, it's TCB0, if it's input1, TCB1, and if input2, it's
+  #endif                              // TCB2 (on larger chips) On 0/1-series, in::tcb refers to TCB0, same as in::tcb0.
+  // All tinies define in::tcb0, only the cadilac ones with a TCB1 define in::tcb1. Non-tinies do not define in::tcb0 or in::tcb1.
   Logic0.input1 = in::tca0;           // Use TCA0 WO1 as input0
   Logic0.input2 = in::masked;         // mask input 2
   Logic0.output = out::enable;        // Enable logic block 0 output pin or PA4 (ATtiny))

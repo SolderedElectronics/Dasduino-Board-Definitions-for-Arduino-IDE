@@ -86,7 +86,7 @@ inline __attribute__((always_inline)) void check_valid_enh_res(uint8_t res) {
     if (res < 0x80){
       if (res < ADC_NATIVE_RESOLUTION_LOW) {
             badArg("When a resolution is passed to analogReadEnh, it must be at least the minimum native resolution (8 bits)");
-      } else if (res > ADC_MAX_OVERSAMPLED_RESOLUTION) {
+      } else if (res > MAX_OVERSAMPLED_RESOLUTION) {
         badArg("The highest resolution obtainable on these parts through oversampling and decimation with a single ADC operation 13 bits on 0/1-series or 17 on 2-series");
       }
   #if MEGATINYCORE_SERIES == 2
@@ -897,14 +897,11 @@ void analogWrite(uint8_t pin, int val) {
 } // end of analogWrite
 
 void takeOverTCA0() {
-  TCA0.SPLIT.CTRLA = 0;                                 // Stop TCA0
-  PeripheralControl &= ~TIMERA0;                        // Mark timer as user controlled
+  TCA0.SPLIT.CTRLA = 0;          // Stop TCA0
+  PeripheralControl &= ~TIMERA0; // Mark timer as user controlled
+                                 // Reset TCA0
   /* Okay, seriously? The datasheets and io headers disagree here */
-  TCA0.SPLIT.CTRLESET = TCA_SPLIT_CMD_RESET_gc | 0x03;  // Reset TCA0
-}
-
-uint8_t digitalPinToTimerNow(uint8_t pin) {
-  return digitalPinToTimer(pin) & PeripheralControl;
+  TCA0.SPLIT.CTRLESET = TCA_SPLIT_CMD_RESET_gc | 0x03;
 }
 
 #if defined(TCD0)

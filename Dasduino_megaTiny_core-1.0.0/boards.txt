@@ -9,11 +9,11 @@
 #  #   # ####  ###  #  #   ##   ### #   #   #    #####  ###  #  #  ####  #
 #________________________________________________________________________#
 #                                                                        #
-#  Copyright Spence Konde and other             ##       #  #      ###   #
-#  contributors 2018-2021                      #  #      #  #         #  #
-#  megaTinyCore is free software.        # #     #       ####       ##   #
-#  (LGPL v2.1) see LICENSE.md and        # #    #    ##     #  ##     #  #
-#  License section of README.md           #    ####  ##     #  ##  ###   #
+#  Copyright Spence Konde and other             ##       ###        ##   #
+#  contributors 2018-2021                      #  #         #      #  #  #
+#  megaTinyCore is free software.        # #     #        ##         #   #
+#  (LGPL v2.1) see LICENSE.md and        # #    #    ##     #  ##   #    #
+#  License section of README.md           #    ####  ##  ###   ##  ####  #
 #________________________________________________________________________#
 #                                                                        #
 #  Now reformatted for easy navigation with text editing tools which     #
@@ -35,9 +35,7 @@
 # board. Eg - UPDI can set fuses, so OSCCFG is set on all uploads and
 # you don't need to burn bootloader to change clock speed.
 
-menu.chip=Chip
-# used in place of the chip menu for official Microchip boards
-menu.board_name=Board Name
+menu.chip=Chip or Board
 menu.clock=Clock (burn bootloader NOT req'd)
 menu.clocko=Clock (burn bootloader req'd, or see docs)
 menu.millis=millis()/micros() Timer
@@ -51,8 +49,6 @@ menu.resetpin=UPDI/Reset Pin Function (burn bootloader req'd)
 menu.resetpinopti=UPDI/Reset Pin and Optiboot Entry (burn bootloader req'd)
 menu.resetpinopti_2=UPDI/alt-RST pins and Optiboot Entry (burn bootloader req'd)
 menu.uartvoltage=Voltage Baud Correction
-menu.wire=TWI Options
-
 
 ##########################################################################
 #                                                                        #
@@ -65,7 +61,7 @@ menu.wire=TWI Options
 ##########################################################################
 # Names listed at the top so they can be kept in consistent format
 
-lite.name=Dasduino Lite Optiboot
+lite.name=Dasduino Lite
 
 ##########################################################################
 #  WITH OPTIBOOT                                                         #
@@ -81,13 +77,11 @@ lite.build.text_section_start=.text=0x200
 lite.build.millistimer=D0
 lite.build.bootload=opti
 lite.build.board=AVR_ATtinyxy4
-lite.build.clocksource=0
 lite.build.core=megatinycore
 lite.build.variant=txy4
-lite.build.tuned=
 lite.build.mcu=attiny{build.attiny}
 lite.build.f_cpu={build.speed}000000L
-lite.build.extra_flags=-DARDUINO_attinyxy4 -DMILLIS_USE_TIMER{build.millistimer} -DUARTBAUD{build.uartvoltage} -DTWI_{build.wire} -DUSING_OPTIBOOT {build.tuned}
+lite.build.extra_flags=-DARDUINO_attinyxy4 -DMILLIS_USE_TIMER{build.millistimer} -DUARTBAUD{build.uartvoltage} -DUSING_OPTIBOOT
 lite.build.export_merged_output=true
 
 ### BOOTLOADING PARAMETERS
@@ -100,12 +94,12 @@ lite.bootloader.APPEND=0x00
 lite.bootloader.BOOTEND=0x02
 lite.bootloader.tool=avrdude
 lite.bootloader.avrdudestring=-Uflash:w:{runtime.platform.path}/bootloaders/hex/{bootloader.file}:i
-lite.bootloader.serialupdistring=-f{runtime.platform.path}/bootloaders/hex/{bootloader.file} -a write
+lite.bootloader.pymcuprogstring=-f{runtime.platform.path}/bootloaders/hex/{bootloader.file} -a write
 
 ### UPLOAD VIA OPTIBOOT
 lite.upload.workaround=
 lite.upload.tool=avrdude
-lite.upload.serialparams=-P{serial.port} -b115200
+lite.upload.speed=115200
 lite.upload.protocol=arduino
 lite.upload.extra_params=-D
 
@@ -125,22 +119,14 @@ lite.menu.clocko.8internal=8 MHz internal
 lite.menu.clocko.5internal=5 MHz internal
 lite.menu.clocko.4internal=4 MHz internal
 lite.menu.clocko.1internal=1 MHz internal
-lite.menu.clocko.20internaltuned=20 MHz internal - tuned
-lite.menu.clocko.16internaltuned=16 MHz internal - tuned
-lite.menu.clocko.12internaltuned=12 MHz internal - tuned
 lite.menu.clocko.20extclock=20 MHz external clock
 lite.menu.clocko.16extclock=16 MHz external clock
 lite.menu.clocko.12extclock=12 MHz external clock
 lite.menu.clocko.10extclock=10 MHz external clock
 lite.menu.clocko.8extclock=8 MHz external clock
-lite.menu.clocko.24internaltuned=24 MHz internal - tuned, overclocked
-lite.menu.clocko.25internaltuned=25 MHz internal - tuned, overclocked
-lite.menu.clocko.30internaltuned=30 MHz internal - tuned, overclocked, may be unstable, req. 20 MHz fuse
-lite.menu.clocko.32internaltuned=32 MHz internal - tuned, 2-series, overclocked, may be unstable, req. 20 MHz fuse
-lite.menu.clocko.24extclock=24 MHz external clock - overclocked
-lite.menu.clocko.25extclock=25 MHz external clock - overclocked
-lite.menu.clocko.30extclock=30 MHz external clock - overclocked, may be unstable
-lite.menu.clocko.32extclock=32 MHz external clock - overclocked, may be unstable
+lite.menu.clocko.24extclock=24 MHz external clock (overclocked)
+lite.menu.clocko.28extclock=28 MHz external clock (overclocked)
+lite.menu.clocko.32extclock=32 MHz external clock (overclocked)
 lite.menu.clocko.20internal.build.speed=20
 lite.menu.clocko.20internal.build.clocksource=0
 lite.menu.clocko.16internal.build.speed=16
@@ -167,43 +153,13 @@ lite.menu.clocko.8extclock.build.speed=8
 lite.menu.clocko.8extclock.build.clocksource=2
 lite.menu.clocko.24extclock.build.speed=24
 lite.menu.clocko.24extclock.build.clocksource=2
-lite.menu.clocko.25extclock.build.speed=24
-lite.menu.clocko.25extclock.build.clocksource=2
-lite.menu.clocko.30extclock.build.speed=30
-lite.menu.clocko.30extclock.build.clocksource=2
+lite.menu.clocko.28extclock.build.speed=28
+lite.menu.clocko.28extclock.build.clocksource=2
 lite.menu.clocko.32extclock.build.speed=32
 lite.menu.clocko.32extclock.build.clocksource=2
-lite.menu.clocko.20internaltuned.build.speed=20
-lite.menu.clocko.20internaltuned.build.clocksource=0
-lite.menu.clocko.20internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.16internaltuned.build.speed=16
-lite.menu.clocko.16internaltuned.build.clocksource=0
-lite.menu.clocko.16internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.12internaltuned.build.speed=12
-lite.menu.clocko.12internaltuned.build.clocksource=0
-lite.menu.clocko.12internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.24internaltuned.build.speed=24
-lite.menu.clocko.24internaltuned.build.clocksource=0
-lite.menu.clocko.24internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.25internaltuned.build.speed=25
-lite.menu.clocko.25internaltuned.build.clocksource=0
-lite.menu.clocko.25internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.30internaltuned.build.speed=30
-lite.menu.clocko.30internaltuned.build.clocksource=0
-lite.menu.clocko.30internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.32internaltuned.build.speed=32
-lite.menu.clocko.32internaltuned.build.clocksource=0
-lite.menu.clocko.32internaltuned.build.tuned=-DCLOCK_TUNE_INTERNAL
-lite.menu.clocko.20internaltuned.bootloader.OSCCFG=0x02
-lite.menu.clocko.24internaltuned.bootloader.OSCCFG=0x02
-lite.menu.clocko.25internaltuned.bootloader.OSCCFG=0x02
-lite.menu.clocko.30internaltuned.bootloader.OSCCFG=0x02
-lite.menu.clocko.32internaltuned.bootloader.OSCCFG=0x02
 lite.menu.clocko.20internal.bootloader.OSCCFG=0x02
 lite.menu.clocko.10internal.bootloader.OSCCFG=0x02
 lite.menu.clocko.5internal.bootloader.OSCCFG=0x02
-
-
 
 ### MILLIS TIMER
 lite.menu.millis.enabled=Enabled (default timer)
@@ -307,10 +263,3 @@ lite.menu.startuptimeopti.8.bootloader.SYSCFG1=0x04
 lite.menu.startuptimeopti.16.bootloader.SYSCFG1=0x05
 lite.menu.startuptimeopti.32.bootloader.SYSCFG1=0x06
 lite.menu.startuptimeopti.64.bootloader.SYSCFG1=0x07
-
-### TWI OPTIONS
-lite.menu.wire.mors=Master or Slave (saves Flash & RAM)
-lite.menu.wire.mors.build.wire=MORS
-lite.menu.wire.mands=Master and Slave
-lite.menu.wire.mands.build.wire=MANDS
-

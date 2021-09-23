@@ -478,7 +478,7 @@ class Backend(object):
         self.logger.error('%s flag not found for %s memory', chiperase_effect_key, memory_name)
         return ChiperaseEffect.NOT_ERASED
 
-    def read_memory(self, memory_name=MemoryNameAliases.ALL, offset_byte=0, numbytes=0, max_chunk_size=None):
+    def read_memory(self, memory_name=MemoryNameAliases.ALL, offset_byte=0, numbytes=0):
         """
         Read target device memory
 
@@ -501,9 +501,9 @@ class Backend(object):
         self._is_tool_not_connected_raise()
         self._is_session_not_active_raise()
 
-        return self.programmer.read_memory(memory_name=memory_name, offset=offset_byte, numbytes=numbytes, max_chunk_size=max_chunk_size)
+        return self.programmer.read_memory(memory_name=memory_name, offset=offset_byte, numbytes=numbytes)
 
-    def write_memory(self, data, memory_name=MemoryNames.FLASH, offset_byte=0, blocksize=0, pagewrite_delay=0):
+    def write_memory(self, data, memory_name=MemoryNames.FLASH, offset_byte=0, blocksize=0):
         """
         Write target device memory
 
@@ -520,12 +520,12 @@ class Backend(object):
         """
         self._is_tool_not_connected_raise()
         self._is_session_not_active_raise()
-        if blocksize == 0:
-            self.programmer.write_memory(data=data, memory_name=memory_name, offset=offset_byte, pagewrite_delay=pagewrite_delay)
+        if (blocksize == 0):
+            self.programmer.write_memory(data=data, memory_name=memory_name, offset=offset_byte)
         else:
-            self.programmer.write_memory(data=data, memory_name=memory_name, offset=offset_byte, blocksize=blocksize, pagewrite_delay=pagewrite_delay)
+            self.programmer.write_memory(data=data, memory_name=memory_name, offset=offset_byte, blocksize=blocksize)
 
-    def verify_memory(self, data, memory_name=MemoryNames.FLASH, offset_byte=0, max_read_chunk=None):
+    def verify_memory(self, data, memory_name=MemoryNames.FLASH, offset_byte=0):
         """
         Verify target device memory
 
@@ -542,7 +542,7 @@ class Backend(object):
         self._is_tool_not_connected_raise()
         self._is_session_not_active_raise()
 
-        return self.programmer.verify_memory(data=data, memory_name=memory_name, offset=offset_byte, max_read_chunk=max_read_chunk)
+        return self.programmer.verify_memory(data=data, memory_name=memory_name, offset=offset_byte)
 
     def hold_in_reset(self):
         """
@@ -608,7 +608,7 @@ class Backend(object):
         for segment in hex_memories:
             memory_name = segment.memory_info[DeviceInfoKeys.NAME]
             self.logger.debug("Verifying %s...", memory_name)
-            segment_ok = self.verify_memory(segment.data, memory_name, segment.offset, max_read_chunk=max_read_chunk)
+            segment_ok = self.verify_memory(segment.data, memory_name, segment.offset)
             if segment_ok:
                 self.logger.debug("OK!")
             else:
