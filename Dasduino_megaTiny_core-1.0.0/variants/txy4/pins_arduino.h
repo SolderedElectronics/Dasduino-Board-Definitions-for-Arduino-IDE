@@ -64,9 +64,6 @@
 #define PIN_WIRE_SDA (PIN_PB1)
 #define PIN_WIRE_SCL (PIN_PB0)
 
-#define SDA PIN_WIRE_SDA
-#define SCL PIN_WIRE_SCL
-
 // Mapped to HWSERIAL0 in Serial library
 #define HWSERIAL0 (&USART0)
 #define HWSERIAL0_DRE_VECTOR (USART0_DRE_vect)
