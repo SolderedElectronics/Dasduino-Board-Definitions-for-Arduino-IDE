@@ -107,6 +107,9 @@
 #define PIN_HWSERIAL1_XDIR_PINSWAP_1 (PIN_PA4)
 #endif
 
+#define BUTTON_BUILTIN (PIN_PA6)
+#define LEDWS_BUILTIN (PIN_PA5)
+
 #ifdef DAC0
 #define DAC_PIN (PIN_PA6)
 #endif
