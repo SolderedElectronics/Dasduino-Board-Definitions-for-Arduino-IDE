@@ -160,13 +160,13 @@
                     "help": {
                         "online": "http://www.forum.soldered.com"
                     },
-                    "category": "Dasduino megaTiny Boards",
+                    "category": "Dasduino ATtiny Boards",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_megaTiny_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_MegaTiny-1.0.0.zip",
-                    "checksum": "SHA-256:e23e416339438311f1e9667c1afc68cf8a65d9aa48d92ce937d3bf12bc2da132",
-                    "size": "9694146",
+                    "checksum": "SHA-256:4065284c476f84b2d607c4c4206d4a76aa1782bfb0f29ffde0c82297aa986b4b",
+                    "size": "9696626",
                     "version": "1.0.0",
-                    "name": "Dasduino MegaTiny Boards",
+                    "name": "Dasduino ATtiny Boards",
                     "architecture": "megaavr",
                     "boards": [
                         {
