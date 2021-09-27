@@ -282,7 +282,7 @@ Inkplate5.menu.DebugLevel.verbose=Verbose
 Inkplate5.menu.DebugLevel.verbose.build.code_debug=5
 
 ##############################################################
-Inkplate6plus.name=Inkplate 6 plus (ESP32)
+Inkplate6plus.name=Inkplate 6PLUS (ESP32)
 
 Inkplate6plus.upload.tool=esptool_py
 Inkplate6plus.upload.maximum_size=1310720
@@ -373,7 +373,7 @@ Inkplate6plus.menu.DebugLevel.verbose=Verbose
 Inkplate6plus.menu.DebugLevel.verbose.build.code_debug=5
 
 ##############################################################
-Inkplatecolor.name=Inkplate color (ESP32)
+Inkplatecolor.name=Inkplate 6COLOR (ESP32)
 
 Inkplatecolor.upload.tool=esptool_py
 Inkplatecolor.upload.maximum_size=1310720
