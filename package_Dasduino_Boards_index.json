@@ -31,10 +31,10 @@
                             "name": "Inkplate 5 (ESP32)"
                         },
                         {
-                            "name": "Inkplate 6 plus (ESP32)"
+                            "name": "Inkplate 6PLUS (ESP32)"
                         },
                         {
-                            "name": "Inkplate color (ESP32)"
+                            "name": "Inkplate 6COLOR (ESP32)"
                         }
                     ],
                     "toolsDependencies": [
