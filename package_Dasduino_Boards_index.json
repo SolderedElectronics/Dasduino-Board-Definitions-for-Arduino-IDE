@@ -15,6 +15,53 @@
                     "category": "Dasduino",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-1.0.0.zip",
                     "archiveFileName": "Inkplate_core-1.0.0.zip",
+                    "checksum": "SHA-256:b147cf04680e857efc9bfedcf5b3b81e9f2fdc14e7c94649ae8811f2ed5f6772",
+                    "size": "58570009",
+                    "version": "2.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards": [
+                        {
+                            "name": "Inkplate 6 (ESP32)"
+                        },
+                        {
+                            "name": "Inkplate 10 (ESP32)"
+                        },
+                        {
+                            "name": "Inkplate 5 (ESP32)"
+                        },
+                        {
+                            "name": "Inkplate 6PLUS (ESP32)"
+                        },
+                        {
+                            "name": "Inkplate 6COLOR (ESP32)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "1.22.0-96-g2852398-5.2.0",
+                            "name": "xtensa-esp32-elf-gcc"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.0",
+                            "name": "esptool_py"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "0.2.3",
+                            "name": "mkspiffs"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
+                    "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-1.0.0.zip",
+                    "archiveFileName": "Inkplate_core-1.0.0.zip",
                     "checksum": "SHA-256:7476098c6d25b3ce741442be3933ceee862ad6df91cbfe8a945bdfdc6c31ee87",
                     "size": "47482077",
                     "version": "1.0.0",
