@@ -44,7 +44,6 @@ Inkplate6.build.partitions=default
 Inkplate6.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw
 Inkplate6.build.extra_libs=
 
-Inkplate6.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA/1MB SPIFFS)
 Inkplate6.menu.PartitionScheme.huge_app.build.partitions=huge_app
 Inkplate6.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
@@ -67,6 +66,7 @@ Inkplate6.menu.PartitionScheme.noota_ffat.build.partitions=noota_ffat
 Inkplate6.menu.PartitionScheme.noota_ffat.upload.maximum_size=2097152
 Inkplate6.menu.PartitionScheme.noota_3gffat=No OTA (1MB APP/3MB FATFS)
 Inkplate6.menu.PartitionScheme.noota_3gffat.build.partitions=noota_3gffat
+Inkplate6.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)
 Inkplate6.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
 Inkplate6.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
@@ -148,7 +148,6 @@ Inkplate10.build.partitions=default
 Inkplate10.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw
 Inkplate10.build.extra_libs=
 
-Inkplate10.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate10.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA/1MB SPIFFS)
 Inkplate10.menu.PartitionScheme.huge_app.build.partitions=huge_app
 Inkplate10.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
@@ -171,6 +170,7 @@ Inkplate10.menu.PartitionScheme.noota_ffat.build.partitions=noota_ffat
 Inkplate10.menu.PartitionScheme.noota_ffat.upload.maximum_size=2097152
 Inkplate10.menu.PartitionScheme.noota_3gffat=No OTA (1MB APP/3MB FATFS)
 Inkplate10.menu.PartitionScheme.noota_3gffat.build.partitions=noota_3gffat
+Inkplate10.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate10.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)
 Inkplate10.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
 Inkplate10.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
@@ -254,7 +254,6 @@ Inkplate5.build.partitions=default
 Inkplate5.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw
 Inkplate5.build.extra_libs=
 
-Inkplate5.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate5.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA/1MB SPIFFS)
 Inkplate5.menu.PartitionScheme.huge_app.build.partitions=huge_app
 Inkplate5.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
@@ -277,6 +276,7 @@ Inkplate5.menu.PartitionScheme.noota_ffat.build.partitions=noota_ffat
 Inkplate5.menu.PartitionScheme.noota_ffat.upload.maximum_size=2097152
 Inkplate5.menu.PartitionScheme.noota_3gffat=No OTA (1MB APP/3MB FATFS)
 Inkplate5.menu.PartitionScheme.noota_3gffat.build.partitions=noota_3gffat
+Inkplate5.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate5.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)
 Inkplate5.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
 Inkplate5.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
@@ -358,7 +358,6 @@ Inkplate6plus.build.partitions=default
 Inkplate6plus.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw
 Inkplate6plus.build.extra_libs=
 
-Inkplate6plus.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6plus.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA/1MB SPIFFS)
 Inkplate6plus.menu.PartitionScheme.huge_app.build.partitions=huge_app
 Inkplate6plus.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
@@ -381,6 +380,7 @@ Inkplate6plus.menu.PartitionScheme.noota_ffat.build.partitions=noota_ffat
 Inkplate6plus.menu.PartitionScheme.noota_ffat.upload.maximum_size=2097152
 Inkplate6plus.menu.PartitionScheme.noota_3gffat=No OTA (1MB APP/3MB FATFS)
 Inkplate6plus.menu.PartitionScheme.noota_3gffat.build.partitions=noota_3gffat
+Inkplate6plus.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6plus.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)
 Inkplate6plus.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
 Inkplate6plus.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
@@ -462,7 +462,6 @@ Inkplate6COLOR.build.partitions=default
 Inkplate6COLOR.build.defines=-DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -mfix-esp32-psram-cache-strategy=memw
 Inkplate6COLOR.build.extra_libs=
 
-Inkplate6COLOR.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6COLOR.menu.PartitionScheme.huge_app=Huge APP (3MB No OTA/1MB SPIFFS)
 Inkplate6COLOR.menu.PartitionScheme.huge_app.build.partitions=huge_app
 Inkplate6COLOR.menu.PartitionScheme.huge_app.upload.maximum_size=3145728
@@ -485,6 +484,7 @@ Inkplate6COLOR.menu.PartitionScheme.noota_ffat.build.partitions=noota_ffat
 Inkplate6COLOR.menu.PartitionScheme.noota_ffat.upload.maximum_size=2097152
 Inkplate6COLOR.menu.PartitionScheme.noota_3gffat=No OTA (1MB APP/3MB FATFS)
 Inkplate6COLOR.menu.PartitionScheme.noota_3gffat.build.partitions=noota_3gffat
+Inkplate6COLOR.menu.PartitionScheme.noota_3gffat.upload.maximum_size=1048576
 Inkplate6COLOR.menu.PartitionScheme.min_spiffs=Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)
 Inkplate6COLOR.menu.PartitionScheme.min_spiffs.build.partitions=min_spiffs
 Inkplate6COLOR.menu.PartitionScheme.min_spiffs.upload.maximum_size=1966080
