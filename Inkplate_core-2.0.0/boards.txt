@@ -32,7 +32,7 @@ Inkplate6.build.bootloader_addr=0x1000
 Inkplate6.build.target=esp32
 Inkplate6.build.mcu=esp32
 Inkplate6.build.core=esp32
-Inkplate6.build.variant=esp32
+Inkplate6.build.variant=Inkplate
 Inkplate6.build.board=ESP32_DEV
 
 Inkplate6.build.f_cpu=240000000L
@@ -136,7 +136,7 @@ Inkplate10.build.bootloader_addr=0x1000
 Inkplate10.build.target=esp32
 Inkplate10.build.mcu=esp32
 Inkplate10.build.core=esp32
-Inkplate10.build.variant=esp32
+Inkplate10.build.variant=Inkplate
 Inkplate10.build.board=INKPLATE10
 
 Inkplate10.build.f_cpu=240000000L
@@ -242,7 +242,7 @@ Inkplate5.build.bootloader_addr=0x1000
 Inkplate5.build.target=esp32
 Inkplate5.build.mcu=esp32
 Inkplate5.build.core=esp32
-Inkplate5.build.variant=esp32
+Inkplate5.build.variant=Inkplate
 Inkplate5.build.board=INKPLATE5
 
 Inkplate5.build.f_cpu=240000000L
@@ -346,7 +346,7 @@ Inkplate6plus.build.bootloader_addr=0x1000
 Inkplate6plus.build.target=esp32
 Inkplate6plus.build.mcu=esp32
 Inkplate6plus.build.core=esp32
-Inkplate6plus.build.variant=esp32
+Inkplate6plus.build.variant=Inkplate
 Inkplate6plus.build.board=INKPLATE6PLUS
 
 Inkplate6plus.build.f_cpu=240000000L
@@ -450,7 +450,7 @@ Inkplate6COLOR.build.bootloader_addr=0x1000
 Inkplate6COLOR.build.target=esp32
 Inkplate6COLOR.build.mcu=esp32
 Inkplate6COLOR.build.core=esp32
-Inkplate6COLOR.build.variant=esp32
+Inkplate6COLOR.build.variant=Inkplate
 Inkplate6COLOR.build.board=INKPLATECOLOR
 
 Inkplate6COLOR.build.f_cpu=240000000L

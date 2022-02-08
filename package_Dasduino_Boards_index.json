@@ -81,7 +81,7 @@
                     "size": "47482077",
                     "version": "1.0.0",
                     "name": "Inkplate Boards",
-                    "architecture": "Inkplate",
+                    "architecture": "esp32",
                     "boards": [
                         {
                             "name": "Inkplate 6 (ESP32)"

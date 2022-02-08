@@ -20,7 +20,7 @@ Inkplate6.serial.disableDTR=true
 Inkplate6.serial.disableRTS=true
 
 Inkplate6.build.mcu=esp32
-Inkplate6.build.core=Inkplate
+Inkplate6.build.core=esp32
 Inkplate6.build.variant=Inkplate
 Inkplate6.build.board=ESP32_DEV
 
@@ -111,7 +111,7 @@ Inkplate10.serial.disableDTR=true
 Inkplate10.serial.disableRTS=true
 
 Inkplate10.build.mcu=esp32
-Inkplate10.build.core=Inkplate
+Inkplate10.build.core=esp32
 Inkplate10.build.variant=Inkplate
 Inkplate10.build.board=INKPLATE10
 
@@ -202,7 +202,7 @@ Inkplate5.serial.disableDTR=true
 Inkplate5.serial.disableRTS=true
 
 Inkplate5.build.mcu=esp32
-Inkplate5.build.core=Inkplate
+Inkplate5.build.core=esp32
 Inkplate5.build.variant=Inkplate
 Inkplate5.build.board=INKPLATE5
 
@@ -293,7 +293,7 @@ Inkplate6plus.serial.disableDTR=true
 Inkplate6plus.serial.disableRTS=true
 
 Inkplate6plus.build.mcu=esp32
-Inkplate6plus.build.core=Inkplate
+Inkplate6plus.build.core=esp32
 Inkplate6plus.build.variant=Inkplate
 Inkplate6plus.build.board=INKPLATE6PLUS
 
@@ -384,7 +384,7 @@ Inkplatecolor.serial.disableDTR=true
 Inkplatecolor.serial.disableRTS=true
 
 Inkplatecolor.build.mcu=esp32
-Inkplatecolor.build.core=Inkplate
+Inkplatecolor.build.core=esp32
 Inkplatecolor.build.variant=Inkplate
 Inkplatecolor.build.board=INKPLATECOLOR 
 
