@@ -13,14 +13,14 @@
 #define __WS2812_SOLDERED__
 
 #include "Arduino.h"
-#include "libs/Adafruit_NeoPixel/Adafruit_NeoPixel.h"
+#include <tinyNeoPixel.h>
 
-class WS2812 : public Adafruit_NeoPixel
+class WS2812 : public tinyNeoPixel
 {
-  public:
-    WS2812(int n, int m) : Adafruit_NeoPixel(n, m, NEO_GRB + NEO_KHZ800)
-    {
-    }
+public:
+  WS2812(int n, int m) : tinyNeoPixel(n, m, NEO_GRB + NEO_KHZ800)
+  {
+  }
 };
 
 #endif
