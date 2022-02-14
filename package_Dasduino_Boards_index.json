@@ -40,8 +40,8 @@
                     "category": "Dasduino_STM32",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_STM32_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_STM32_core-1.0.0.zip",
-                    "checksum": "SHA-256:b6163f44f410c6d324919186719fd126c2db02455e5e20b67fc2206e5a8a9486",
-                    "size": "7048219",
+                    "checksum": "SHA-256:5b9c3addc01c4f6a74444224db64964d536ce1d31810443d2ed401ec04e438dd",
+                    "size": "7047706",
                     "version": "1.0.0",
                     "name": "Dasduino STM32 Boards",
                     "architecture": "stm32",
@@ -154,8 +154,8 @@
                     "version": "1.0.0",
                     "architecture": "esp8266",
                     "archiveFileName": "Dasduino_ESP8266_core-1.0.0.zip",
-                    "size": "38546377",
-                    "checksum": "SHA-256:c8009fc5fd53beb7f4e6a53b72b24cba0256bfa73386c2521c89084b54cddb7f",
+                    "size": "38573657",
+                    "checksum": "SHA-256:e3803a4107029552b15e2f750e5c321021afd7be69bcb8207b60fc5149a41c65",
                     "boards": [
                         {
                             "name": "Dasduino Connect (ESP8266)"
