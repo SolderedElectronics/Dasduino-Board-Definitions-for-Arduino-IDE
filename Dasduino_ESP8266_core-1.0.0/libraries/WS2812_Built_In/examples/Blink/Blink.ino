@@ -1,7 +1,6 @@
-// NeoPixel Ring simple sketch (c) 2013 Shae Erisson
-// Released under the GPLv3 license to match the rest of the
-// Adafruit NeoPixel library
-// Original by AdaFruit Industries, modified by Soldered
+// LED Blink Example for Dasduino Board definitions
+//
+// Original library by AdaFruit Industries, modified by Soldered
 
 #include "WS2812-SOLDERED.h"
 
