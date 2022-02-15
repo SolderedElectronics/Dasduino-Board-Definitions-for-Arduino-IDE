@@ -1253,6 +1253,9 @@
                     "architecture": "esp32",
                     "boards": [
                         {
+                            "name": "Inkplate 2 (ESP32)"
+                        },
+                        {
                             "name": "Inkplate 6 (ESP32)"
                         },
                         {
