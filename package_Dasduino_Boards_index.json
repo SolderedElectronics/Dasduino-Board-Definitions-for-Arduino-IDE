@@ -15,17 +15,17 @@
                     "category": "Dasduino",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-1.0.0.zip",
-                    "checksum": "SHA-256:b906316ad928ca35d8a762d569f78e7953abea0d120e6bbb3d0a55241d6ef902",
+                    "checksum": "SHA-256:943701c32a5ed9a6cdb590934efbab4347bcb0db4fdc2e4721c508cb6682cd00",
                     "size": "6004366",
                     "version": "1.0.0",
                     "name": "Dasduino AVR Boards",
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (Atmega328P)"
+                            "name": "Dasduino Core (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (Atmega328P)"
+                            "name": "Dasduino Core LoRa (ATmega328P)"
                         },
                         {
                             "name": "Dasduino Coreplus (ATmega2560)"
@@ -40,8 +40,8 @@
                     "category": "Dasduino_STM32",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_STM32_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_STM32_core-1.0.0.zip",
-                    "checksum": "SHA-256:5b9c3addc01c4f6a74444224db64964d536ce1d31810443d2ed401ec04e438dd",
-                    "size": "7047706",
+                    "checksum": "SHA-256:3cc96d2910a2bf7b5ce389fb6bcb067c73a4a15f61f82eaab27f84478a2c499c",
+                    "size": "7047704",
                     "version": "1.0.0",
                     "name": "Dasduino STM32 Boards",
                     "architecture": "stm32",
@@ -78,8 +78,8 @@
                     "category": "Dasduino",
                     "url": "https://github.com/e-radionicacom/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_ESP32_core-1.0.0.zip",
-                    "checksum": "SHA-256:6803694a2bb969ad5efcf9c6264334df980ac0a2d6cd4112a6c043804c9219d2",
-                    "size": "47491044",
+                    "checksum": "SHA-256:be4943e4b587f2956dff5edbe971fbf5224e983f56926c2893131fb4bd649699",
+                    "size": "47491042",
                     "version": "1.0.0",
                     "name": "Dasduino ESP32 Boards",
                     "architecture": "esp32",

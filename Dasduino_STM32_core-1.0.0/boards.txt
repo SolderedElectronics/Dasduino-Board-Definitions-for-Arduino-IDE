@@ -129,7 +129,7 @@ swiftf1.menu.rtlib.full.build.flags.ldspecs=
 ################################################################################
 # STM32L010RB board
 
-swiftl0.name=Dasduino swift L0 LORA
+swiftl0.name=Dasduino Swift L0 LORA
  
 swiftl0.build.core=arduino
 

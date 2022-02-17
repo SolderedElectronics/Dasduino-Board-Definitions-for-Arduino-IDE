@@ -2,7 +2,7 @@
 ## Dasduino Core w/ ATmega328P
 ## ---------------------------
 
-core.name=Dasduino Core (Atmega328P)
+core.name=Dasduino Core (ATmega328P)
 core.upload.tool=avrdude
 core.upload.protocol=arduino
 core.bootloader.tool=avrdude
@@ -81,7 +81,7 @@ coreplus.menu.cpu.atmega2560.build.board=AVR_MEGA2560
 #############################
 
 # General
-LoRa.name=Dasduino Core LoRa (Atmega328P)
+LoRa.name=Dasduino Core LoRa (ATmega328P)
 LoRa.upload.tool=avrdude
 LoRa.upload.maximum_data_size=2048
 LoRa.bootloader.tool=avrdude
