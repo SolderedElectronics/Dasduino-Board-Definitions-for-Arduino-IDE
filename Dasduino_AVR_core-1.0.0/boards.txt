@@ -1,3 +1,11 @@
+menu.cpu=Processor
+
+menu.clock=Clock
+menu.BOD=BOD
+menu.LTO=Compiler LTO 
+menu.variant=Variant
+menu.bootloader=Bootloader
+
 ##############################################################
 ## Dasduino Core w/ ATmega328P
 ## ---------------------------
