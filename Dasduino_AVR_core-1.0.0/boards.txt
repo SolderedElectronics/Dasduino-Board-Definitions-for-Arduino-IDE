@@ -21,18 +21,9 @@ core.bootloader.extended_fuses=0x05
 core.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
 core.build.mcu=atmega328p
 
-# Menu options
-menu.clock=Clock
-menu.BOD=BOD
-menu.LTO=Compiler LTO 
-menu.variant=Variant
-menu.bootloader=Bootloader
-
 ##############################################################
-## Dasduino Core w/ ATmega2560
-## ---------------------------
 
-coreplus.name=Dasduino Coreplus (ATmega2560)
+coreplus.name=Dasduino CorePlus (ATmega2560)
 
 coreplus.vid.0=0x2341
 coreplus.pid.0=0x0010
@@ -46,11 +37,27 @@ coreplus.vid.4=0x2341
 coreplus.pid.4=0x0210
 coreplus.vid.5=0x2341
 coreplus.pid.5=0x0242
+coreplus.upload_port.0.vid=0x2341
+coreplus.upload_port.0.pid=0x0010
+coreplus.upload_port.1.vid=0x2341
+coreplus.upload_port.1.pid=0x0042
+coreplus.upload_port.2.vid=0x2A03
+coreplus.upload_port.2.pid=0x0010
+coreplus.upload_port.3.vid=0x2A03
+coreplus.upload_port.3.pid=0x0042
+coreplus.upload_port.4.vid=0x2341
+coreplus.upload_port.4.pid=0x0210
+coreplus.upload_port.5.vid=0x2341
+coreplus.upload_port.5.pid=0x0242
+coreplus.upload_port.6.board=mega
 
 coreplus.upload.tool=avrdude
+coreplus.upload.tool.default=avrdude
+coreplus.upload.tool.network=arduino_ota
 coreplus.upload.maximum_data_size=8192
 
 coreplus.bootloader.tool=avrdude
+coreplus.bootloader.tool.default=avrdude
 coreplus.bootloader.low_fuses=0xFF
 coreplus.bootloader.unlock_bits=0x3F
 coreplus.bootloader.lock_bits=0x0F
@@ -75,6 +82,7 @@ coreplus.menu.cpu.atmega2560.bootloader.file=stk500v2/stk500boot_v2_mega2560.hex
 
 coreplus.menu.cpu.atmega2560.build.mcu=atmega2560
 coreplus.menu.cpu.atmega2560.build.board=AVR_MEGA2560
+
 
 #############################
 #### ATmega328/A/P/PA/PB ####
