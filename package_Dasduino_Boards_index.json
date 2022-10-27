@@ -1113,14 +1113,6 @@
                         }
                     ]
                 },
-                    {
-                      "host": "x86_64-mingw32",
-                      "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-2021r2-patch3/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win64.zip",
-                      "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win64.zip",
-                      "checksum": "SHA-256:f5607e5187317d521f0474cade83f8eb590f2d165d95c3779b6ce11fbac21d1f",
-                      "size": "146606480"
-                    }
-                },
                 {
                     "version": "9.2.1-1.1",
                     "name": "xpack-arm-none-eabi-gcc",
@@ -1282,7 +1274,7 @@
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
                             "checksum": "SHA-256:eb2a442d7f551ebeb842995ec372ec4b364314ca2d7aae779399a74972f7d6bc",
                             "size": "144711970"
-                        },
+                        }
                     ]
                 },
                 {
@@ -1449,7 +1441,7 @@
                             "size": "40665"
                         }
                     ]
-                }
+                },
                 {
                     "version": "3.0.0-gnu12-dc7f933",
                     "name": "mklittlefs",
