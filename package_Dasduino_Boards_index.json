@@ -1228,7 +1228,7 @@
                             "size": "755585"
                         }
                     ]
-                },
+                }
             ]
         },
         {
@@ -1425,7 +1425,6 @@
             ],
             "tools": [
                 {
-{
                     "name": "riscv32-esp-elf-gcc",
                     "version": "gcc8_4_0-esp-2021r2-patch3",
                     "systems": [
