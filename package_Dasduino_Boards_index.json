@@ -1247,38 +1247,41 @@
                     "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-3.0.0.zip",
                     "archiveFileName": "Inkplate_core-3.0.0.zip",
-                    "checksum": "SHA-256:b442eeca018222d50d420fbeed70acf9889de9b51214478c89e5aec96380cf04",
-                    "size": "77129578",
+                    "checksum": "SHA-256:91145b55a573b4125301c7bd49b582d56c75fcd272f5a4e4e7cf9b10aabee586",
+                    "size": "77130515",
                     "version": "3.0.0",
                     "name": "Inkplate Boards",
                     "architecture": "esp32",
                     "boards":[
                         {
-                            "name":"Inkplate 2 (ESP32)"
+                            "name":"Inkplate 2"
                         },
                         {
-                            "name":"Inkplate 6 (ESP32)"
+                            "name":"Inkplate 6"
                         },
                         {
-                            "name":"Inkplate 6V2 (ESP32)"
+                            "name":"Soldered Inkplate 6"
                         },
                         {
-                            "name":"Inkplate 10 (ESP32)"
+                            "name":"Inkplate 10"
                         },
                         {
-                            "name":"Inkplate 10V2 (ESP32)"
+                            "name":"Soldered Inkplate 10"
                         },
                         {
-                            "name":"Inkplate 5 (ESP32)"
+                            "name":"Inkplate 5"
                         },
                         {
-                            "name":"Inkplate 6PLUS (ESP32)"
+                            "name":"Inkplate 6PLUS"
                         },
                         {
-                            "name":"Inkplate 6PLUSV2 (ESP32)"
+                            "name":"Soldered Inkplate 6PLUS"
                         },
                         {
-                            "name":"Inkplate COOL (ESP32)"
+                            "name":"Inkplate 6COLOR"
+                        },
+                        {
+                            "name":"Inkplate COOL"
                         }
                    ],
                    "toolsDependencies":[
