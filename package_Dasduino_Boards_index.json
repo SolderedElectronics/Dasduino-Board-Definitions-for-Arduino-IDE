@@ -114,7 +114,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino ATtiny Boards",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_megaTiny_core-2.0.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_megaTiny_core-2.0.0.zip",
                     "archiveFileName": "Dasduino_MegaTiny-2.0.0.zip",
                     "checksum": "SHA-256:a3248e9eff8df9207a65243e852990632979841285795ba064bd18348a0c0a52",
                     "size": "9372458",
