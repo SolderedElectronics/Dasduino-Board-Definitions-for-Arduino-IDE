@@ -114,7 +114,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino ATtiny Boards",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_megaTiny_core-2.0.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_megaTiny_core-2.0.0.zip",
                     "archiveFileName": "Dasduino_MegaTiny-2.0.0.zip",
                     "checksum": "SHA-256:a3248e9eff8df9207a65243e852990632979841285795ba064bd18348a0c0a52",
                     "size": "9372458",
@@ -1280,7 +1280,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-3.0.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-3.0.0.zip",
                     "archiveFileName": "Inkplate_core-3.0.0.zip",
                     "checksum": "SHA-256:873e4643fffe1b5398fe39cc5e89fb3ae02a8b795f0677929922c64cb4e2c9e8",
                     "size": "77130128",
@@ -1468,42 +1468,42 @@
                     "systems": [
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
                             "checksum": "SHA-256:179cbad579790ad35e0f414a18d90017c0f158c397022411a8e9867db2174f15",
                             "size": "106843321"
                         },
                         {
                             "host": "aarch64-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
                             "checksum": "SHA-256:fb339d476c79c76db8f903b265cab6bb6950d5ed954dec644445252d3378023c",
                             "size": "103277393"
                         },
                         {
                             "host": "arm-linux-gnueabihf",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
                             "checksum": "SHA-256:51a6296d8334b7452dba44b2b62e87afd7fd1c74bafa1aa29b1f4ab72cb9e5e0",
                             "size": "103062256"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
                             "checksum": "SHA-256:fef60f7ef37ffaa50416d8f244cdbd710d6729dae41ef06c4ec0e50a1f3b7dd7",
                             "size": "109460025"
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
                             "checksum": "SHA-256:4aacc1742a76349d790b1ac8e9e9d963daefda5346dbd6741cfe8e7a35a44e4e",
                             "size": "113703959"
                         },
                         {
                             "host": "i686-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
                             "archiveFileName": "riscv32-esp-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
                             "checksum": "SHA-256:eb2a442d7f551ebeb842995ec372ec4b364314ca2d7aae779399a74972f7d6bc",
                             "size": "144711970"
@@ -1516,49 +1516,49 @@
                     "systems": [
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-amd64.tar.gz",
                             "checksum": "SHA-256:9edd1e77627688f435561922d14299f6a0021ba1f6ff67e472e1108695a69e53",
                             "size": "90569312"
                         },
                         {
                             "host": "aarch64-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-arm64.tar.gz",
                             "checksum": "SHA-256:3a21a3e310e6b1e7d7bed1f3e59698a5bd29ed3a5ca79fba9265d7dd2f1e0cd2",
                             "size": "86838362"
                         },
                         {
                             "host": "arm-linux-gnueabihf",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-armel.tar.gz",
                             "checksum": "SHA-256:89313c4c1d8db1b01624f31b58bf3fbe527160569828ac4301e9daa75c52716d",
                             "size": "86187540"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-linux-i686.tar.gz",
                             "checksum": "SHA-256:a1f165a836f175daa6fbfde4ca99cb93b377f021fbfc41f79a700bd4df965a9a",
                             "size": "92580267"
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-macos.tar.gz",
                             "checksum": "SHA-256:dda3d7a43efd995d9a51d5a5741626dbf915df46078aef0b5aea7163ac82398b",
                             "size": "97807647"
                         },
                         {
                             "host": "i686-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win32.zip",
                             "checksum": "SHA-256:fd147592928ef2d7092ba34b01ecd776fe26ba3d7e3f9b6b215a3b46e981ee2c",
                             "size": "116464819"
                         },
                         {
                             "host": "x86_64-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win64.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win64.zip",
                             "archiveFileName": "xtensa-esp32-elf-gcc8_4_0-esp-2021r2-patch3-win64.zip",
                             "checksum": "SHA-256:9395315c07de0b9f05c9a6616ba1f05e76ab651053f2f40479163a8e03cfa830",
                             "size": "119511910"
@@ -1571,49 +1571,49 @@
                     "systems": [
                         {
                             "host": "i686-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-windows.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-windows.zip",
                             "archiveFileName": "esptool-4.2.1-windows.zip",
                             "checksum": "SHA-256:582560067bfbd9895f4862eb5fdf87558ddee5d4d30e7575c9b8bcb0dd60fd94",
                             "size": "6368279"
                         },
                         {
                             "host": "x86_64-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-windows.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-windows.zip",
                             "archiveFileName": "esptool-4.2.1-windows.zip",
                             "checksum": "SHA-256:582560067bfbd9895f4862eb5fdf87558ddee5d4d30e7575c9b8bcb0dd60fd94",
                             "size": "6368279"
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-macos.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-macos.tar.gz",
                             "archiveFileName": "esptool-4.2.1-macos.tar.gz",
                             "checksum": "SHA-256:a984f7ad8bdb40c42d0d368bf4bb21b69a9587aed46b7b6d7de23ca58a3f150d",
                             "size": "5816598"
                         },
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
                             "archiveFileName": "esptool-4.2.1-linux.tar.gz",
                             "checksum": "SHA-256:5a45fb77eb6574554ec2f45230d0b350f26f9c24ab3b6c13c4031ebdf72a34ab",
                             "size": "90123"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
                             "archiveFileName": "esptool-4.2.1-linux.tar.gz",
                             "checksum": "SHA-256:5a45fb77eb6574554ec2f45230d0b350f26f9c24ab3b6c13c4031ebdf72a34ab",
                             "size": "90123"
                         },
                         {
                             "host": "arm-linux-gnueabihf",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-4.2.1-linux.tar.gz",
                             "archiveFileName": "esptool-4.2.1-linux.tar.gz",
                             "checksum": "SHA-256:5a45fb77eb6574554ec2f45230d0b350f26f9c24ab3b6c13c4031ebdf72a34ab",
                             "size": "90123"
                         },
                         {
                             "host": "aarch64-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/esptool-3.3-linux.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/esptool-3.3-linux.tar.gz",
                             "archiveFileName": "esptool-4.2.1-linux.tar.gz",
                             "checksum": "SHA-256:5a45fb77eb6574554ec2f45230d0b350f26f9c24ab3b6c13c4031ebdf72a34ab",
                             "size": "90123"
@@ -1626,49 +1626,49 @@
                     "systems": [
                         {
                             "host": "i686-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-win32.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-win32.zip",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-win32.zip",
                             "checksum": "SHA-256:b647f2c2efe6949819c85ea9404271b55c7c9c25bcb98d3b98a1d0ba771adf56",
                             "size": "249809"
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
                             "checksum": "SHA-256:9f43fc74a858cf564966b5035322c3e5e61c31a647c5a1d71b388ed6efc48423",
                             "size": "130270"
                         },
                         {
                             "host": "i386-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
                             "checksum": "SHA-256:9f43fc74a858cf564966b5035322c3e5e61c31a647c5a1d71b388ed6efc48423",
                             "size": "130270"
                         },
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux64.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux64.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-linux64.tar.gz",
                             "checksum": "SHA-256:5e1a4ff41385e842f389f6b5254102a547e566a06b49babeffa93ef37115cb5d",
                             "size": "50646"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux32.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux32.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-linux32.tar.gz",
                             "checksum": "SHA-256:464463a93e8833209cdc29ba65e1a12fec31718dc10075c195a2445b2c3f6cb0",
                             "size": "48751"
                         },
                         {
                             "host": "arm-linux-gnueabihf",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
                             "checksum": "SHA-256:ade3dc00117912ac08a1bdbfbfe76b12d21a34bc5fa1de0cfc45fe7a8d0a0185",
                             "size": "40665"
                         },
                         {
                             "host": "aarch64-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
                             "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-linux-armhf.tar.gz",
                             "checksum": "SHA-256:ade3dc00117912ac08a1bdbfbfe76b12d21a34bc5fa1de0cfc45fe7a8d0a0185",
                             "size": "40665"
@@ -1681,49 +1681,49 @@
                     "systems": [
                         {
                             "host": "aarch64-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/aarch64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/aarch64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "archiveFileName": "aarch64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "checksum": "SHA-256:fc56e389383749e4cf4fab0fcf75cc0ebc41e59383caf6c2eff1c3d9794af200",
                             "size": "44651"
                         },
                         {
                             "host": "arm-linux-gnueabihf",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/arm-linux-gnueabihf.mklittlefs-c41e51a.200706.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/arm-linux-gnueabihf.mklittlefs-c41e51a.200706.tar.gz",
                             "archiveFileName": "arm-linux-gnueabihf.mklittlefs-c41e51a.200706.tar.gz",
                             "checksum": "SHA-256:52b642dd0545eb3bd8dfb75dde6601df21700e4867763fd2696274be279294c5",
                             "size": "37211"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/i686-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/i686-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "archiveFileName": "i686-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "checksum": "SHA-256:7886051d8ccc54aed0af2e7cdf6ff992bb51638df86f3b545955697720b6d062",
                             "size": "48033"
                         },
                         {
                             "host": "i686-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/i686-w64-mingw32.mklittlefs-c41e51a.200706.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/i686-w64-mingw32.mklittlefs-c41e51a.200706.zip",
                             "archiveFileName": "i686-w64-mingw32.mklittlefs-c41e51a.200706.zip",
                             "checksum": "SHA-256:43740db30ce451454f2337331f10ab4ed41bd83dbf0fa0cb4387107388b59f42",
                             "size": "332655"
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/x86_64-apple-darwin14.mklittlefs-c41e51a.200706.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/x86_64-apple-darwin14.mklittlefs-c41e51a.200706.tar.gz",
                             "archiveFileName": "x86_64-apple-darwin14.mklittlefs-c41e51a.200706.tar.gz",
                             "checksum": "SHA-256:e3edd5e05b70db3c7df6b9d626558348ad04804022fe955c799aeb51808c7dc3",
                             "size": "362608"
                         },
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/x86_64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/x86_64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "archiveFileName": "x86_64-linux-gnu.mklittlefs-c41e51a.200706.tar.gz",
                             "checksum": "SHA-256:66e84dda0aad747517da3785125e05738a540948aab2b7eaa02855167a1eea53",
                             "size": "46778"
                         },
                         {
                             "host": "x86_64-mingw32",
-                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/ESP32_Tools/3.0.0/x86_64-w64-mingw32.mklittlefs-c41e51a.200706.zip",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/3.0.0/x86_64-w64-mingw32.mklittlefs-c41e51a.200706.zip",
                             "archiveFileName": "x86_64-w64-mingw32.mklittlefs-c41e51a.200706.zip",
                             "checksum": "SHA-256:2e319077491f8e832e96eb4f2f7a70dd919333cee4b388c394e0e848d031d542",
                             "size": "345132"
