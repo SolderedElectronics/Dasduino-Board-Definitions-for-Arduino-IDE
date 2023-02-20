@@ -1345,7 +1345,9 @@
                             "version":"3.0.0-gnu12-dc7f933"
                         }
                     ]
-                },                    
+                },
+                {
+                    
                     "help": {
                         "online": "http://www.forum.soldered.com"
                     },
