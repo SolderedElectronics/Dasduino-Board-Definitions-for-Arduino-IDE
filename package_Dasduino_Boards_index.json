@@ -1279,6 +1279,81 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-5.0.0.zip",
+                    "archiveFileName": "Inkplate_core-5.0.0.zip",
+                    "checksum": "SHA-256:1b355cf7b04410e74e813458a10206ef1f88a7a6d23bb0e229d8f69fdee18597",
+                    "size": "77131060",
+                    "version": "5.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        },
+                        {
+                            "name":"Inkplate Cool"
+                        }
+                   ],
+                   "toolsDependencies":[
+                       {
+                            "packager":"Inkplate_Boards",
+                            "name":"riscv32-esp-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"xtensa-esp32-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"esptool_py",
+                            "version":"4.2.1"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mkspiffs",
+                            "version":"0.2.3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mklittlefs",
+                            "version":"3.0.0-gnu12-dc7f933"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-4.0.0.zip",
                     "archiveFileName": "Inkplate_core-4.0.0.zip",
                     "checksum": "SHA-256:055e6a55506238f9a75c0411166c49b6e5dea7a41270f2bb2e13d6ffed1322d2",
