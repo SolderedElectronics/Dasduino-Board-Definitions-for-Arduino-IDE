@@ -1281,7 +1281,7 @@
                     "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-6.0.0.zip",
                     "archiveFileName": "Inkplate_core-6.0.0.zip",
-                    "checksum": "SHA-256:398AAFE2B13EF734B0037D3F160875CF84679B9CCD1B7E7A80E1E61632003825",
+                    "checksum": "SHA-256:A5DC62592DBA2EB7CC07B7577EFABC8ECDFBEB50593DD2F7631BD686D668BB7E",
                     "size": "75134115",
                     "version": "6.0.0",
                     "name": "Inkplate Boards",
