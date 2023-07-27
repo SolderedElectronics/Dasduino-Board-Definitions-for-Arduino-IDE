@@ -33,12 +33,12 @@
                     ],
                     "toolsDependencies": [
                         {
-                            "packager": "arduino",
+                            "packager": "Dasduino_Boards",
                             "name": "avr-gcc",
                             "version": "7.3.0-atmel3.6.1-arduino7"
                           },
                           {
-                            "packager": "arduino",
+                            "packager": "Dasduino_Boards",
                             "name": "avrdude",
                             "version": "6.3.0-arduino17"
                           }
