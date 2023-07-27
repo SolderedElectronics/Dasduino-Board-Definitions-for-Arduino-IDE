@@ -15,7 +15,7 @@
                     "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_AVR_core-2.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-1.0.0.zip",
-                    "checksum": "SHA-256:1e8f9d87f20e5125ac9f237b32db0a791fa97b297dc1923da3881b38741ceb3f",
+                    "checksum": "SHA-256:8681665ff84c6d2967cf3c3598f74181cfea127dc41cfd59bd5c3d169873779d",
                     "size": "6004455",
                     "version": "2.0.0",
                     "name": "Dasduino AVR Boards",
