@@ -15,7 +15,7 @@
                     "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_AVR_core-2.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.0.zip",
-                    "checksum": "SHA-256:8681665ff84c6d2967cf3c3598f74181cfea127dc41cfd59bd5c3d169873779d",
+                    "checksum": "SHA-256:83f289309d4eec2f8fa2a85ed49fe5babb9a26a85a10af8044ae1bbf47d1a7f2",
                     "size": "6004455",
                     "version": "2.0.0",
                     "name": "Dasduino AVR Boards",
@@ -1411,7 +1411,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-6.0.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-7.0.0.zip",
                     "archiveFileName": "Inkplate_core-7.0.0.zip",
                     "checksum": "SHA-256:1a017ca30ba146729eb8aefa2faf77ca3cf00121be7b898ba56de1fdeebf0855",
                     "size": "76120458",
