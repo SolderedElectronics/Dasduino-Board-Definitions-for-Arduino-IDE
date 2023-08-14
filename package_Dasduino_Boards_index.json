@@ -2254,7 +2254,7 @@
                     "category": "Inkplate Motion",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/Inkplate_Motion_core-1.0.0.zip",
                     "archiveFileName": "Inkplate_Motion_core-1.0.0.zip",
-                    "checksum": "SHA-256:ed0dc8f6b663f37d1721b1551bb92f8c55bc002bbe8dc7f94745e113a872b079",
+                    "checksum": "SHA-256:9fc95810899ce53a187ae619b21de741dd73bc49be2b391a9aea3a5628a65440",
                     "size": "76120458",
                     "version": "1.0.0",
                     "name": "Inkplate Motion Boards",
