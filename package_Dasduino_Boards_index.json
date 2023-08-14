@@ -2266,22 +2266,22 @@
                    ],
                    "toolsDependencies": [
                         {
-                            "packager": "STMicroelectronics",
+                            "packager": "Inkplate_Motion",
                             "name": "xpack-arm-none-eabi-gcc",
                             "version": "12.2.1-1.2"
                         },
                         {
-                            "packager": "STMicroelectronics",
+                            "packager": "Inkplate_Motion",
                             "name": "xpack-openocd",
                             "version": "0.12.0-1"
                         },
                         {
-                            "packager": "STMicroelectronics",
+                            "packager": "Inkplate_Motion",
                             "name": "STM32Tools",
                             "version": "2.2.1"
                         },
                         {
-                            "packager": "STMicroelectronics",
+                            "packager": "Inkplate_Motion",
                             "name": "CMSIS",
                             "version": "5.7.0"
                         }
