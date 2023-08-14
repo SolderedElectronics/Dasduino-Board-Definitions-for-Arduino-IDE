@@ -13,6 +13,42 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.0.zip",
+                    "archiveFileName": "Dasduino_AVR_core-2.0.0.zip",
+                    "checksum": "SHA-256:83f289309d4eec2f8fa2a85ed49fe5babb9a26a85a10af8044ae1bbf47d1a7f2",
+                    "size": "6004455",
+                    "version": "2.0.0",
+                    "name": "Dasduino AVR Boards",
+                    "architecture": "avr",
+                    "boards": [
+                        {
+                            "name": "Dasduino Core (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino Core LoRa (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino Coreplus (ATmega2560)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "name": "avr-gcc",
+                            "version": "7.3.0-atmel3.6.1-arduino7"
+                          },
+                          {
+                            "packager": "Dasduino_Boards",
+                            "name": "avrdude",
+                            "version": "6.3.0-arduino17"
+                          }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-1.0.0.zip",
                     "checksum": "SHA-256:5d5dfadf9b5007fa7f3454d88de7c7ed1bb0c970ee53397fe0e72d2649d6995f",
@@ -221,6 +257,102 @@
                 }
             ],
             "tools": [
+                {
+                    "name": "avr-gcc",
+                    "version": "7.3.0-atmel3.6.1-arduino7",
+                    "systems": [
+                      {
+                        "size": "34683056",
+                        "checksum": "SHA-256:3903553d035da59e33cff9941b857c3cb379cb0638105dfdf69c97f0acc8e7b5",
+                        "host": "arm-linux-gnueabihf",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-arm-linux-gnueabihf.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-arm-linux-gnueabihf.tar.bz2"
+                      },
+                      {
+                        "size": "38045723",
+                        "checksum": "SHA-256:03d322b9df6da17289e9e7c6233c34a8535d9c645c19efc772ba19e56914f339",
+                        "host": "aarch64-linux-gnu",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-aarch64-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-aarch64-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "36684546",
+                        "checksum": "SHA-256:f6ed2346953fcf88df223469088633eb86de997fa27ece117fd1ef170d69c1f8",
+                        "host": "x86_64-apple-darwin14",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-apple-darwin14.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-apple-darwin14.tar.bz2"
+                      },
+                      {
+                        "size": "52519412",
+                        "checksum": "SHA-256:a54f64755fff4cb792a1495e5defdd789902a2a3503982e81b898299cf39800e",
+                        "host": "i686-mingw32",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-i686-w64-mingw32.zip",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-i686-w64-mingw32.zip"
+                      },
+                      {
+                        "size": "37176991",
+                        "checksum": "SHA-256:954bbffb33545bcdcd473af993da2980bf32e8461ff55a18e0eebc7b2ef69a4c",
+                        "host": "i686-linux-gnu",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-i686-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-i686-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "37630618",
+                        "checksum": "SHA-256:bd8c37f6952a2130ac9ee32c53f6a660feb79bee8353c8e289eb60fdcefed91e",
+                        "host": "x86_64-linux-gnu",
+                        "archiveFileName": "avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-x86_64-pc-linux-gnu.tar.bz2"
+                      }
+                    ]
+                },
+                {
+                    "name": "avrdude",
+                    "version": "6.3.0-arduino17",
+                    "systems": [
+                      {
+                        "size": "219631",
+                        "checksum": "SHA-256:2a8e68c5d803aa6f902ef219f177ec3a4c28275d85cbe272962ad2cd374f50d1",
+                        "host": "arm-linux-gnueabihf",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-armhf-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-armhf-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "229852",
+                        "checksum": "SHA-256:6cf948f751acfe7b96684537f2291c766ec8b54b4f7dc95539864821456fa9fc",
+                        "host": "aarch64-linux-gnu",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-aarch64-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-aarch64-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "279045",
+                        "checksum": "SHA-256:120cc9edaae699e7e9ac50b1b8eb0e7d51fdfa555bac54233c2511e6ee5418c9",
+                        "host": "x86_64-apple-darwin12",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-x86_64-apple-darwin12.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-x86_64-apple-darwin12.tar.bz2"
+                      },
+                      {
+                        "size": "254271",
+                        "checksum": "SHA-256:accdfb920af2aabf4f7461d2ac73c0751760f525216dc4e7657427a78c60d13d",
+                        "host": "x86_64-linux-gnu",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-x86_64-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "244550",
+                        "checksum": "SHA-256:5c8cc6c17db9300e1451fe41cd7178b0442b4490ee6fdbc0aed9811aef96c05f",
+                        "host": "i686-linux-gnu",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-i686-pc-linux-gnu.tar.bz2",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-i686-pc-linux-gnu.tar.bz2"
+                      },
+                      {
+                        "size": "328460",
+                        "checksum": "SHA-256:e99188873c7c5ad8f8f906f068c33600e758b2e36cce3adbd518a21bd266749d",
+                        "host": "i686-mingw32",
+                        "archiveFileName": "avrdude-6.3.0-arduino17-i686-w64-mingw32.zip",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/AVR_Tools/avrdude-6.3.0-arduino17-i686-w64-mingw32.zip"
+                      }
+                    ]
+                },
                 {
                     "name": "riscv32-esp-elf-gcc",
                     "version": "gcc8_4_0-esp-2021r2",
@@ -1274,6 +1406,309 @@
                 "online": "http://www.forum.soldered.com/en"
             },
             "platforms": [
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-7.0.0.zip",
+                    "archiveFileName": "Inkplate_core-7.0.0.zip",
+                    "checksum": "SHA-256:936ce157ecc858d3ca8fe8d0a7bc67d92ebda5948be6a4021db2df8082a88350",
+                    "size": "76120458",
+                    "version": "7.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 7"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        },
+                        {
+                            "name":"Inkplate PLUS2"
+                        }
+                   ],
+                   "toolsDependencies":[
+                       {
+                            "packager":"Inkplate_Boards",
+                            "name":"riscv32-esp-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"xtensa-esp32-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"esptool_py",
+                            "version":"4.2.1"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mkspiffs",
+                            "version":"0.2.3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mklittlefs",
+                            "version":"3.0.0-gnu12-dc7f933"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-6.0.0.zip",
+                    "archiveFileName": "Inkplate_core-6.0.0.zip",
+                    "checksum": "SHA-256:DB8E87222BECF98F6E46D50DA34D19C82BD6986E74410826817745E579FA1FAE",
+                    "size": "74983427",
+                    "version": "6.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 7"
+                        },
+                        {
+                            "name":"Inkplate PLUS2"
+                        }
+                   ],
+                   "toolsDependencies":[
+                       {
+                            "packager":"Inkplate_Boards",
+                            "name":"riscv32-esp-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"xtensa-esp32-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"esptool_py",
+                            "version":"4.2.1"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mkspiffs",
+                            "version":"0.2.3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mklittlefs",
+                            "version":"3.0.0-gnu12-dc7f933"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-5.0.0.zip",
+                    "archiveFileName": "Inkplate_core-5.0.0.zip",
+                    "checksum": "SHA-256:1b355cf7b04410e74e813458a10206ef1f88a7a6d23bb0e229d8f69fdee18597",
+                    "size": "77131060",
+                    "version": "5.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        },
+                        {
+                            "name":"Inkplate Cool"
+                        }
+                   ],
+                   "toolsDependencies":[
+                       {
+                            "packager":"Inkplate_Boards",
+                            "name":"riscv32-esp-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"xtensa-esp32-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"esptool_py",
+                            "version":"4.2.1"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mkspiffs",
+                            "version":"0.2.3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mklittlefs",
+                            "version":"3.0.0-gnu12-dc7f933"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-4.0.0.zip",
+                    "archiveFileName": "Inkplate_core-4.0.0.zip",
+                    "checksum": "SHA-256:055e6a55506238f9a75c0411166c49b6e5dea7a41270f2bb2e13d6ffed1322d2",
+                    "size": "77130596",
+                    "version": "4.0.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        },
+                        {
+                            "name":"Inkplate Cool"
+                        }
+                   ],
+                   "toolsDependencies":[
+                       {
+                            "packager":"Inkplate_Boards",
+                            "name":"riscv32-esp-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"xtensa-esp32-elf-gcc",
+                            "version":"gcc8_4_0-esp-2021r2-patch3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"esptool_py",
+                            "version":"4.2.1"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mkspiffs",
+                            "version":"0.2.3"
+                        },
+                        {
+                            "packager":"Inkplate_Boards",
+                            "name":"mklittlefs",
+                            "version":"3.0.0-gnu12-dc7f933"
+                        }
+                    ]
+                },
                 {
                     "help": {
                         "online": "http://www.forum.soldered.com"
