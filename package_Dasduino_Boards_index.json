@@ -1423,6 +1423,9 @@
                             "name":"Soldered Inkplate 2"
                         },
                         {
+                            "name":"Soldered Inkplate 4 TEMPERA"
+                        },
+                        {
                             "name":"Soldered Inkplate 4"
                         },
                         {
@@ -1451,9 +1454,6 @@
                         },
                         {
                             "name":"Inkplate 10"
-                        },
-                        {
-                            "name":"Inkplate 4 TEMPERA"
                         }
                    ],
                    "toolsDependencies":[
@@ -1501,6 +1501,9 @@
                             "name":"Soldered Inkplate 2"
                         },
                         {
+                            "name":"Soldered Inkplate 4 TEMPERA"
+                        },
+                        {
                             "name":"Soldered Inkplate 4"
                         },
                         {
@@ -1529,9 +1532,6 @@
                         },
                         {
                             "name":"Inkplate 10"
-                        },
-                        {
-                            "name":"Inkplate 4 Tempera"
                         }
                    ],
                    "toolsDependencies":[
