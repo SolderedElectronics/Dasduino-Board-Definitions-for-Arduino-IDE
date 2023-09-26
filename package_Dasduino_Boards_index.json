@@ -1413,8 +1413,8 @@
                     "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-7.1.0.zip",
                     "archiveFileName": "Inkplate_core-7.1.0.zip",
-                    "checksum": "SHA-256:e45a081e14a91aa052212ff61032f77a92395430281a4515b6dfb1aaac5cdbd6",
-                    "size": "76120471",
+                    "checksum": "SHA-256:28f668d6f525c476c4e228ea7f2460f8306e06c6086509fdb9b3a52e872acc4e",
+                    "size": "76120454",
                     "version": "7.1.0",
                     "name": "Inkplate Boards",
                     "architecture": "esp32",
@@ -1423,10 +1423,10 @@
                             "name":"Soldered Inkplate 2"
                         },
                         {
-                            "name":"Soldered Inkplate 4 TEMPERA"
+                            "name":"Soldered Inkplate 4"
                         },
                         {
-                            "name":"Soldered Inkplate 4"
+                            "name":"Soldered Inkplate 4 TEMPERA"
                         },
                         {
                             "name":"Soldered Inkplate 5"
@@ -1435,22 +1435,22 @@
                             "name":"Soldered Inkplate 6"
                         },
                         {
-                            "name":"Soldered Inkplate 10"
-                        },
-                        {
                             "name":"Soldered Inkplate 6Plus"
                         },
                         {
                             "name":"Soldered Inkplate 6Color"
                         },
                         {
+                            "name":"Soldered Inkplate 7"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
                             "name":"Inkplate 6"
                         },
                         {
                             "name":"Inkplate 6Plus"
-                        },
-                        {
-                            "name":"Soldered Inkplate 7"
                         },
                         {
                             "name":"Inkplate 10"
@@ -1501,10 +1501,10 @@
                             "name":"Soldered Inkplate 2"
                         },
                         {
-                            "name":"Soldered Inkplate 4 TEMPERA"
+                            "name":"Soldered Inkplate 4"
                         },
                         {
-                            "name":"Soldered Inkplate 4"
+                            "name":"Soldered Inkplate 4 TEMPERA"
                         },
                         {
                             "name":"Soldered Inkplate 5"
@@ -1513,22 +1513,22 @@
                             "name":"Soldered Inkplate 6"
                         },
                         {
-                            "name":"Soldered Inkplate 10"
-                        },
-                        {
                             "name":"Soldered Inkplate 6Plus"
                         },
                         {
                             "name":"Soldered Inkplate 6Color"
                         },
                         {
+                            "name":"Soldered Inkplate 7"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
                             "name":"Inkplate 6"
                         },
                         {
                             "name":"Inkplate 6Plus"
-                        },
-                        {
-                            "name":"Soldered Inkplate 7"
                         },
                         {
                             "name":"Inkplate 10"
