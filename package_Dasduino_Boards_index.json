@@ -1411,7 +1411,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-7.1.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-7.1.0.zip",
                     "archiveFileName": "Inkplate_core-7.1.0.zip",
                     "checksum": "SHA-256:e45a081e14a91aa052212ff61032f77a92395430281a4515b6dfb1aaac5cdbd6",
                     "size": "76120471",
