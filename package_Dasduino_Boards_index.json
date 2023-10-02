@@ -2382,29 +2382,29 @@
                             "host": "i686-mingw32",
                             "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-windows.tar.bz2",
                             "archiveFileName": "STM32Tools-2.2.1-windows.tar.bz2",
-                            "checksum": "SHA-256:9fa5fe5f10ae8f13e18272f3f5274e39b5272934cc90cf21264758906c825647",
-                            "size": "2269567"
+                            "checksum": "SHA-256:8477822c06d7d8e70ff8ed0d1834f7e9d66786a1ba1c15909e28b232b8bc0749",
+                            "size": "2341991"
                         },
                         {
                             "host": "x86_64-apple-darwin",
                             "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-mac.tar.bz2",
                             "archiveFileName": "STM32Tools-2.2.1-mac.tar.bz2",
-                            "checksum": "SHA-256:59bd7940b63b57cf8dd7b84a76f0e5961a9a1d611aa352d1572aa481854e83e4",
-                            "size": "148793"
+                            "checksum": "SHA-256:1690ade14459771b39d35f6b93855612ea6b04fae71fd8b0d58a47abb5756dd6",
+                            "size": "148898"
                         },
                         {
                             "host": "x86_64-pc-linux-gnu",
                             "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-linux.tar.bz2",
                             "archiveFileName": "STM32Tools-2.2.1-linux.tar.bz2",
-                            "checksum": "SHA-256:5b291f2b6384270fe84e4a47838a2b561351459d68331f40c08930a462ced174",
-                            "size": "277972"
+                            "checksum": "SHA-256:19527bd5327cae9feb8883a8b43fc1330b4e29e339c84ac19cc1d31b98e1615d",
+                            "size": "277931"
                         },
                         {
                             "host": "i686-pc-linux-gnu",
                             "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-linux.tar.bz2",
                             "archiveFileName": "STM32Tools-2.2.1-linux.tar.bz2",
-                            "checksum": "SHA-256:5b291f2b6384270fe84e4a47838a2b561351459d68331f40c08930a462ced174",
-                            "size": "277972"
+                            "checksum": "SHA-256:19527bd5327cae9feb8883a8b43fc1330b4e29e339c84ac19cc1d31b98e1615d",
+                            "size": "277931"
                         }
                     ]
                 },
