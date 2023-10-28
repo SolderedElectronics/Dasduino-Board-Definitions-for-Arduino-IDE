@@ -2422,7 +2422,7 @@
                         },
                         {
                             "host": "x86_64-apple-darwin",
-                            "url": "hhttps://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
                             "archiveFileName": "CMSIS-5.7.0.tar.bz2",
                             "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
                             "size": "26151901"
