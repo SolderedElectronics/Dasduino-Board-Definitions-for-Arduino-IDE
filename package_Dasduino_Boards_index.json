@@ -2216,7 +2216,7 @@
                     "systems": [
                       {
                         "host": "x86_64-pc-linux-gnu",
-                        "url": "hhttps://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/xtensa-esp-elf-gdb-11.2_20220823-x86_64-linux-gnu.tar.gz",
+                        "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/ESP32_Tools/xtensa-esp-elf-gdb-11.2_20220823-x86_64-linux-gnu.tar.gz",
                         "archiveFileName": "xtensa-esp-elf-gdb-11.2_20220823-x86_64-linux-gnu.tar.gz",
                         "checksum": "SHA-256:b5f7cc3e4b5a58db655754083ed9652e4953e71c3b4922fb624e7a034ec24a64",
                         "size": 26947336
