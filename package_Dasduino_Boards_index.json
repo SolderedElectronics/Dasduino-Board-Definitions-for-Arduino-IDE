@@ -1413,8 +1413,8 @@
                     "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-8.0.0.zip",
                     "archiveFileName": "Inkplate_core-8.0.0.zip",
-                    "checksum": "SHA-256:38feb958f8ac3eb0fad3c1a1f6762986eff5a63736eda7b3ab209f1d0fbdcd3a",
-                    "size": "73187089",
+                    "checksum": "SHA-256:6b5fb7ab75ce1216eca2ca4fd10cee386eb7b974705bf99604855b7aeb0a2e9d",
+                    "size": "73187087",
                     "version": "8.0.0",
                     "name": "Inkplate Boards",
                     "architecture": "esp32",
@@ -1438,7 +1438,7 @@
                             "name":"Soldered Inkplate 6Plus"
                         },
                         {
-                            "name":"Soldered Inkplate 6 FLICK Gen2"
+                            "name":"Soldered Inkplate 6 FLICK"
                         },
                         {
                             "name":"Soldered Inkplate 6Color"
