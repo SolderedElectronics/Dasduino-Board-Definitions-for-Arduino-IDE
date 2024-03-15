@@ -1411,6 +1411,110 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-8.1.0.zip",
+                    "archiveFileName": "Inkplate_core-8.1.0.zip",
+                    "checksum": "SHA-256:3b201f553b7e38271de7fca3f7df0c76c889416a32e130dc0c00b8d83776b30c",
+                    "size": "73186615",
+                    "version": "8.1.0",
+                    "name": "Inkplate Boards",
+                    "architecture": "esp32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4"
+                        },
+                        {
+                            "name":"Soldered Inkplate 4 TEMPERA"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5"
+                        },
+                        {
+                            "name":"Soldered Inkplate 5 V2"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6 FLICK"
+                        },
+                        {
+                            "name":"Soldered Inkplate 6Color"
+                        },
+                        {
+                            "name":"Soldered Inkplate 7"
+                        },
+                        {
+                            "name":"Soldered Inkplate 10"
+                        },
+                        {
+                            "name":"Inkplate 6"
+                        },
+                        {
+                            "name":"Inkplate 6Plus"
+                        },
+                        {
+                            "name":"Inkplate 10"
+                        }
+                   ],
+                   "toolsDependencies":[
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "xtensa-esp32-elf-gcc",
+                            "version": "esp-2021r2-patch5-8.4.0"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "xtensa-esp-elf-gdb",
+                            "version": "11.2_20220823"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "riscv32-esp-elf-gcc",
+                            "version": "esp-2021r2-patch5-8.4.0"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "riscv32-esp-elf-gdb",
+                            "version": "11.2_20220823"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "openocd-esp32",
+                            "version": "v0.12.0-esp32-20230419"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "esptool_py",
+                            "version": "4.5.1"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "mkspiffs",
+                            "version": "0.2.3"
+                        },
+                        {
+                            "packager": "Inkplate_Boards",
+                            "name": "mklittlefs",
+                            "version": "3.0.0-gnu12-dc7f933"
+                        },
+                        {
+                            "packager": "arduino",
+                            "name": "dfu-util",
+                            "version": "0.11.0-arduino5"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-8.0.0.zip",
                     "archiveFileName": "Inkplate_core-8.0.0.zip",
                     "checksum": "SHA-256:c2eb96447f91885e294da5491814015dbfcf0f8466ddc02edfb64623fd0b8c9a",
