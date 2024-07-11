@@ -2251,17 +2251,17 @@
                     "help": {
                         "online": "http://www.forum.soldered.com"
                     },
-                    "category": "Inkplate Motion",
+                    "category": "Inkplate MOTION",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/Inkplate_Motion_core-1.0.0.zip",
                     "archiveFileName": "Inkplate_Motion_core-1.0.0.zip",
-                    "checksum": "SHA-256:010cc1756c001b2f66b160095826d11bb7c636801cdd79393d25b8358c3888b0",
-                    "size": "10423284",
+                    "checksum": "SHA-256:468d2079d2311a26ad3eefa0c13c67b73fde703558288de016e55fabdc862702",
+                    "size": "10423289",
                     "version": "1.0.0",
-                    "name": "Inkplate Motion Boards",
+                    "name": "Inkplate MOTION Boards",
                     "architecture": "stm32",
                     "boards":[
                         {
-                            "name":"Soldered Inkplate6 Motion"
+                            "name":"Soldered Inkplate 6 MOTION"
                         }
                    ],
                    "toolsDependencies": [
