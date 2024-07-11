@@ -13,7 +13,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_AVR_core-2.0.1.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.1.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.1.zip",
                     "checksum": "SHA-256:371bb7a6f18b7b7d14d6dccc2f9e2c38b54a2404b4333035185455738fdc62ce",
                     "size": "5921519",
@@ -148,7 +148,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_ESP32_core-1.0.1.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.1.zip",
                     "archiveFileName": "Dasduino_ESP32_core-1.0.1.zip",
                     "checksum": "SHA-256:59e1c9a54e883024400f5e8d4cb73d5530b76def1ffd7171cce90dea073d0aff",
                     "size": "47653073",
@@ -295,7 +295,7 @@
                     },
                     "category": "Dasduino ESP",
                     "name": "Dasduino ESP8266 Boards",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_ESP8266_core-1.0.1.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.1.zip",
                     "version": "1.0.1",
                     "architecture": "esp8266",
                     "archiveFileName": "Dasduino_ESP8266_core-1.0.1.zip",
@@ -1525,7 +1525,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-8.1.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-8.1.0.zip",
                     "archiveFileName": "Inkplate_core-8.1.0.zip",
                     "checksum": "SHA-256:3b201f553b7e38271de7fca3f7df0c76c889416a32e130dc0c00b8d83776b30c",
                     "size": "73186615",
