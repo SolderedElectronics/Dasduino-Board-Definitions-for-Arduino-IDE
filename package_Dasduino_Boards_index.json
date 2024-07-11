@@ -13,6 +13,42 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.1.zip",
+                    "archiveFileName": "Dasduino_AVR_core-2.0.1.zip",
+                    "checksum": "SHA-256:371bb7a6f18b7b7d14d6dccc2f9e2c38b54a2404b4333035185455738fdc62ce",
+                    "size": "5921519",
+                    "version": "2.0.1",
+                    "name": "Dasduino AVR Boards",
+                    "architecture": "avr",
+                    "boards": [
+                        {
+                            "name": "Dasduino CORE (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino COREPLUS (ATmega2560)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "name": "avr-gcc",
+                            "version": "7.3.0-atmel3.6.1-arduino7"
+                          },
+                          {
+                            "packager": "Dasduino_Boards",
+                            "name": "avrdude",
+                            "version": "6.3.0-arduino17"
+                          }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.0.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.0.zip",
                     "checksum": "SHA-256:83f289309d4eec2f8fa2a85ed49fe5babb9a26a85a10af8044ae1bbf47d1a7f2",
@@ -22,13 +58,13 @@
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (ATmega328P)"
+                            "name": "Dasduino CORE (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (ATmega328P)"
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Coreplus (ATmega2560)"
+                            "name": "Dasduino COREPLUS (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": [
@@ -58,13 +94,13 @@
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (ATmega328P)"
+                            "name": "Dasduino CORE (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (ATmega328P)"
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Coreplus (ATmega2560)"
+                            "name": "Dasduino COREPLUS (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": []
@@ -112,6 +148,44 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.1.zip",
+                    "archiveFileName": "Dasduino_ESP32_core-1.0.1.zip",
+                    "checksum": "SHA-256:59e1c9a54e883024400f5e8d4cb73d5530b76def1ffd7171cce90dea073d0aff",
+                    "size": "47653073",
+                    "version": "1.0.1",
+                    "name": "Dasduino ESP32 Boards",
+                    "architecture": "esp32",
+                    "boards": [
+                        {
+                            "name": "Dasduino CONNECTPLUS (ESP32)"
+                        },
+                        {
+                            "name": "Dasduino CONNECTPLUS LoRa (ESP32)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "1.22.0-96-g2852398-5.2.0",
+                            "name": "xtensa-esp32-elf-gcc"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.0",
+                            "name": "esptool_py"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "0.2.3",
+                            "name": "mkspiffs"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_ESP32_core-1.0.0.zip",
                     "checksum": "SHA-256:be4943e4b587f2956dff5edbe971fbf5224e983f56926c2893131fb4bd649699",
@@ -121,10 +195,10 @@
                     "architecture": "esp32",
                     "boards": [
                         {
-                            "name": "Dasduino ConnectPlus (ESP32)"
+                            "name": "Dasduino CONNECTPLUS (ESP32)"
                         },
                         {
-                            "name": "Dasduino ConnectPlus LoRa (ESP32)"
+                            "name": "Dasduino CONNECTPLUS LoRa (ESP32)"
                         }
                     ],
                     "toolsDependencies": [
@@ -159,7 +233,7 @@
                     "architecture": "megaavr",
                     "boards": [
                         {
-                            "name": "Dasduino Lite"
+                            "name": "Dasduino LITE"
                         }
                     ],
                     "toolsDependencies": [
@@ -194,7 +268,7 @@
                     "architecture": "megaavr",
                     "boards": [
                         {
-                            "name": "Dasduino Lite"
+                            "name": "Dasduino LITE"
                         }
                     ],
                     "toolsDependencies": [
@@ -221,6 +295,46 @@
                     },
                     "category": "Dasduino ESP",
                     "name": "Dasduino ESP8266 Boards",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.1.zip",
+                    "version": "1.0.1",
+                    "architecture": "esp8266",
+                    "archiveFileName": "Dasduino_ESP8266_core-1.0.1.zip",
+                    "size": "38650204",
+                    "checksum": "SHA-256:bb5fe9e3f518b700d68861d37e7b580444c4661be11abfdaf404ee764155792e",
+                    "boards": [
+                        {
+                            "name": "Dasduino CONNECT (ESP8266)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "xtensa-lx106-elf-gcc"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "mkspiffs"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "mklittlefs"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.7.2-post1",
+                            "name": "python3"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino ESP",
+                    "name": "Dasduino ESP8266 Boards",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.0.zip",
                     "version": "1.0.0",
                     "architecture": "esp8266",
@@ -229,7 +343,7 @@
                     "checksum": "SHA-256:e3803a4107029552b15e2f750e5c321021afd7be69bcb8207b60fc5149a41c65",
                     "boards": [
                         {
-                            "name": "Dasduino Connect (ESP8266)"
+                            "name": "Dasduino CONNECT (ESP8266)"
                         }
                     ],
                     "toolsDependencies": [
@@ -1411,7 +1525,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Inkplate_core-8.1.0.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_core-8.1.0.zip",
                     "archiveFileName": "Inkplate_core-8.1.0.zip",
                     "checksum": "SHA-256:3b201f553b7e38271de7fca3f7df0c76c889416a32e130dc0c00b8d83776b30c",
                     "size": "73186615",
@@ -2930,6 +3044,226 @@
                             "archiveFileName": "x86_64-w64-mingw32.mklittlefs-c41e51a.200706.zip",
                             "checksum": "SHA-256:2e319077491f8e832e96eb4f2f7a70dd919333cee4b388c394e0e848d031d542",
                             "size": "345132"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Inkplate_Motion",
+            "maintainer": "Soldered: Arduino compatibles made in Europe",
+            "websiteURL": "https://soldered.com/en",
+            "help": {
+                "online": "http://www.forum.soldered.com/en"
+            },
+            "platforms": [
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate MOTION",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/Inkplate_Motion_core-1.0.0.zip",
+                    "archiveFileName": "Inkplate_Motion_core-1.0.0.zip",
+                    "checksum": "SHA-256:468d2079d2311a26ad3eefa0c13c67b73fde703558288de016e55fabdc862702",
+                    "size": "10423289",
+                    "version": "1.0.0",
+                    "name": "Inkplate MOTION Boards",
+                    "architecture": "stm32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 6 MOTION"
+                        }
+                   ],
+                   "toolsDependencies": [
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "xpack-arm-none-eabi-gcc",
+                            "version": "12.2.1-1.2"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "xpack-openocd",
+                            "version": "0.12.0-1"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "STM32Tools",
+                            "version": "2.2.1-0"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "CMSIS",
+                            "version": "5.7.0"
+                        }
+                  ]
+                }
+            ],
+            "tools": [
+                {
+                    "name": "xpack-arm-none-eabi-gcc",
+                    "version": "12.2.1-1.2",
+                    "systems":
+                    [
+                        {
+                            "host": "arm-linux-gnueabihf",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-arm.tar.gz",
+                            "archiveFileName": "xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-arm.tar.gz",
+                            "checksum": "SHA-256:92eee346b6672776169143154c931c3a5779fd171c1976d495e7eb31796692d5",
+                            "size": "222530061"
+                        },
+                        {
+                            "host": "aarch64-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-arm64.tar.gz",
+                            "archiveFileName": "xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-arm64.tar.gz",
+                            "checksum": "SHA-256:dbf5e36b20f236ead98c6c24daaeafb5ed8b9a7be76895f5e0c7b79cb2b90073",
+                            "size": "229675672"
+                        },
+                        {
+                            "host": "i686-mingw32",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-arm-none-eabi-gcc-12.2.1-1.2-win32-x64.zip",
+                            "archiveFileName": "xpack-arm-none-eabi-gcc-12.2.1-1.2-win32-x64.zip",
+                            "checksum": "SHA-256:5662a2d95bd5b28d24797709864fa8e1379a3bd103112f3c96a6c16db1e2e44a",
+                            "size": "259513877"
+                        },
+                        {
+                            "host": "x86_64-apple-darwin",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-arm-none-eabi-gcc-12.2.1-1.2-darwin-x64.tar.gz",
+                            "archiveFileName": "xpack-arm-none-eabi-gcc-12.2.1-1.2-darwin-x64.tar.gz",
+                            "checksum": "SHA-256:5b4d2d3c6b258b275eee06a3437b9f04480957e8415c6c9f00b56a7cc5f2c01f",
+                            "size": "227358409"
+                        },
+                        {
+                            "host": "x86_64-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-x64.tar.gz",
+                            "archiveFileName": "xpack-arm-none-eabi-gcc-12.2.1-1.2-linux-x64.tar.gz",
+                            "checksum": "SHA-256:65b52009ff1b7f22f5e030cc04e17e5e7d7f2436a62488aca905062a71d3944c",
+                            "size": "232443193"
+                        }
+                    ]
+                  },
+                  {
+                    "name": "xpack-openocd",
+                    "version": "0.12.0-1",
+                    "systems":
+                    [
+                        {
+                            "host": "arm-linux-gnueabihf",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-openocd-0.12.0-1-linux-arm.tar.gz",
+                            "archiveFileName": "xpack-openocd-0.12.0-1-linux-arm.tar.gz",
+                            "checksum": "SHA-256:886f65ffd4761619d86f492e1d72086992e72f379b90f9d1a1bcf124f88dcc57",
+                            "size": "2469999"
+                        },
+                        {
+                            "host": "aarch64-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-openocd-0.12.0-1-linux-arm64.tar.gz",
+                            "archiveFileName": "xpack-openocd-0.12.0-1-linux-arm64.tar.gz",
+                            "checksum": "SHA-256:a86b3ecc256cb870f074a8e633e791ed09102c8ed0d639ae49782c51a404dfbc",
+                            "size": "2552146"
+                        },
+                        {
+                            "host": "i686-mingw32",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-openocd-0.12.0-1-win32-x64.zip",
+                            "archiveFileName": "xpack-openocd-0.12.0-1-win32-x64.zip",
+                            "checksum": "SHA-256:5cba78c08ad03aa38549e94186cbb4ec34c384565a40a6652715577e4f1a458f",
+                            "size": "2976622"
+                        },
+                        {
+                            "host": "x86_64-apple-darwin",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-openocd-0.12.0-1-darwin-x64.tar.gz",
+                            "archiveFileName": "xpack-openocd-0.12.0-1-darwin-x64.tar.gz",
+                            "checksum": "SHA-256:ca569b6bfd9b3cd87a5bc88b3a33a5c4fe854be3cf95a3dcda1c194e8da9d7bb",
+                            "size": "2292519"
+                        },
+                        {   
+                            "host": "x86_64-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/xpack-openocd-0.12.0-1-linux-x64.tar.gz",
+                            "archiveFileName": "xpack-openocd-0.12.0-1-linux-x64.tar.gz",
+                            "checksum": "SHA-256:940f22eccddb0946b69149d227948f77d5917a2c5f1ab68e5d84d614c2ceed20",
+                            "size": "2604664"
+                        }
+                    ]
+                  },
+                  {
+                    "name": "STM32Tools",
+                    "version": "2.2.1-0",
+                    "systems":
+                    [
+                        {
+                            "host": "i686-mingw32",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-0-windows.tar.bz2",
+                            "archiveFileName": "STM32Tools-2.2.1-0-windows.tar.bz2",
+                            "checksum": "SHA-256:8477822c06d7d8e70ff8ed0d1834f7e9d66786a1ba1c15909e28b232b8bc0749",
+                            "size": "2341991"
+                        },
+                        {
+                            "host": "x86_64-apple-darwin",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-0-mac.tar.bz2",
+                            "archiveFileName": "STM32Tools-2.2.1-0-mac.tar.bz2",
+                            "checksum": "SHA-256:1690ade14459771b39d35f6b93855612ea6b04fae71fd8b0d58a47abb5756dd6",
+                            "size": "148898"
+                        },
+                        {
+                            "host": "x86_64-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-0-linux.tar.bz2",
+                            "archiveFileName": "STM32Tools-2.2.1-0-linux.tar.bz2",
+                            "checksum": "SHA-256:19527bd5327cae9feb8883a8b43fc1330b4e29e339c84ac19cc1d31b98e1615d",
+                            "size": "277931"
+                        },
+                        {
+                            "host": "i686-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/STM32Tools-2.2.1-0-linux.tar.bz2",
+                            "archiveFileName": "STM32Tools-2.2.1-0-linux.tar.bz2",
+                            "checksum": "SHA-256:19527bd5327cae9feb8883a8b43fc1330b4e29e339c84ac19cc1d31b98e1615d",
+                            "size": "277931"
+                        }
+                    ]
+                },
+                {
+                    "name": "CMSIS",
+                    "version": "5.7.0",
+                    "systems":
+                    [
+                        {
+                            "host": "i686-mingw32",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
+                        },
+                        {
+                            "host": "x86_64-apple-darwin",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
+                        },
+                        {
+                            "host": "x86_64-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
+                        },
+                        {
+                            "host": "i686-pc-linux-gnu",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
+                        },
+                        {
+                            "host": "arm-linux-gnueabihf",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
+                        },
+                        {
+                            "host": "all",
+                            "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/InkplateNG/STM32_Tools/CMSIS-5.7.0.tar.bz2",
+                            "archiveFileName": "CMSIS-5.7.0.tar.bz2",
+                            "checksum": "SHA-256:0b04b0f214e483bcc360cda985cddc0de8031714019ceabcda4770d510b82bfe",
+                            "size": "26151901"
                         }
                     ]
                 }
