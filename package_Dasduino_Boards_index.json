@@ -15,20 +15,20 @@
                     "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_AVR_core-2.0.1.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.1.zip",
-                    "checksum": "SHA-256:70317dd1f748791bb88a69c7c2030e034a2bca87253cd01c8f2f6e5c75e93b4f",
-                    "size": "5921513",
+                    "checksum": "SHA-256:371bb7a6f18b7b7d14d6dccc2f9e2c38b54a2404b4333035185455738fdc62ce",
+                    "size": "5921519",
                     "version": "2.0.1",
                     "name": "Dasduino AVR Boards",
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (ATmega328P)"
+                            "name": "Dasduino CORE (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (ATmega328P)"
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Coreplus (ATmega2560)"
+                            "name": "Dasduino COREPLUS (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": [
@@ -58,13 +58,13 @@
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (ATmega328P)"
+                            "name": "Dasduino CORE (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (ATmega328P)"
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Coreplus (ATmega2560)"
+                            "name": "Dasduino COREPLUS (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": [
@@ -94,13 +94,13 @@
                     "architecture": "avr",
                     "boards": [
                         {
-                            "name": "Dasduino Core (ATmega328P)"
+                            "name": "Dasduino CORE (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Core LoRa (ATmega328P)"
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
                         },
                         {
-                            "name": "Dasduino Coreplus (ATmega2560)"
+                            "name": "Dasduino COREPLUS (ATmega2560)"
                         }
                     ],
                     "toolsDependencies": []
