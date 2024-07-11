@@ -148,6 +148,44 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_ESP32_core-1.0.1.zip",
+                    "archiveFileName": "Dasduino_ESP32_core-1.0.1.zip",
+                    "checksum": "SHA-256:59e1c9a54e883024400f5e8d4cb73d5530b76def1ffd7171cce90dea073d0aff",
+                    "size": "47653073",
+                    "version": "1.0.1",
+                    "name": "Dasduino ESP32 Boards",
+                    "architecture": "esp32",
+                    "boards": [
+                        {
+                            "name": "Dasduino CONNECTPLUS (ESP32)"
+                        },
+                        {
+                            "name": "Dasduino CONNECTPLUS LoRa (ESP32)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "1.22.0-96-g2852398-5.2.0",
+                            "name": "xtensa-esp32-elf-gcc"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.0",
+                            "name": "esptool_py"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "0.2.3",
+                            "name": "mkspiffs"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP32_core-1.0.0.zip",
                     "archiveFileName": "Dasduino_ESP32_core-1.0.0.zip",
                     "checksum": "SHA-256:be4943e4b587f2956dff5edbe971fbf5224e983f56926c2893131fb4bd649699",
@@ -157,10 +195,10 @@
                     "architecture": "esp32",
                     "boards": [
                         {
-                            "name": "Dasduino ConnectPlus (ESP32)"
+                            "name": "Dasduino CONNECTPLUS (ESP32)"
                         },
                         {
-                            "name": "Dasduino ConnectPlus LoRa (ESP32)"
+                            "name": "Dasduino CONNECTPLUS LoRa (ESP32)"
                         }
                     ],
                     "toolsDependencies": [
@@ -195,7 +233,7 @@
                     "architecture": "megaavr",
                     "boards": [
                         {
-                            "name": "Dasduino Lite"
+                            "name": "Dasduino LITE"
                         }
                     ],
                     "toolsDependencies": [
@@ -230,7 +268,7 @@
                     "architecture": "megaavr",
                     "boards": [
                         {
-                            "name": "Dasduino Lite"
+                            "name": "Dasduino LITE"
                         }
                     ],
                     "toolsDependencies": [
@@ -257,6 +295,46 @@
                     },
                     "category": "Dasduino ESP",
                     "name": "Dasduino ESP8266 Boards",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.1.zip",
+                    "version": "1.0.1",
+                    "architecture": "esp8266",
+                    "archiveFileName": "Dasduino_ESP8266_core-1.0.1.zip",
+                    "size": "38650204",
+                    "checksum": "SHA-256:bb5fe9e3f518b700d68861d37e7b580444c4661be11abfdaf404ee764155792e",
+                    "boards": [
+                        {
+                            "name": "Dasduino CONNECT (ESP8266)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "xtensa-lx106-elf-gcc"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "mkspiffs"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.0.4-gcc10.3-1757bed",
+                            "name": "mklittlefs"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.7.2-post1",
+                            "name": "python3"
+                        }
+                    ]
+                }
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino ESP",
+                    "name": "Dasduino ESP8266 Boards",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.0.zip",
                     "version": "1.0.0",
                     "architecture": "esp8266",
@@ -265,7 +343,7 @@
                     "checksum": "SHA-256:e3803a4107029552b15e2f750e5c321021afd7be69bcb8207b60fc5149a41c65",
                     "boards": [
                         {
-                            "name": "Dasduino Connect (ESP8266)"
+                            "name": "Dasduino CONNECT (ESP8266)"
                         }
                     ],
                     "toolsDependencies": [
