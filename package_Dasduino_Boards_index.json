@@ -295,7 +295,7 @@
                     },
                     "category": "Dasduino ESP",
                     "name": "Dasduino ESP8266 Boards",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_ESP8266_core-1.0.1.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_ESP8266_core-1.0.1.zip",
                     "version": "1.0.1",
                     "architecture": "esp8266",
                     "archiveFileName": "Dasduino_ESP8266_core-1.0.1.zip",
