@@ -13,7 +13,7 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
-                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_AVR_core-2.0.2.zip",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.2.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.2.zip",
                     "checksum": "SHA-256:a0e046ca88969a661491ad92704fd8459b6d95f6f374785fec68f8ddeeb9c4d6",
                     "size": "6051555",
