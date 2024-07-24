@@ -13,6 +13,42 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.3.zip",
+                    "archiveFileName": "Dasduino_AVR_core-2.0.3.zip",
+                    "checksum": "SHA-256:bcad636c1289478271be4d7b8eb8d022ca69b80bec2e705a10e9f8467cf7b5e2",
+                    "size": "6051563",
+                    "version": "2.0.3",
+                    "name": "Dasduino AVR Boards",
+                    "architecture": "avr",
+                    "boards": [
+                        {
+                            "name": "Dasduino CORE (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino CORE LoRa (ATmega328P)"
+                        },
+                        {
+                            "name": "Dasduino COREPLUS (ATmega2560)"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "name": "avr-gcc",
+                            "version": "7.3.0-atmel3.6.1-arduino7"
+                          },
+                          {
+                            "packager": "Dasduino_Boards",
+                            "name": "avrdude",
+                            "version": "6.3.0-arduino17"
+                          }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Dasduino_AVR_core-2.0.2.zip",
                     "archiveFileName": "Dasduino_AVR_core-2.0.2.zip",
                     "checksum": "SHA-256:a0e046ca88969a661491ad92704fd8459b6d95f6f374785fec68f8ddeeb9c4d6",
