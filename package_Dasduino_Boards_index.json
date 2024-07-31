@@ -349,6 +349,9 @@
                     "boards": [
                         {
                             "name": "Dasduino LITE"
+                        },
+                        {
+                            "name": "Dasduino easyC Boards"
                         }
                     ],
                     "toolsDependencies": [
