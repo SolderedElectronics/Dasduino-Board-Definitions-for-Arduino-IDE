@@ -3331,6 +3331,46 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Inkplate MOTION",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_Motion_core-1.0.2.zip",
+                    "archiveFileName": "Inkplate_Motion_core-1.0.2.zip",
+                    "checksum": "SHA-256:1a8be2634232b1d47672ab9377e94e52db5d0f3c5a902904d65e828ff63a4e02",
+                    "size": "10423291",
+                    "version": "1.0.2",
+                    "name": "Inkplate MOTION Boards",
+                    "architecture": "stm32",
+                    "boards":[
+                        {
+                            "name":"Soldered Inkplate 6 MOTION"
+                        }
+                   ],
+                   "toolsDependencies": [
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "xpack-arm-none-eabi-gcc",
+                            "version": "12.2.1-1.2"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "xpack-openocd",
+                            "version": "0.12.0-1"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "STM32Tools",
+                            "version": "2.2.1-0"
+                        },
+                        {
+                            "packager": "Inkplate_Motion",
+                            "name": "CMSIS",
+                            "version": "5.7.0"
+                        }
+                  ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Inkplate MOTION",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/master/Inkplate_Motion_core-1.0.1.zip",
                     "archiveFileName": "Inkplate_Motion_core-1.0.1.zip",
                     "checksum": "SHA-256:1a8be2634232b1d47672ab9377e94e52db5d0f3c5a902904d65e828ff63a4e02",
