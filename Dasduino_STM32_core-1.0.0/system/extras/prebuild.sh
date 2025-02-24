@@ -25,3 +25,5 @@ fi
 
 # Force include of SrcWrapper library
 echo "#include <SrcWrapper.h>" > "$BUILD_PATH/sketch/SrcWrapper.cpp"
+
+echo "=== Using upated prebuild.sh Script ==="
