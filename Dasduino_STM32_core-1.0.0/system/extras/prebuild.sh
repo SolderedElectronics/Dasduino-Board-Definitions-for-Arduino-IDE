@@ -26,4 +26,4 @@ fi
 # Force include of SrcWrapper library
 echo "#include <SrcWrapper.h>" > "$BUILD_PATH/sketch/SrcWrapper.cpp"
 
-echo "=== Using upated prebuild.sh Script ==="
+echo "This board definitions uses an updated prebuild.sh, see https://github.com/SolderedElectronics/Inkplate_Motion_Arduino_Library/issues/10"
