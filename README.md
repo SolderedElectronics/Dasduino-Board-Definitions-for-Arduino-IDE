@@ -6,3 +6,4 @@ Board Definitions for easy using Dasduino boards inside Arduino IDE.
 2. Install new boards via Tools -> Board -> Boards Manager. Type "dasduino" or "inkplate" in search box and pick the board you want to install. 
 3. Wait a bit.
 4. Pick the new board from Tools -> Board menu. 
+
