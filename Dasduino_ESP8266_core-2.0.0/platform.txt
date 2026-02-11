@@ -172,10 +172,8 @@ tools.esptool.path=
 # Because the variable expansion doesn't allow one tool to find another, the following lines
 # will point to "{runtime.platform.path}/tools/python3/python3" in GIT and
 # "{runtime.tools.python3.path}/python3" for JSON board manager releases.
-#tools.esptool.cmd={runtime.tools.python3.path}/python3
-#tools.esptool.network_cmd={runtime.tools.python3.path}/python3
-tools.esptool.cmd={runtime.platform.path}/tools/python3/python3
-tools.esptool.network_cmd={runtime.platform.path}/tools/python3/python3
+tools.esptool.cmd={runtime.tools.python3.path}/python3
+tools.esptool.network_cmd={runtime.tools.python3.path}/python3
 
 tools.esptool.upload.protocol=esp
 # esptool.py --trace option is a debug option, not a verbose option
