@@ -1,0 +1,129 @@
+# Based on Arduino Core version v1.8.6
+
+menu.cpu=Processor
+
+menu.clock=Clock
+menu.BOD=BOD
+menu.LTO=Compiler LTO 
+menu.variant=Variant
+menu.bootloader=Bootloader
+
+##############################################################
+## NULA Core w/ ATmega328P
+## ---------------------------
+
+core.name=NULA CORE (ATmega328P)
+core.upload.tool=avrdude
+core.upload.tool.default=avrdude
+core.upload.protocol=arduino
+core.upload_port.0.board=nano
+core.bootloader.tool=avrdude
+core.bootloader.tool.default=avrdude
+core.bootloader.unlock_bits=0x3F
+core.bootloader.lock_bits=0x0F
+core.build.f_cpu=16000000L
+core.build.board=AVR_NANO
+core.build.core=arduino
+core.build.variant=eightanaloginputs
+core.upload.maximum_size=30720
+core.upload.maximum_data_size=2048
+core.upload.speed=57600
+core.bootloader.low_fuses=0xFF
+core.bootloader.high_fuses=0xDA
+core.bootloader.extended_fuses=0xFD
+core.bootloader.file=atmega/ATmegaBOOT_168_atmega328.hex
+core.build.mcu=atmega328p
+
+##############################################################
+
+coreplus.name=Dasduino COREPLUS (ATmega2560)
+coreplus.upload.tool=avrdude
+coreplus.upload.tool.default=avrdude
+coreplus.upload_port.0.board=mega
+coreplus.upload.maximum_data_size=8192
+coreplus.bootloader.tool=avrdude
+coreplus.bootloader.tool.default=avrdude
+coreplus.bootloader.low_fuses=0xFF
+coreplus.bootloader.unlock_bits=0x3F
+coreplus.bootloader.lock_bits=0x0F
+coreplus.build.f_cpu=16000000L
+coreplus.build.core=arduino
+coreplus.build.variant=mega
+# default board may be overridden by the cpu menu
+coreplus.build.board=AVR_MEGA2560
+
+## Arduino Mega w/ ATmega2560
+## -------------------------
+coreplus.menu.cpu.atmega2560=ATmega2560 (Mega 2560)
+coreplus.menu.cpu.atmega2560.upload.protocol=wiring
+coreplus.menu.cpu.atmega2560.upload.maximum_size=253952
+coreplus.menu.cpu.atmega2560.upload.speed=115200
+coreplus.menu.cpu.atmega2560.bootloader.high_fuses=0xD8
+coreplus.menu.cpu.atmega2560.bootloader.extended_fuses=0xFD
+coreplus.menu.cpu.atmega2560.bootloader.file=stk500v2/stk500boot_v2_mega2560.hex
+coreplus.menu.cpu.atmega2560.build.mcu=atmega2560
+coreplus.menu.cpu.atmega2560.build.board=AVR_MEGA2560
+
+
+#############################
+#### ATmega328/A/P/PA/PB ####
+#############################
+
+# General
+LoRa.name=Dasduino CORE LoRa (ATmega328P)
+LoRa.upload.tool=avrdude
+LoRa.upload.tool.default=avrdude
+LoRa.upload.maximum_data_size=2048
+LoRa.bootloader.tool=avrdude
+LoRa.bootloader.tool.default=avrdude
+LoRa.bootloader.unlock_bits=0x3f
+LoRa.bootloader.lock_bits=0x0f
+LoRa.build.core=MCUdude_corefiles
+LoRa.build.board=AVR_ATmega328
+LoRa.build.bootloader_led=B5
+LoRa.build.extra_flags={build.clkpr}
+
+# Upload port select
+LoRa.menu.bootloader.uart0=Yes (UART0)
+LoRa.menu.bootloader.uart0.upload.maximum_size=32256
+LoRa.menu.bootloader.uart0.upload.protocol=arduino
+LoRa.menu.bootloader.uart0.upload.port=UART0
+LoRa.menu.bootloader.uart0.bootloader.high_fuses=0xd6
+LoRa.menu.bootloader.uart0.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.clock_speed}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.clock_speed}_{build.bootloader_led}.hex
+
+
+# Variants
+LoRa.menu.variant.modelP=328P / 328PA
+LoRa.menu.variant.modelP.bootloader.cksel_bits=0111
+LoRa.menu.variant.modelP.bootloader.cfd_bit=1
+LoRa.menu.variant.modelP.build.variant=standard_mini
+LoRa.menu.variant.modelP.build.mcu=atmega328p
+
+
+
+# Brown out detection
+LoRa.menu.BOD.2v7=BOD 2.7V
+LoRa.menu.BOD.2v7.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}101
+LoRa.menu.BOD.4v3=BOD 4.3V
+LoRa.menu.BOD.4v3.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}100
+LoRa.menu.BOD.1v8=BOD 1.8V
+LoRa.menu.BOD.1v8.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}110
+LoRa.menu.BOD.disabled=BOD  disabled
+LoRa.menu.BOD.disabled.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}111
+
+# Compiler link time optimization
+LoRa.menu.LTO.Os=LTO disabled
+LoRa.menu.LTO.Os.compiler.c.extra_flags=
+LoRa.menu.LTO.Os.compiler.c.elf.extra_flags=
+LoRa.menu.LTO.Os.compiler.cpp.extra_flags=
+LoRa.menu.LTO.Os.ltoarcmd=avr-ar
+
+
+# Clock frequencies
+
+LoRa.menu.clock.8MHz_internal=Internal 8 MHz
+LoRa.menu.clock.8MHz_internal.upload.speed=38400
+LoRa.menu.clock.8MHz_internal.bootloader.low_fuses=0xe2
+LoRa.menu.clock.8MHz_internal.build.clkpr=
+LoRa.menu.clock.8MHz_internal.build.clock_speed={build.f_cpu}
+LoRa.menu.clock.8MHz_internal.build.f_cpu=8000000L

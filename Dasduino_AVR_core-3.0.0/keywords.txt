@@ -1,0 +1,13 @@
+# Syntax Coloring Map For Dasduino AVR Board Definition
+
+# Datatypes (KEYWORD1)
+
+# Methods and Functions (KEYWORD2)
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
+BUTTON_BUILTIN	LITERAL1
+LEDWS_BUILTIN	LITERAL1
+SD_ENABLE_BUILTIN	LITERAL1
+SD_CS_BUILTIN	LITERAL1
