@@ -196,6 +196,49 @@
                         "online": "http://www.forum.soldered.com"
                     },
                     "category": "Dasduino ATtiny Boards",
+                    "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_megaTiny_core-3.0.0.zip",
+                    "archiveFileName": "Dasduino_MegaTiny-3.0.0.zip",
+                    "checksum": "SHA-256:16fb0332d8208915bb935f0ce04385343f0b604c9c0af81fec9baaa868bacc28",
+                    "size": "13138541",
+                    "version": "3.0.0",
+                    "name": "Dasduino ATtiny Boards",
+                    "architecture": "megaavr",
+                    "boards": [
+                        {
+                            "name": "Dasduino LITE"
+                        },
+                        {
+                            "name": "Dasduino easyC Boards"
+                        }
+                    ],
+                    "toolsDependencies": [
+                        {
+                            "packager": "Dasduino_Boards",
+                            "name": "avr-gcc",
+                            "version": "7.3.0-atmel3.6.1-azduino7b1"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "name": "avrdude",
+                            "version": "6.3.0-arduino17or18"
+                        },
+                        {
+                            "packager": "arduino",
+                            "name": "arduinoOTA",
+                            "version": "1.3.0"
+                        },
+                        {
+                            "packager": "Dasduino_Boards",
+                            "version": "3.7.2-post1",
+                            "name": "python3"
+                        }
+                    ]
+                },
+                {
+                    "help": {
+                        "online": "http://www.forum.soldered.com"
+                    },
+                    "category": "Dasduino ATtiny Boards",
                     "url": "https://github.com/SolderedElectronics/Dasduino-Board-Definitions-for-Arduino-IDE/raw/dev/Dasduino_megaTiny_core-2.1.0.zip",
                     "archiveFileName": "Dasduino_MegaTiny-2.1.0.zip",
                     "checksum": "SHA-256:d4725db0e77aa813dd840f9baa0197becf62bbb50dae04b4db7c87bc7b9e2b14",
