@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+analogWriteFreq	KEYWORD2
+analogWriteRange	KEYWORD2
+baudrate	KEYWORD2
+swap	KEYWORD2
+enablePhaseLockedWaveform	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+INPUT_PULLDOWN_16	LITERAL1
+PWMRANGE	        LITERAL1
+
+#Dasduino Connect
+PA0                 LITERAL1
+PA2                 LITERAL1
+PA4                 LITERAL1
+PA5                 LITERAL1
+PA12                LITERAL1
+PA13                LITERAL1
+PA14                LITERAL1
+PA15                LITERAL1
+PA16                LITERAL1
+
+I2C_SCL             LITERAL1
+I2C_SDA             LITERAL1
+SPI_SS              LITERAL1
+SPI_MOSI            LITERAL1
+SPI_MISO            LITERAL1
+SPI_SCK             LITERAL1
+
+USER_BUTTON         LITERAL1
+USER_LED            LITERAL1
